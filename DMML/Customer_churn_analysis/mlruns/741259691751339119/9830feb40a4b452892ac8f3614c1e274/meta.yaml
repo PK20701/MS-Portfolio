@@ -1,0 +1,14 @@
+artifact_uri: file:///d:/Prasanna/Learning/M.TECH%20BITS/vscode/MS-Portfolio/DMML/Customer_churn_analysis/mlruns/741259691751339119/9830feb40a4b452892ac8f3614c1e274/artifacts
+end_time: 1755654307847
+entry_point_name: ''
+experiment_id: '741259691751339119'
+lifecycle_stage: active
+run_id: 9830feb40a4b452892ac8f3614c1e274
+run_name: XGBoost_HyperTuning
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1755654298942
+status: 3
+tags: []
+user_id: Hp

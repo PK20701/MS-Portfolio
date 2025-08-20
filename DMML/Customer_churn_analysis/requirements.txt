@@ -1,12 +1,30 @@
+# This file lists the Python packages required to run the project.
+# You can install them all at once using pip:
+# pip install -r requirements.txt
+
+# Core ML & Data Manipulation
 pandas
 numpy
-Faker
-requests
+scikit-learn
+xgboost
+
+# MLOps & Orchestration
+mlflow
+prefect
+dvc
+
+# API & Web
 fastapi
 uvicorn[standard]
+requests
+python-multipart
+
+# Database
 SQLAlchemy
-scikit-learn
-mlflow
-xgboost
-prefect
-packaging
+
+# Data Generation & Ingestion
+faker
+kaggle
+
+# Orchestration - Airflow
+apache-airflow

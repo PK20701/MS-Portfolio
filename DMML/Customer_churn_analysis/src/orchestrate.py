@@ -18,6 +18,7 @@ setup_path()
 # --- Import main functions from your project scripts ---
 try:
     from generate_csv_data import main as generate_csv_data_main
+    from data_ingest_kaggle import main as data_ingest_kaggle_main
     from generate_api_data import main as generate_api_data_main
     from ingest import main as ingest_main
     from validate_raw_data import main as validate_raw_data_main
@@ -87,18 +88,30 @@ def check_and_install_dependencies_task():
     else:
         logger.info("All required packages are already installed.")
 
-@task(name="Generate Raw Data")
-def generate_data_task():
-    """Runs the data generation scripts for CSV and API data."""
+@task(name="Get Raw Data", retries=3, retry_delay_seconds=10)
+def get_raw_data_task(source: str):
+    """
+    Runs data generation/ingestion based on the source.
+    'synthetic': generates data locally.
+    'kaggle': downloads data from Kaggle.
+    """
     logger = get_run_logger()
-    logger.info("Starting raw data generation...")
-    logger.info("Generating customer_accounts.csv...")
-    generate_csv_data_main()
+    logger.info(f"Starting raw data acquisition from source: '{source}'")
+
+    if source == "kaggle":
+        logger.info("Downloading Telco Customer Churn data from Kaggle...")
+        data_ingest_kaggle_main()
+    elif source == "synthetic":
+        logger.info("Generating synthetic customer_accounts.csv...")
+        generate_csv_data_main()
+    else:
+        raise ValueError(f"Unknown data_source: '{source}'. Must be 'synthetic' or 'kaggle'.")
+
     logger.info("Generating interactions.json for mock API...")
     generate_api_data_main()
     logger.info("Raw data generation complete.")
 
-@task(name="Ingest Data")
+@task(name="Ingest Data", retries=3, retry_delay_seconds=5)
 def ingest_data_task():
     """Runs the data ingestion script."""
     logger = get_run_logger()
@@ -141,23 +154,24 @@ def train_models_task():
 # --- Main Pipeline Flow ---
 
 @flow(name="Customer Churn End-to-End Pipeline")
-def customer_churn_pipeline():
+def customer_churn_pipeline(data_source: str = "synthetic"):
     """
     Orchestrates the entire customer churn prediction pipeline, from data
     generation to model training, managing dependencies and the mock API server.
+
+    Args:
+        data_source (str): 'synthetic' to generate data, or 'kaggle' to download from Kaggle.
     """
     logger = get_run_logger()
-    logger.info("Starting the Customer Churn Pipeline...")
+    logger.info(f"Starting the Customer Churn Pipeline with data_source='{data_source}'...")
 
     # Step 0: Check and install dependencies. This must run first.
     dependencies_future = check_and_install_dependencies_task.submit()
 
-    # The mock API server needs to be running for the 'ingest' step.
-    # We manage it as a background process.
     api_process = None
     try:
         # Step 1: Generate all necessary raw data files. Wait for dependencies.
-        gen_future = generate_data_task.submit(wait_for=[dependencies_future])
+        gen_future = get_raw_data_task.submit(source=data_source, wait_for=[dependencies_future])
 
         # Start the mock API server in the background after data is generated.
         # It needs interactions.json to exist.
@@ -174,16 +188,12 @@ def customer_churn_pipeline():
         # Step 2: Ingest data. This depends on data generation and the API server.
         ingest_future = ingest_data_task.submit(wait_for=[gen_future])
 
-        # Step 3: Validate the ingested data.
+        # Step 3: Validate, Prepare, and Transform the data.
         validate_future = validate_data_task.submit(wait_for=[ingest_future])
-
-        # Step 4: Prepare the data.
         prepare_future = prepare_data_task.submit(wait_for=[validate_future])
-
-        # Step 5: Transform the data.
         transform_future = transform_data_task.submit(wait_for=[prepare_future])
 
-        # Step 6: Train the models.
+        # Step 4: Train the models.
         train_future = train_models_task.submit(wait_for=[transform_future])
         
         # Wait for the final task to complete before shutting down.
@@ -205,4 +215,12 @@ def customer_churn_pipeline():
             logger.info("Mock API server terminated.")
 
 if __name__ == "__main__":
-    customer_churn_pipeline()
+    # This allows running the script with a command-line argument.
+    # Example: python src/orchestrate.py kaggle
+    source = "synthetic"
+    if len(sys.argv) > 1:
+        source = sys.argv[1]
+        if source not in ["synthetic", "kaggle"]:
+            print(f"Error: Invalid data_source '{source}'. Choose 'synthetic' or 'kaggle'.", file=sys.stderr)
+            sys.exit(1)
+    customer_churn_pipeline(data_source=source)
