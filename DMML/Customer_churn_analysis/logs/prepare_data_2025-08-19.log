@@ -1,0 +1,23 @@
+2025-08-19 08:36:57,459 - prepare_data - INFO - --- Starting Data Preparation Script ---
+2025-08-19 08:36:57,463 - prepare_data - INFO - Searching for latest 'data.csv' in: d:\Prasanna\Learning\M.TECH BITS\vscode\MS-Portfolio\DMML\Customer_churn_analysis\data\raw\customer_accounts_partitioned
+2025-08-19 08:36:57,465 - prepare_data - INFO - Found latest data file at: d:\Prasanna\Learning\M.TECH BITS\vscode\MS-Portfolio\DMML\Customer_churn_analysis\data\raw\customer_accounts_partitioned\ingest_date=2025-08-19\data.csv
+2025-08-19 08:36:57,475 - prepare_data - INFO - Loaded raw accounts data with shape: (1000, 21)
+2025-08-19 08:36:57,477 - prepare_data - INFO - Searching for latest 'data.json' in: d:\Prasanna\Learning\M.TECH BITS\vscode\MS-Portfolio\DMML\Customer_churn_analysis\data\raw\interactions_partitioned
+2025-08-19 08:36:57,479 - prepare_data - INFO - Found latest data file at: d:\Prasanna\Learning\M.TECH BITS\vscode\MS-Portfolio\DMML\Customer_churn_analysis\data\raw\interactions_partitioned\ingest_date=2025-08-19\data.json
+2025-08-19 08:36:57,558 - prepare_data - INFO - Loaded raw interactions data with shape: (15000, 4)
+2025-08-19 08:36:57,559 - prepare_data - INFO - Processing customer interactions data...
+2025-08-19 08:36:57,664 - prepare_data - INFO - Merging aggregated interaction features.
+2025-08-19 08:36:57,677 - prepare_data - INFO - Processed interactions data. Shape: (1000, 8)
+2025-08-19 08:36:57,678 - prepare_data - INFO - Merging accounts data with interaction features.
+2025-08-19 08:36:57,685 - prepare_data - INFO - Data merged. Shape after merge: (1000, 28)
+2025-08-19 08:36:57,686 - prepare_data - INFO - Starting data cleaning...
+2025-08-19 08:36:57,689 - prepare_data - INFO - Imputed 50 missing values in 'TotalCharges' with median value 4315.27.
+2025-08-19 08:36:57,689 - prepare_data - INFO - Data cleaning complete.
+2025-08-19 08:36:57,689 - prepare_data - INFO - Starting feature encoding...
+2025-08-19 08:36:57,696 - prepare_data - INFO - Applied binary encoding to: gender, Partner, Dependents, PhoneService, PaperlessBilling, Churn
+2025-08-19 08:36:57,698 - prepare_data - INFO - Applied one-hot encoding to: MultipleLines, InternetService, OnlineSecurity, OnlineBackup, DeviceProtection, TechSupport, StreamingTV, StreamingMovies, Contract, PaymentMethod
+2025-08-19 08:36:57,698 - prepare_data - INFO - Feature encoding complete.
+2025-08-19 08:36:57,709 - prepare_data - INFO - Kept 'customerID' column for tracking and database storage.
+2025-08-19 08:36:57,722 - prepare_data - INFO - Successfully prepared data. Final shape: (1000, 39)
+2025-08-19 08:36:57,722 - prepare_data - INFO - Prepared data saved to: d:\Prasanna\Learning\M.TECH BITS\vscode\MS-Portfolio\DMML\Customer_churn_analysis\data\prepared\prepared_churn_data.csv
+2025-08-19 08:36:57,722 - prepare_data - INFO - --- Data Preparation Script Finished ---

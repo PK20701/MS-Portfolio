@@ -1,0 +1,6 @@
+2025-08-17 21:59:04,780 - __main__ - INFO - --- Starting Simple Raw Data Validation Script ---
+2025-08-17 21:59:04,780 - __main__ - INFO - Searching for ingested data in: d:\Prasanna\Learning\M.TECH BITS\vscode\MS-Portfolio\DMML\Customer_churn_analysis\data\raw\customer_accounts_partitioned
+2025-08-17 21:59:04,780 - __main__ - INFO - Found latest data file at: d:\Prasanna\Learning\M.TECH BITS\vscode\MS-Portfolio\DMML\Customer_churn_analysis\data\raw\customer_accounts_partitioned\ingest_date=2025-08-17\data.csv
+2025-08-17 21:59:04,802 - __main__ - INFO - Loaded raw data with shape: (1000, 21)
+2025-08-17 21:59:04,834 - __main__ - INFO - Raw data quality report successfully generated and saved to: d:\Prasanna\Learning\M.TECH BITS\vscode\MS-Portfolio\DMML\Customer_churn_analysis\reports\raw_data_quality_report_2025-08-17_215904.txt
+2025-08-17 21:59:04,835 - __main__ - INFO - --- Simple Raw Data Validation Script Finished ---

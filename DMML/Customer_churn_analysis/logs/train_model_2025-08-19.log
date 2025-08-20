@@ -1,0 +1,33 @@
+2025-08-19 08:36:57,987 - train_model_with_feature_store - INFO - --- Starting Model Training Script ---
+2025-08-19 08:36:57,988 - train_model_with_feature_store - INFO - MLflow tracking URI set to: file:///d:/Prasanna/Learning/M.TECH%20BITS/vscode/MS-Portfolio/DMML/Customer_churn_analysis/mlruns
+2025-08-19 08:36:57,991 - train_model_with_feature_store - INFO - Retrieving training data from the local feature store (Parquet file)...
+2025-08-19 08:36:57,991 - train_model_with_feature_store - INFO - Loading training data from d:\Prasanna\Learning\M.TECH BITS\vscode\MS-Portfolio\DMML\Customer_churn_analysis\data\transformed\transformed_features.parquet...
+2025-08-19 08:36:58,064 - train_model_with_feature_store - INFO - Successfully loaded training data with shape: (1000, 42)
+2025-08-19 08:36:58,064 - train_model_with_feature_store - INFO - --- Preparing data for modeling ---
+2025-08-19 08:36:58,064 - train_model_with_feature_store - INFO - Training set size: 800 samples
+2025-08-19 08:36:58,064 - train_model_with_feature_store - INFO - Test set size: 200 samples
+2025-08-19 08:36:58,064 - train_model_with_feature_store - INFO - --- Starting Model Experimentation with MLflow ---
+2025-08-19 08:36:59,264 - train_model_with_feature_store - INFO - --- Tuning and logging model: LogisticRegression ---
+2025-08-19 08:37:04,375 - train_model_with_feature_store - INFO - Best CV F1-score for LogisticRegression: 0.5831
+2025-08-19 08:37:04,414 - train_model_with_feature_store - INFO - Metrics for best LogisticRegression on test set: {'accuracy': 0.745, 'precision': 0.5064935064935064, 'recall': 0.75, 'f1_score': 0.6046511627906976}
+2025-08-19 08:37:04,620 - train_model_with_feature_store - INFO - Found existing registered model: 'LogisticRegression'. Comparing F1 scores.
+2025-08-19 08:37:04,647 - train_model_with_feature_store - INFO - New model F1 score: 0.6047. Best existing F1 score: 0.6047
+2025-08-19 08:37:04,649 - train_model_with_feature_store - INFO - New model is not an improvement. Not registering new version.
+2025-08-19 08:37:16,812 - train_model_with_feature_store - INFO - Model 'LogisticRegression' logged as an artifact. Registered: False
+2025-08-19 08:37:16,872 - train_model_with_feature_store - INFO - --- Tuning and logging model: RandomForest ---
+2025-08-19 08:37:21,464 - train_model_with_feature_store - INFO - Best CV F1-score for RandomForest: 0.5234
+2025-08-19 08:37:21,511 - train_model_with_feature_store - INFO - Metrics for best RandomForest on test set: {'accuracy': 0.705, 'precision': 0.4492753623188406, 'recall': 0.5961538461538461, 'f1_score': 0.512396694214876}
+2025-08-19 08:37:21,562 - train_model_with_feature_store - INFO - Found existing registered model: 'RandomForest'. Comparing F1 scores.
+2025-08-19 08:37:21,596 - train_model_with_feature_store - INFO - New model F1 score: 0.5124. Best existing F1 score: 0.5124
+2025-08-19 08:37:21,596 - train_model_with_feature_store - INFO - New model is not an improvement. Not registering new version.
+2025-08-19 08:37:27,238 - train_model_with_feature_store - INFO - Model 'RandomForest' logged as an artifact. Registered: False
+2025-08-19 08:37:27,285 - train_model_with_feature_store - INFO - --- Tuning and logging model: XGBoost ---
+2025-08-19 08:37:28,845 - train_model_with_feature_store - INFO - Best CV F1-score for XGBoost: 0.4435
+2025-08-19 08:37:28,927 - train_model_with_feature_store - INFO - Metrics for best XGBoost on test set: {'accuracy': 0.675, 'precision': 0.35555555555555557, 'recall': 0.3076923076923077, 'f1_score': 0.32989690721649484}
+2025-08-19 08:37:28,998 - train_model_with_feature_store - INFO - Found existing registered model: 'XGBoost'. Comparing F1 scores.
+2025-08-19 08:37:29,005 - train_model_with_feature_store - INFO - New model F1 score: 0.3299. Best existing F1 score: 0.3299
+2025-08-19 08:37:29,006 - train_model_with_feature_store - INFO - New model is not an improvement. Not registering new version.
+2025-08-19 08:37:34,979 - train_model_with_feature_store - INFO - Model 'XGBoost' logged as an artifact. Registered: False
+2025-08-19 08:37:34,989 - train_model_with_feature_store - INFO - --- Model experimentation finished. ---
+2025-08-19 08:37:34,989 - train_model_with_feature_store - INFO - To view the results, run 'mlflow ui' in your terminal from the project root.
+2025-08-19 08:37:34,989 - train_model_with_feature_store - INFO - --- Model Training Script Finished Successfully ---

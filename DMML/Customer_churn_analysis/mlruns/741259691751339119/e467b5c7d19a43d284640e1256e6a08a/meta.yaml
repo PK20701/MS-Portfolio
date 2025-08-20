@@ -1,0 +1,14 @@
+artifact_uri: file:///d:/Prasanna/Learning/M.TECH%20BITS/vscode/MS-Portfolio/DMML/Customer_churn_analysis/mlruns/741259691751339119/e467b5c7d19a43d284640e1256e6a08a/artifacts
+end_time: 1755569163292
+entry_point_name: ''
+experiment_id: '741259691751339119'
+lifecycle_stage: active
+run_id: e467b5c7d19a43d284640e1256e6a08a
+run_name: LogisticRegression_HyperTuning
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1755569144274
+status: 3
+tags: []
+user_id: Hp

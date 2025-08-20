@@ -1,0 +1,40 @@
+2025-08-17 22:04:16,617 - __main__ - INFO - --- Starting Model Training Script ---
+2025-08-17 22:04:16,617 - __main__ - INFO - MLflow tracking URI set to: file:///d:/Prasanna/Learning/M.TECH%20BITS/vscode/MS-Portfolio/DMML/Customer_churn_analysis/mlruns
+2025-08-17 22:04:16,617 - __main__ - INFO - Retrieving training data from the local feature store (Parquet file)...
+2025-08-17 22:04:16,617 - __main__ - INFO - Loading training data from d:\Prasanna\Learning\M.TECH BITS\vscode\MS-Portfolio\DMML\Customer_churn_analysis\data\transformed\transformed_features.parquet...
+2025-08-17 22:04:16,801 - __main__ - INFO - Successfully loaded training data with shape: (1000, 35)
+2025-08-17 22:04:16,802 - __main__ - INFO - --- Preparing data for modeling ---
+2025-08-17 22:04:16,806 - __main__ - INFO - Training set size: 800 samples
+2025-08-17 22:04:16,806 - __main__ - INFO - Test set size: 200 samples
+2025-08-17 22:04:16,806 - __main__ - INFO - --- Starting Model Experimentation with MLflow ---
+2025-08-17 22:04:18,040 - __main__ - INFO - Training and logging model: LogisticRegression
+2025-08-17 22:04:18,175 - __main__ - INFO - Metrics for LogisticRegression: {'accuracy': 0.725, 'precision': 0.46153846153846156, 'recall': 0.34615384615384615, 'f1_score': 0.3956043956043956}
+2025-08-17 22:04:32,638 - __main__ - INFO - Model 'LogisticRegression' logged to MLflow.
+2025-08-17 22:04:32,699 - __main__ - INFO - Training and logging model: RandomForest
+2025-08-17 22:04:32,995 - __main__ - INFO - Metrics for RandomForest: {'accuracy': 0.73, 'precision': 0.4642857142857143, 'recall': 0.25, 'f1_score': 0.325}
+2025-08-17 22:04:39,197 - __main__ - INFO - Model 'RandomForest' logged to MLflow.
+2025-08-17 22:04:39,201 - __main__ - INFO - --- Model experimentation finished. ---
+2025-08-17 22:04:39,202 - __main__ - INFO - To view the results, run 'mlflow ui' in your terminal from the project root.
+2025-08-17 22:04:39,203 - __main__ - INFO - --- Model Training Script Finished Successfully ---
+2025-08-17 22:33:31,936 - __main__ - INFO - --- Starting Model Training Script ---
+2025-08-17 22:33:31,937 - __main__ - INFO - MLflow tracking URI set to: file:///D:/Prasanna/Learning/M.TECH%20BITS/vscode/MS-Portfolio/DMML/Customer_churn_analysis/mlruns
+2025-08-17 22:33:31,938 - __main__ - INFO - Retrieving training data from the local feature store (Parquet file)...
+2025-08-17 22:33:31,939 - __main__ - INFO - Loading training data from D:\Prasanna\Learning\M.TECH BITS\vscode\MS-Portfolio\DMML\Customer_churn_analysis\data\transformed\transformed_features.parquet...
+2025-08-17 22:33:32,625 - __main__ - INFO - Successfully loaded training data with shape: (1000, 35)
+2025-08-17 22:33:32,625 - __main__ - INFO - --- Preparing data for modeling ---
+2025-08-17 22:33:32,662 - __main__ - INFO - Training set size: 800 samples
+2025-08-17 22:33:32,663 - __main__ - INFO - Test set size: 200 samples
+2025-08-17 22:33:32,663 - __main__ - INFO - --- Starting Model Experimentation with MLflow ---
+2025-08-17 22:33:33,964 - __main__ - INFO - Training and logging model: LogisticRegression
+2025-08-17 22:33:34,059 - __main__ - INFO - Metrics for LogisticRegression: {'accuracy': 0.725, 'precision': 0.46153846153846156, 'recall': 0.34615384615384615, 'f1_score': 0.3956043956043956}
+2025-08-17 22:33:34,176 - __main__ - INFO - Comparing to latest registered version of 'LogisticRegression' (F1 score: 0.3956)
+2025-08-17 22:33:34,177 - __main__ - INFO - New model F1 score (0.3956) is not an improvement. Not registering new version.
+2025-08-17 22:33:46,206 - __main__ - INFO - Model 'LogisticRegression' logged as an artifact. Registered: False
+2025-08-17 22:33:46,269 - __main__ - INFO - Training and logging model: RandomForest
+2025-08-17 22:33:46,537 - __main__ - INFO - Metrics for RandomForest: {'accuracy': 0.73, 'precision': 0.4642857142857143, 'recall': 0.25, 'f1_score': 0.325}
+2025-08-17 22:33:46,708 - __main__ - INFO - Comparing to latest registered version of 'RandomForest' (F1 score: 0.3250)
+2025-08-17 22:33:46,708 - __main__ - INFO - New model F1 score (0.3250) is not an improvement. Not registering new version.
+2025-08-17 22:33:50,994 - __main__ - INFO - Model 'RandomForest' logged as an artifact. Registered: False
+2025-08-17 22:33:50,994 - __main__ - INFO - --- Model experimentation finished. ---
+2025-08-17 22:33:50,994 - __main__ - INFO - To view the results, run 'mlflow ui' in your terminal from the project root.
+2025-08-17 22:33:50,994 - __main__ - INFO - --- Model Training Script Finished Successfully ---

@@ -1,0 +1,10 @@
+artifact_location: file:///d:/Prasanna/Learning/M.TECH%20BITS/vscode/MS-Portfolio/DMML/Customer_churn_analysis/mlruns/741259691751339119/models/m-295a22b644d1459dba3c0e252450be01/artifacts
+creation_timestamp: 1755572824707
+experiment_id: '741259691751339119'
+last_updated_timestamp: 1755572836797
+model_id: m-295a22b644d1459dba3c0e252450be01
+model_type: null
+name: model
+source_run_id: 55e8241fa9c443c19a35d9134dfc1608
+status: 2
+status_message: null

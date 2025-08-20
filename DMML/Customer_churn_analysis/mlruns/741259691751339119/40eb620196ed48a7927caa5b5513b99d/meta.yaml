@@ -1,0 +1,14 @@
+artifact_uri: file:///d:/Prasanna/Learning/M.TECH%20BITS/vscode/MS-Portfolio/DMML/Customer_churn_analysis/mlruns/741259691751339119/40eb620196ed48a7927caa5b5513b99d/artifacts
+end_time: 1755567553019
+entry_point_name: ''
+experiment_id: '741259691751339119'
+lifecycle_stage: active
+run_id: 40eb620196ed48a7927caa5b5513b99d
+run_name: RandomForest
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1755567547137
+status: 3
+tags: []
+user_id: Hp

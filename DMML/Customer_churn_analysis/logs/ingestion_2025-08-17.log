@@ -1,0 +1,8 @@
+2025-08-17 21:58:31,310 - __main__ - INFO - --- Starting Data Ingestion Script ---
+2025-08-17 21:58:31,310 - __main__ - INFO - Starting ingestion for CSV file: d:\Prasanna\Learning\M.TECH BITS\vscode\MS-Portfolio\DMML\Customer_churn_analysis\data\raw\customer_accounts.csv
+2025-08-17 21:58:31,344 - __main__ - INFO - Successfully ingested 1000 rows from d:\Prasanna\Learning\M.TECH BITS\vscode\MS-Portfolio\DMML\Customer_churn_analysis\data\raw\customer_accounts.csv
+2025-08-17 21:58:31,344 - __main__ - INFO - Raw data saved to d:\Prasanna\Learning\M.TECH BITS\vscode\MS-Portfolio\DMML\Customer_churn_analysis\data\raw\customer_accounts_partitioned\ingest_date=2025-08-17\data.csv
+2025-08-17 21:58:31,345 - __main__ - INFO - Starting ingestion from API: http://127.0.0.1:8000/api/interactions
+2025-08-17 21:58:31,577 - __main__ - INFO - Successfully ingested 15000 records from http://127.0.0.1:8000/api/interactions
+2025-08-17 21:58:31,577 - __main__ - INFO - Raw data saved to d:\Prasanna\Learning\M.TECH BITS\vscode\MS-Portfolio\DMML\Customer_churn_analysis\data\raw\interactions_partitioned\ingest_date=2025-08-17\data.json
+2025-08-17 21:58:31,577 - __main__ - INFO - --- Data Ingestion Script Finished ---

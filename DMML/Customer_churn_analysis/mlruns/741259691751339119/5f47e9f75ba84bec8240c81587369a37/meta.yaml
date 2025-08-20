@@ -1,0 +1,14 @@
+artifact_uri: file:///d:/Prasanna/Learning/M.TECH%20BITS/vscode/MS-Portfolio/DMML/Customer_churn_analysis/mlruns/741259691751339119/5f47e9f75ba84bec8240c81587369a37/artifacts
+end_time: 1755566049651
+entry_point_name: ''
+experiment_id: '741259691751339119'
+lifecycle_stage: active
+run_id: 5f47e9f75ba84bec8240c81587369a37
+run_name: LogisticRegression
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1755566032907
+status: 3
+tags: []
+user_id: Hp

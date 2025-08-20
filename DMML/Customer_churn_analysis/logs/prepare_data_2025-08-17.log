@@ -1,0 +1,15 @@
+2025-08-17 22:02:29,852 - __main__ - INFO - --- Starting Data Preparation Script ---
+2025-08-17 22:02:29,852 - __main__ - INFO - Searching for ingested data in: d:\Prasanna\Learning\M.TECH BITS\vscode\MS-Portfolio\DMML\Customer_churn_analysis\data\raw\customer_accounts_partitioned
+2025-08-17 22:02:29,853 - __main__ - INFO - Found latest data file at: d:\Prasanna\Learning\M.TECH BITS\vscode\MS-Portfolio\DMML\Customer_churn_analysis\data\raw\customer_accounts_partitioned\ingest_date=2025-08-17\data.csv
+2025-08-17 22:02:29,865 - __main__ - INFO - Loaded raw data with shape: (1000, 21)
+2025-08-17 22:02:29,866 - __main__ - INFO - Starting data cleaning...
+2025-08-17 22:02:29,869 - __main__ - INFO - Imputed 50 missing values in 'TotalCharges' with median value 4290.32.
+2025-08-17 22:02:29,870 - __main__ - INFO - Data cleaning complete.
+2025-08-17 22:02:29,870 - __main__ - INFO - Starting feature encoding...
+2025-08-17 22:02:29,876 - __main__ - INFO - Applied binary encoding to: gender, Partner, Dependents, PhoneService, PaperlessBilling, Churn
+2025-08-17 22:02:29,886 - __main__ - INFO - Applied one-hot encoding to: MultipleLines, InternetService, OnlineSecurity, OnlineBackup, DeviceProtection, TechSupport, StreamingTV, StreamingMovies, Contract, PaymentMethod
+2025-08-17 22:02:29,886 - __main__ - INFO - Feature encoding complete.
+2025-08-17 22:02:29,886 - __main__ - INFO - Kept 'customerID' column for tracking and database storage.
+2025-08-17 22:02:29,895 - __main__ - INFO - Successfully prepared data. Final shape: (1000, 32)
+2025-08-17 22:02:29,895 - __main__ - INFO - Prepared data saved to: d:\Prasanna\Learning\M.TECH BITS\vscode\MS-Portfolio\DMML\Customer_churn_analysis\data\prepared\prepared_churn_data.csv
+2025-08-17 22:02:29,895 - __main__ - INFO - --- Data Preparation Script Finished ---

@@ -1,0 +1,14 @@
+artifact_uri: file:///d:/Prasanna/Learning/M.TECH%20BITS/vscode/MS-Portfolio/DMML/Customer_churn_analysis/mlruns/741259691751339119/dc1c2c2265914d04b451fbe2b52f436f/artifacts
+end_time: 1755569174398
+entry_point_name: ''
+experiment_id: '741259691751339119'
+lifecycle_stage: active
+run_id: dc1c2c2265914d04b451fbe2b52f436f
+run_name: RandomForest_HyperTuning
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1755569163300
+status: 3
+tags: []
+user_id: Hp

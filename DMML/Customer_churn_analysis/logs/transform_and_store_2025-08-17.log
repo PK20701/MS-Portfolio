@@ -1,0 +1,12 @@
+2025-08-17 22:03:51,615 - __main__ - INFO - --- Starting Data Transformation & Storage Script ---
+2025-08-17 22:03:51,615 - __main__ - INFO - Starting data transformation for d:\Prasanna\Learning\M.TECH BITS\vscode\MS-Portfolio\DMML\Customer_churn_analysis\data\prepared\prepared_churn_data.csv
+2025-08-17 22:03:51,655 - __main__ - INFO - Performing feature engineering.
+2025-08-17 22:03:51,655 - __main__ - INFO - Scaling numerical features.
+2025-08-17 22:03:51,655 - __main__ - INFO - Columns to be scaled: ['tenure', 'MonthlyCharges', 'TotalCharges', 'TenureInYears', 'NumAdditionalServices', 'MonthlyTenureRatio']
+2025-08-17 22:03:51,669 - __main__ - INFO - Numerical features scaled successfully.
+2025-08-17 22:03:51,672 - __main__ - INFO - Storing transformed data in SQLite database at d:\Prasanna\Learning\M.TECH BITS\vscode\MS-Portfolio\DMML\Customer_churn_analysis\data\transformed\churn_pipeline.db
+2025-08-17 22:03:51,770 - __main__ - INFO - Successfully transformed and stored 1000 records in the database.
+2025-08-17 22:03:51,770 - __main__ - INFO - Saving a copy of transformed data to Parquet file at d:\Prasanna\Learning\M.TECH BITS\vscode\MS-Portfolio\DMML\Customer_churn_analysis\data\transformed\transformed_features.parquet
+2025-08-17 22:03:51,882 - __main__ - INFO - Parquet file saved successfully.
+2025-08-17 22:03:51,882 - __main__ - INFO - --- Verifying data from SQLite DB ---
+2025-08-17 22:03:51,903 - __main__ - INFO - --- Data Transformation & Storage Script Finished ---

@@ -1,0 +1,12 @@
+pandas
+numpy
+Faker
+requests
+fastapi
+uvicorn[standard]
+SQLAlchemy
+scikit-learn
+mlflow
+xgboost
+prefect
+packaging
