@@ -15,29 +15,14 @@ def setup_path():
 
 setup_path()
 
-# --- Import main functions from your project scripts ---
-try:
-    from generate_csv_data import main as generate_csv_data_main
-    from data_ingest_kaggle import main as data_ingest_kaggle_main
-    from generate_api_data import main as generate_api_data_main
-    from ingest import main as ingest_main
-    from validate_raw_data import main as validate_raw_data_main
-    from prepare_data import main as prepare_data_main
-    from transform_and_store import main as transform_and_store_main
-    from train_model_with_feature_store import main as train_model_main
-except ImportError as e:
-    # Provide a more helpful error message
-    print("Error: Could not import a required module.", file=sys.stderr)
-    print(f"Details: {e}", file=sys.stderr)
-    print("Please ensure that all required scripts (generate_csv_data.py, ingest.py, etc.) exist in the 'src/' directory and have a 'main()' function.", file=sys.stderr)
-    sys.exit(1)
-
 # --- Prefect Tasks ---
 
-@task(name="Check and Install Dependencies")
+@task(name="Check and Install Dependencies", retries=3, retry_delay_seconds=15)
 def check_and_install_dependencies_task():
     """
     Checks if all packages in requirements.txt are installed and installs them if not.
+    This task will retry up to 3 times on failure, which can help with transient
+    network issues during package installation.
     """
     logger = get_run_logger()
     project_root = Path(__file__).parent.parent
@@ -48,14 +33,17 @@ def check_and_install_dependencies_task():
         return
 
     logger.info("Checking for missing Python packages from requirements.txt...")
-    with open(requirements_path) as f:
+    # Using "utf-8-sig" is the most robust way to read text files that might
+    # be saved with or without a Byte Order Mark (BOM). It correctly handles
+    # standard UTF-8 files and those saved with a BOM by some editors.
+    with open(requirements_path, encoding="utf-8-sig") as f:
         # Read requirements, ignoring comments and empty lines
         requirements = [line.strip() for line in f if line.strip() and not line.startswith('#')]
 
     # Use the modern 'importlib.metadata' and 'packaging' libraries
     # to avoid the deprecated 'pkg_resources'.
     from importlib import metadata
-    from packaging.requirements import Requirement
+    from packaging.requirements import InvalidRequirement, Requirement
 
     missing_packages = []
     for req_str in requirements:
@@ -72,6 +60,12 @@ def check_and_install_dependencies_task():
                 missing_packages.append(req_str)
             else:
                 logger.info(f"Requirement '{req_str}' is met.")
+        except InvalidRequirement as e:
+            logger.error(
+                f"Skipping invalid requirement in requirements.txt: '{req_str}'. "
+                f"Please check its format. Error: {e}"
+            )
+            raise  # Fail the pipeline for a critical configuration error.
         except metadata.PackageNotFoundError:
             logger.warning(f"Requirement '{req_str}' is NOT met (package not found).")
             missing_packages.append(req_str)
@@ -79,8 +73,17 @@ def check_and_install_dependencies_task():
     if missing_packages:
         logger.info("Installing missing or conflicting packages...")
         try:
+            # Add retries and a longer timeout to the pip command for more resilience
+            # against transient network issues.
+            pip_command = [
+                sys.executable, "-m", "pip", "install",
+                "-U",                   # Upgrade packages to specified versions
+                "--retries", "5",       # Retry up to 5 times on network errors
+                "--timeout", "30",      # Increase network timeout to 30 seconds
+                "-r", str(requirements_path)
+            ]
             # Using '-U' to ensure that packages with version conflicts are upgraded.
-            subprocess.check_call([sys.executable, "-m", "pip", "install", "-U", "-r", str(requirements_path)])
+            subprocess.check_call(pip_command)
             logger.info("All required packages installed successfully.")
         except subprocess.CalledProcessError as e:
             logger.error(f"Failed to install packages from {requirements_path}. Error: {e}")
@@ -99,14 +102,17 @@ def get_raw_data_task(source: str):
     logger.info(f"Starting raw data acquisition from source: '{source}'")
 
     if source == "kaggle":
+        from data_ingest_kaggle import main as data_ingest_kaggle_main
         logger.info("Downloading Telco Customer Churn data from Kaggle...")
         data_ingest_kaggle_main()
     elif source == "synthetic":
+        from generate_csv_data import main as generate_csv_data_main
         logger.info("Generating synthetic customer_accounts.csv...")
         generate_csv_data_main()
     else:
         raise ValueError(f"Unknown data_source: '{source}'. Must be 'synthetic' or 'kaggle'.")
 
+    from generate_api_data import main as generate_api_data_main
     logger.info("Generating interactions.json for mock API...")
     generate_api_data_main()
     logger.info("Raw data generation complete.")
@@ -116,6 +122,7 @@ def ingest_data_task():
     """Runs the data ingestion script."""
     logger = get_run_logger()
     logger.info("Starting data ingestion...")
+    from ingest import main as ingest_main
     ingest_main()
     logger.info("Data ingestion complete.")
 
@@ -124,6 +131,7 @@ def validate_data_task():
     """Runs the raw data validation script."""
     logger = get_run_logger()
     logger.info("Starting raw data validation...")
+    from validate_raw_data import main as validate_raw_data_main
     validate_raw_data_main()
     logger.info("Raw data validation complete.")
 
@@ -132,6 +140,7 @@ def prepare_data_task():
     """Runs the data preparation script (cleaning, encoding)."""
     logger = get_run_logger()
     logger.info("Starting data preparation...")
+    from prepare_data import main as prepare_data_main
     prepare_data_main()
     logger.info("Data preparation complete.")
 
@@ -140,6 +149,7 @@ def transform_data_task():
     """Runs the feature transformation and storage script."""
     logger = get_run_logger()
     logger.info("Starting feature transformation and storage...")
+    from transform_and_store import main as transform_and_store_main
     transform_and_store_main()
     logger.info("Feature transformation and storage complete.")
 
@@ -148,6 +158,7 @@ def train_models_task():
     """Runs the model training and MLflow logging script."""
     logger = get_run_logger()
     logger.info("Starting model training and logging...")
+    from train_model_with_feature_store import main as train_model_main
     train_model_main()
     logger.info("Model training and logging complete.")
 
@@ -182,8 +193,28 @@ def customer_churn_pipeline(data_source: str = "synthetic"):
         api_script_path = project_root / "src" / "mock_api.py"
         # Using sys.executable ensures we use the same python interpreter.
         api_process = subprocess.Popen([sys.executable, str(api_script_path)])
-        logger.info(f"Mock API server started with PID: {api_process.pid}. Waiting a moment for it to initialize...")
-        time.sleep(5) # Give the server a few seconds to start up.
+        logger.info(f"Mock API server started with PID: {api_process.pid}. Waiting for it to become available...")
+
+        # Robust health check for the API server
+        from requests import get as requests_get
+        from requests.exceptions import ConnectionError
+
+        api_url = "http://127.0.0.1:8000/"
+        max_retries = 10
+        retry_delay = 3  # seconds
+
+        for i in range(max_retries):
+            try:
+                response = requests_get(api_url, timeout=5)
+                if response.status_code == 200:
+                    logger.info("Mock API server is up and running.")
+                    break
+            except ConnectionError:
+                logger.info(f"API not yet available. Retrying in {retry_delay}s... (Attempt {i+1}/{max_retries})")
+                time.sleep(retry_delay)
+        else: # This 'else' belongs to the 'for' loop, it runs if the loop completes without a 'break'
+            logger.error("Mock API server failed to start within the timeout period.")
+            raise RuntimeError("Could not connect to the mock API server.")
 
         # Step 2: Ingest data. This depends on data generation and the API server.
         ingest_future = ingest_data_task.submit(wait_for=[gen_future])

@@ -1,0 +1,59 @@
+
+============================================================
+                    1. Basic Information                    
+============================================================
+
+Number of rows: 1000
+Number of columns: 21
+
+
+============================================================
+                       2. Data Types                        
+============================================================
+
+customerID           object
+gender               object
+SeniorCitizen         int64
+Partner              object
+Dependents           object
+tenure                int64
+PhoneService         object
+MultipleLines        object
+InternetService      object
+OnlineSecurity       object
+OnlineBackup         object
+DeviceProtection     object
+TechSupport          object
+StreamingTV          object
+StreamingMovies      object
+Contract             object
+PaperlessBilling     object
+PaymentMethod        object
+MonthlyCharges      float64
+TotalCharges        float64
+Churn                object
+
+
+============================================================
+                      3. Missing Data                       
+============================================================
+
+Columns with missing values:
+TotalCharges    50
+
+NOTE: Missing values in 'TotalCharges' are expected and handled during data preparation.
+
+
+============================================================
+                4. Unique Customer ID Check                 
+============================================================
+
+All customerIDs are unique.
+
+
+============================================================
+                5. Categorical Value Checks                 
+============================================================
+
+All checked categorical columns contain expected values.
+
