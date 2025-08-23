@@ -1,12 +1,13 @@
 repos:
-- repo: https://github.com/iterative/dvc
-  rev: 3.56.0
-  hooks:
-    - id: dvc-pre-commit
-      stages: [pre-commit]
-    - id: dvc-pre-push
-      additional_dependencies: ['.[all]']
-      stages: [pre-push]
-    - id: dvc-post-checkout
-      always_run: true
-      stages: [post-checkout]
+-   repo: https://github.com/iterative/dvc
+    rev: 3.56.0 # Use a recent, stable version of DVC hooks
+    hooks:
+    -   id: dvc-pre-commit
+        stages: [pre-commit]
+    -   id: dvc-pre-push
+        # additional_dependencies are needed for cloud storage (s3, gcs, etc.)
+        additional_dependencies: ['.[all]']
+        stages: [pre-push]
+    -   id: dvc-post-checkout
+        always_run: true
+        stages: [post-checkout]
