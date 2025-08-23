@@ -1,6 +1,6 @@
 # Customer Churn Prediction Pipeline
 
-This project implements a full end-to-end MLOps pipeline for predicting customer churn. It includes data generation, ingestion, validation, transformation, model training with a feature store, and data versioning. The entire pipeline is orchestrated using Prefect.
+This project implements a full end-to-end MLOps pipeline for predicting customer churn. It includes data generation, ingestion, validation, transformation, model training with a feature store, and data versioning. The entire pipeline is orchestrated using Prefect and output can be visualized using UI.
 
 ## MLOps Components
 
