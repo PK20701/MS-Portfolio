@@ -65,17 +65,17 @@ INTERACTION_WEIGHTS = [0.2, 0.5, 0.1, 0.15, 0.05]
 
 def load_customer_ids(file_path: str) -> List[str]:
     """Loads customer IDs from the specified CSV file."""
-    logging.info(f"Loading customer IDs from {file_path}...")
+    logger.info(f"Loading customer IDs from {file_path}...")
     try:
         df_customers = pd.read_csv(file_path)
         customer_ids = df_customers['customerID'].tolist()
-        logging.info(f"Successfully loaded {len(customer_ids)} customer IDs.")
+        logger.info(f"Successfully loaded {len(customer_ids)} customer IDs.")
         return customer_ids
     except FileNotFoundError:
-        logging.error(f"Error: {file_path} not found. Please run generate_csv_data.py first.")
+        logger.error(f"Error: {file_path} not found. Please run generate_csv_data.py first.")
         sys.exit(1)
     except KeyError:
-        logging.error(f"Error: 'customerID' column not found in {file_path}.")
+        logger.error(f"Error: 'customerID' column not found in {file_path}.")
         sys.exit(1)
 
 def generate_interactions(
@@ -84,7 +84,7 @@ def generate_interactions(
     fake_generator: Faker
 ) -> List[Dict[str, Any]]:
     """Generates a list of synthetic customer interactions."""
-    logging.info(f"Generating {num_interactions} interaction records...")
+    logger.info(f"Generating {num_interactions} interaction records...")
     interaction_data = []
     for _ in range(num_interactions):
         interaction = {
@@ -101,7 +101,7 @@ def save_data_to_json(data: List[Dict[str, Any]], file_path: str) -> None:
     output_dir = os.path.dirname(file_path)
     os.makedirs(output_dir, exist_ok=True)
 
-    logging.info(f"Saving interaction data to {file_path}...")
+    logger.info(f"Saving interaction data to {file_path}...")
     with open(file_path, 'w') as f:
         json.dump(data, f, indent=4)
 
@@ -121,8 +121,8 @@ def main():
     interaction_data = generate_interactions(customer_ids, NUM_INTERACTIONS, fake)
     save_data_to_json(interaction_data, OUTPUT_JSON_PATH)
 
-    logging.info(f"Successfully generated {NUM_INTERACTIONS} interaction records.")
-    logging.info("Sample of generated data:")
+    logger.info(f"Successfully generated {NUM_INTERACTIONS} interaction records.")
+    logger.info("Sample of generated data:")
     # Use print for the sample for better readability of the JSON structure
     print(json.dumps(interaction_data[:3], indent=4))
 
