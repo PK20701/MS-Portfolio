@@ -1,0 +1,5 @@
+outs:
+- md5: 97a54ae486cfa685404cb5d51c6349b6
+  size: 4201424
+  hash: md5
+  path: interactions.json

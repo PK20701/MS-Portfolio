@@ -1,6 +1,4 @@
-# ---------------------
-# Python
-# ---------------------
+# --- Python ---
 __pycache__/
 *.py[cod]
 *.pyo
@@ -12,7 +10,8 @@ __pycache__/
 *.pyc
 src/__pycache__/
 
-# Virtual environments
+# --- Virtual Environment ---
+# It's a best practice to not commit the virtual environment itself.
 .venv/
 venv/
 ENV/
@@ -21,11 +20,32 @@ env/
 .mypy_cache/
 site-packages/
 
-# Jupyter
-.ipynb_checkpoints/
-*.ipynb~
+# --- IDE / Editor ---
+.vscode/
+.idea/
 
-# data, Logs and temp
+# --- DVC ---
+# Ignore DVC's internal directories, but NOT the .dvc files themselves.
+.dvc/cache
+.dvc/tmp
+.dvc/local
+
+# --- Data Directories ---
+# Ignore the contents of data directories by default.
+# DVC will create more specific .gitignore files inside these directories
+# for the large data files it manages (e.g., data/raw/customer_accounts.csv).
+data
+
+# IMPORTANT: The following rules UN-ignore the essential files we NEED in Git.
+# Do NOT ignore the .gitignore files that DVC creates in subdirectories.
+!.gitignore
+# Do NOT ignore the .dvc pointer files. This is the key fix.
+!.data/raw/*.dvc
+
+# --- Generated Files & Logs ---
+logs/
+mlruns/
+reports/
 *.log
 *.out
 *.tmp
@@ -35,9 +55,9 @@ site-packages/
 .dvc/
 .reports/
 reports/
-data/
 *.png
 src/*/
+
 # ---------------------
 # Prefect
 # ---------------------
@@ -75,9 +95,3 @@ unittests.cfg
 # ---------------------
 .DS_Store
 Thumbs.db
-
-# ---------------------
-# mlruns
-# ---------------------
-.mlruns/
-mlruns/
