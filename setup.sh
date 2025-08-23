@@ -127,14 +127,22 @@ if [ -f "$PRE_COMMIT_CONFIG" ]; then
 else
     echo "📝 Creating $PRE_COMMIT_CONFIG..."
     # This hook will automatically run `dvc add` on any DVC-tracked files
-    # that have been modified before you make a commit.
-    # We use the URL without .git as it's more robust against certain Git/tool bugs on Windows.
+    # that have been modified before you make a commit. It also includes
+    # hooks for `dvc pull` after a checkout and `dvc push` before a git push.
     cat > "$PRE_COMMIT_CONFIG" << EOL
 repos:
--   repo: https://github.com/PK20701/MS-Portfolio.git
-    rev: 3.0.0
+-   repo: https://github.com/iterative/dvc
+    rev: 3.56.0 # Use a recent, stable version of DVC hooks
     hooks:
-    -   id: dvc-auto-add
+    -   id: dvc-pre-commit
+        stages: [pre-commit]
+    -   id: dvc-pre-push
+        # additional_dependencies are needed for cloud storage (s3, gcs, etc.)
+        additional_dependencies: ['.[all]']
+        stages: [pre-push]
+    -   id: dvc-post-checkout
+        always_run: true
+        stages: [post-checkout]
 EOL
     echo "✅ Created $PRE_COMMIT_CONFIG"
 fi

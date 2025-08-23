@@ -19,7 +19,11 @@ A lightweight, file-based feature store is implemented to provide a centralized,
 This project uses DVC (Data Version Control) to manage and version large data files that are not suitable for Git. This ensures that every Git commit can correspond to a specific, reproducible version of the data.
 
 *   **Workflow**: When a developer runs the pipeline to generate new raw data, they can use `dvc add` and `dvc push` to version it. This is a manual step.
-*   **Automation & Reproducibility**: The `setup.sh` script automates the data retrieval process for other users by running `dvc pull`. This ensures that anyone who clones the repository can retrieve the exact version of the data tied to a specific Git commit, making the project setup and pipeline runs reproducible.
+*   **Automation with Pre-commit Hooks**: This project is configured with `pre-commit` hooks to automate the DVC workflow:
+    *   **`dvc-pre-commit`**: When you run `git commit`, this hook automatically runs `dvc add` for any modified DVC-tracked data files. This versions your data and stages the corresponding `.dvc` file for you.
+    *   **`dvc-pre-push`**: When you run `git push`, this hook automatically runs `dvc push`, ensuring your versioned data is uploaded to the DVC remote storage.
+    *   **`dvc-post-checkout`**: When you `git pull` or `git checkout` a different branch, this hook automatically runs `dvc pull` to sync your local data with the version specified in the commit.
+*   **Reproducibility**: This automated workflow ensures that anyone who clones the repository can retrieve the exact version of the data tied to a specific Git commit, making the project setup and pipeline runs highly reproducible.
 
 ### 3. Pipeline Orchestration
 This project supports two popular orchestration tools, providing flexibility for different environments.
