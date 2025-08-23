@@ -22,8 +22,6 @@ This project uses DVC (Data Version Control) to manage and version large data fi
 *   **Automation & Reproducibility**: The `setup.sh` script automates the data retrieval process for other users by running `dvc pull`. This ensures that anyone who clones the repository can retrieve the exact version of the data tied to a specific Git commit, making the project setup and pipeline runs reproducible.
 
 ### 3. Pipeline Orchestration
-
-
 This project supports two popular orchestration tools, providing flexibility for different environments.
 
 #### Using Prefect (Default)
