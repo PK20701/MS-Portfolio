@@ -1,0 +1,31 @@
+# This file lists the direct dependencies for the Customer Churn Analysis project.
+# Install them using: pip install -r requirements.txt
+
+# Core Data Science & ML
+# Essential for data manipulation, analysis, and model building.
+pandas
+numpy
+scikit-learn
+xgboost
+
+# MLOps & Orchestration
+# Tools for orchestrating the pipeline, tracking experiments, and versioning data.
+mlflow
+prefect
+dvc
+# apache-airflow  # Uncomment if you use Airflow as an alternative orchestrator
+
+# Data Generation & Ingestion
+# Used for creating synthetic data and fetching data from sources like Kaggle.
+faker
+kaggle
+
+# API & Web Server
+# For serving the mock API used during the ingestion step.
+fastapi
+uvicorn[standard]
+requests
+
+# Utility
+# Required by the orchestration script for dependency checking.
+packaging

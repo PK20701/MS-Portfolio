@@ -1,0 +1,83 @@
+# ---------------------
+# Python
+# ---------------------
+__pycache__/
+*.py[cod]
+*.pyo
+*.so
+*.egg
+*.egg-info/
+*.manifest
+*.spec
+*.pyc
+src/__pycache__/
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+.conda/
+.mypy_cache/
+site-packages/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb~
+
+# data, Logs and temp
+*.log
+*.out
+*.tmp
+*.swp
+*.bak
+*.dvcignore
+.dvc/
+.reports/
+reports/
+data/
+*.png
+src/*/
+# ---------------------
+# Prefect
+# ---------------------
+.prefect/
+orion.db
+orion.db-journal
+
+# ---------------------
+# Airflow
+# ---------------------
+airflow.db
+airflow.db-journal
+logs/
+dags/__pycache__/
+airflow.cfg
+unittests.cfg
+
+# ---------------------
+# AWS & Cloud
+.aws/
+*.pem
+*.key
+*.crt
+
+# ---------------------
+# IDEs / Editors
+# ---------------------
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# ---------------------
+# OS files
+# ---------------------
+.DS_Store
+Thumbs.db
+
+# ---------------------
+# mlruns
+# ---------------------
+.mlruns/
+mlruns/
