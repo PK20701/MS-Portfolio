@@ -6,12 +6,14 @@ from sqlalchemy import create_engine
 import logging
 from pathlib import Path
 from datetime import datetime
+from database_utils import setup_database
 
 # --- Project Root and Paths Configuration ---
 project_root = Path(__file__).parent.parent
 PREPARED_DATA_DIR = project_root / "data" / "prepared"
 TRANSFORMED_DATA_DIR = project_root / "data" / "transformed"
 LOG_DIR = project_root / "logs"
+SCHEMA_PATH = project_root / "src" / "database_setup.sql"
 
 # --- Logger Configuration ---
 LOG_DIR.mkdir(parents=True, exist_ok=True)
@@ -130,8 +132,8 @@ def transform_and_store_data(input_path: Path, db_path: Path, parquet_path: Path
         logger.info(f"Storing transformed data in SQLite database at {db_path}")
         engine = create_engine(f'sqlite:///{db_path}')
         
-        # The prompt used 'churn_features' as the table name in the to_sql call
-        final_df.to_sql('churn_features', engine, if_exists='replace', index=False, chunksize=1000)
+        # Append data to the table. The table is created/reset by the setup script.
+        final_df.to_sql('churn_features', engine, if_exists='append', index=False, chunksize=1000)
         
         logger.info(f"Successfully transformed and stored {len(final_df)} records in the database.")
         
@@ -154,6 +156,11 @@ def main():
     TRANSFORMED_DATA_DIR.mkdir(parents=True, exist_ok=True)
     database_path = TRANSFORMED_DATA_DIR / "churn_pipeline.db"
     parquet_path = TRANSFORMED_DATA_DIR / "transformed_features.parquet"
+
+    # --- Setup Database Schema ---
+    # This step ensures the database and table are created with the correct schema
+    # before any data is loaded.
+    setup_database(db_path=database_path, schema_file=SCHEMA_PATH)
 
     try:
         transform_and_store_data(
