@@ -2,6 +2,7 @@ import time
 import subprocess
 import sys
 from pathlib import Path
+import logging
 from datetime import datetime
 
 from prefect import flow, task, get_run_logger
@@ -17,6 +18,35 @@ def setup_path():
         sys.path.insert(0, src_path)
 
 setup_path()
+
+# --- Logger for main execution block ---
+def setup_main_logger():
+    """Sets up a logger for the __main__ block to log to file and console."""
+    log = logging.getLogger('orchestrator_main')
+    log.setLevel(logging.INFO)
+    
+    # Prevent passing logs to the root logger to avoid conflicts with Prefect's logging
+    log.propagate = False
+
+    # Avoid adding handlers if they already exist (e.g., in an interactive session)
+    if not log.handlers:
+        project_root = Path(__file__).parent.parent
+        log_dir = project_root / "logs"
+        log_dir.mkdir(exist_ok=True)
+        
+        log_file = log_dir / f"orchestration_{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.log"
+        
+        # File handler - logs everything with a detailed format
+        fh = logging.FileHandler(log_file, encoding='utf-8')
+        fh.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
+        log.addHandler(fh)
+
+        # Console handler - for user-friendly terminal output with a simpler format
+        ch = logging.StreamHandler(sys.stdout)
+        ch.setFormatter(logging.Formatter('%(message)s'))
+        log.addHandler(ch)
+    
+    return log
 
 # --- Prefect Tasks ---
 
@@ -106,6 +136,35 @@ def customer_churn_pipeline(data_source: str = "synthetic"):
         data_source (str): 'synthetic' to generate data, or 'kaggle' to download from Kaggle.
     """
     logger = get_run_logger()
+    # --- Configure Logging for this Flow Run ---
+    # The goal is to send detailed logs to a file and only show warnings on the console.
+    # We achieve this by removing Prefect's default handlers and adding our own.
+    # The logger from get_run_logger() is a standard library logger, so we use its API.
+
+    # Get the underlying standard library logger instance from the Prefect adapter
+    base_logger = logger.logger
+
+    # Clear existing handlers to prevent duplicate logging to the console
+    if base_logger.hasHandlers():
+        base_logger.handlers.clear()
+
+    # 1. Create and add a new, quieter console handler for WARNINGs and above.
+    console_handler = logging.StreamHandler(sys.stdout)
+    console_handler.setLevel(logging.WARNING)
+    console_formatter = logging.Formatter('%(levelname)-8s | %(name)s - %(message)s')
+    console_handler.setFormatter(console_formatter)
+    base_logger.addHandler(console_handler)
+
+    # 2. Create and add a file handler to capture all logs (INFO and above).
+    log_file_path = Path(__file__).parent.parent / "logs" / f"flow_run_{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.log"
+    file_handler = logging.FileHandler(log_file_path, encoding='utf-8')
+    file_handler.setLevel(logging.INFO)
+    file_formatter = logging.Formatter('%(asctime)s | %(levelname)-8s | %(name)s:%(funcName)s:%(lineno)d - %(message)s')
+    file_handler.setFormatter(file_formatter)
+    base_logger.addHandler(file_handler)
+
+    # The logger is now configured. The first message is a warning to ensure it appears on the console.
+    logger.warning(f"Console logging is set to WARNING. Detailed logs are in: {log_file_path.name}")
     logger.info(f"Starting the Customer Churn Pipeline with data_source='{data_source}'...")
 
     api_process = None  # Initialize here to ensure it's available in `finally`
@@ -192,25 +251,28 @@ def customer_churn_pipeline(data_source: str = "synthetic"):
             logger.info("Mock API server terminated in finally block.")
 
 if __name__ == "__main__":
+    # Set up the logger for this execution script
+    main_logger = setup_main_logger()
+
     # This allows running the script with a command-line argument.
     # Example: python src/orchestrate.py kaggle
     source = "synthetic"
     if len(sys.argv) > 1:
         source = sys.argv[1]
         if source not in ["synthetic", "kaggle"]:
-            print(f"Error: Invalid data_source '{source}'. Choose 'synthetic' or 'kaggle'.", file=sys.stderr)
+            main_logger.error(f"Error: Invalid data_source '{source}'. Choose 'synthetic' or 'kaggle'.")
             sys.exit(1)
 
     try:
         # Run the Prefect flow. It will raise an exception on failure.
         customer_churn_pipeline(data_source=source)
-        print("\n✅ Pipeline finished successfully!")
-        print("   The generated data, models, and logs are ready.")
-        print("   You can now manually commit any changes to Git.")
-        print("   Remember to run 'dvc push' if you want to share the data.")
+        main_logger.info("\n[SUCCESS] Pipeline finished successfully!")
+        main_logger.info("   The generated data, models, and logs are ready.")
+        main_logger.info("   You can now manually commit any changes to Git.")
+        main_logger.info("   Remember to run 'dvc push' if you want to share the data.")
 
     except Exception as e:
         # The logger inside the flow already prints details for Prefect errors.
         # This catches the re-raised exception from the flow or other unexpected errors.
-        print(f"\n❌ Pipeline execution failed with an unexpected error: {e}", file=sys.stderr)
+        main_logger.critical(f"\n[FAILED] Pipeline execution failed with an unexpected error: {e}", exc_info=True)
         sys.exit(1)

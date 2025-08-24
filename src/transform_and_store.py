@@ -1,6 +1,7 @@
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
 import numpy as np
+from sklearn.impute import SimpleImputer
 from sqlalchemy import create_engine
 import logging
 from pathlib import Path
@@ -21,7 +22,7 @@ logger.setLevel(logging.INFO)
 
 # Avoid adding handlers if they already exist (e.g., from a previous import)
 if not logger.handlers:
-    log_file_path = LOG_DIR / f"transform_and_store_{datetime.now().strftime('%Y-%m-%d')}.log"
+    log_file_path = LOG_DIR / f"transform_and_store_{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.log"
 
     # Create handlers
     file_handler = logging.FileHandler(log_file_path)
@@ -79,19 +80,47 @@ def transform_and_store_data(input_path: Path, db_path: Path, parquet_path: Path
         # Add 1 to tenure to avoid division by zero for new customers (tenure=0)
         features_df['MonthlyTenureRatio'] = features_df['MonthlyCharges'] / (features_df['tenure'] + 1)
 
-        # --- 2. Feature Scaling ---
-        logger.info("Scaling numerical features.")
-        # Programmatically identify all numeric columns to be scaled, excluding the target.
+        # --- 2. Impute and Scale Numerical Features ---
+        # Identify numeric columns for processing, excluding the target variable 'Churn'.
         if 'Churn' in features_df.columns:
             numerical_cols = features_df.select_dtypes(include=np.number).columns.tolist()
             numerical_cols.remove('Churn')
         else:
-            # This case might occur if the target column has a different name or is not present
             numerical_cols = features_df.select_dtypes(include=np.number).columns.tolist()
+
+        # Defensive check: Drop columns that are completely empty (all NaN).
+        # This can happen if a feature source has no data for the current batch,
+        # preventing shape mismatch errors with the imputer/scaler.
+        all_nan_cols = [col for col in numerical_cols if features_df[col].isnull().all()]
+        if all_nan_cols:
+            logger.warning(f"Dropping columns with all NaN values: {all_nan_cols}")
+            features_df.drop(columns=all_nan_cols, inplace=True)
+            numerical_cols = [col for col in numerical_cols if col not in all_nan_cols]
+
+        # Impute missing values (e.g., in TotalCharges) using the mean.
+        # This is a critical step to prevent errors in downstream models.
+        logger.info(f"Imputing missing values for columns: {numerical_cols}")
+        imputer = SimpleImputer(strategy='mean')
+        
+        # The fit_transform method returns a NumPy array, which loses column and index
+        # information. To prevent assignment errors, we reconstruct a DataFrame with
+        # the original index and columns. This is a more robust approach.
+        imputed_data = imputer.fit_transform(features_df[numerical_cols])
+        features_df[numerical_cols] = pd.DataFrame(
+            imputed_data, columns=numerical_cols, index=features_df.index
+        )
+        logger.info("Missing values imputed successfully.")
+
+        # Scale numerical features
+        logger.info("Scaling numerical features.")
         logger.info(f"Columns to be scaled: {numerical_cols}")
 
         scaler = StandardScaler()
-        features_df[numerical_cols] = scaler.fit_transform(features_df[numerical_cols])
+        # We apply the same robust assignment pattern here for consistency.
+        scaled_data = scaler.fit_transform(features_df[numerical_cols])
+        features_df[numerical_cols] = pd.DataFrame(
+            scaled_data, columns=numerical_cols, index=features_df.index
+        )
         logger.info("Numerical features scaled successfully.")
         
         # --- 3. Store in SQLite Database ---

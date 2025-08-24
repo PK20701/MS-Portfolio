@@ -1,65 +1,22 @@
 # Customer Churn Prediction Pipeline
 
-This project implements a full end-to-end MLOps pipeline for predicting customer churn. It includes data generation, ingestion, validation, transformation, model training with a feature store, and data versioning. The entire pipeline is orchestrated using Prefect and output can be visualized using UI.
+This project implements a full end-to-end MLOps pipeline for predicting customer churn. It covers everything from data generation and ingestion to model training, versioning, and prediction. The entire workflow is automated and orchestrated using modern MLOps tools.
 
-## MLOps Components
+## MLOps Features
 
 This project incorporates several MLOps best practices to ensure reproducibility, scalability, and maintainability.
 
-### 1. Feature Store
-
-A lightweight, file-based feature store is implemented to provide a centralized, documented, and versioned source of features for model training.
-
-*   **Registry**: Feature definitions and metadata (e.g., description, source, version) are centrally defined in `src/feature_store.py`. This file acts as the feature registry.
-*   **Offline Store**: The final, transformed features are stored in a single Parquet file at `data/transformed/transformed_features.parquet`. This file is the single source of truth for model training.
-*   **Retrieval API**: The `get_feature_view()` function in `src/feature_store.py` provides a consistent API to retrieve feature sets for training. The model training script uses this function exclusively to get its data, decoupling it from the physical data source.
-
-### 2. Data Versioning with DVC
-
-This project uses DVC (Data Version Control) to manage and version large data files that are not suitable for Git. This ensures that every Git commit can correspond to a specific, reproducible version of the data.
-
-*   **Workflow**: When a developer runs the pipeline to generate new raw data, they can use `dvc add` and `dvc push` to version it. This is a manual step.
-*   **Automation with Pre-commit Hooks**: This project is configured with `pre-commit` hooks to automate the DVC workflow:
-    *   **`dvc-pre-commit`**: When you run `git commit`, this hook automatically runs `dvc add` for any modified DVC-tracked data files. This versions your data and stages the corresponding `.dvc` file for you.
-    *   **`dvc-pre-push`**: When you run `git push`, this hook automatically runs `dvc push`, ensuring your versioned data is uploaded to the DVC remote storage.
-    *   **`dvc-post-checkout`**: When you `git pull` or `git checkout` a different branch, this hook automatically runs `dvc pull` to sync your local data with the version specified in the commit.
-*   **Reproducibility**: This automated workflow ensures that anyone who clones the repository can retrieve the exact version of the data tied to a specific Git commit, making the project setup and pipeline runs highly reproducible.
-
-### 3. Pipeline Orchestration
-This project supports two popular orchestration tools, providing flexibility for different environments.
-
-#### Using Prefect (Default)
-
-The primary pipeline is defined using Prefect for its lightweight and Python-native approach, making it ideal for local development and rapid iteration.
-
-*   **Workflow as Code**: The file `src/orchestrate.py` defines the entire DAG (Directed Acyclic Graph) of tasks.
-*   **Simplicity**: Prefect allows for a simple, direct execution of the pipeline with a single command.
-*   **Portability**: The orchestrator includes a task to automatically install all required Python packages from `requirements.txt`, making the project setup on a new machine seamless.
+*   **Orchestration with Prefect**: The entire pipeline is defined as a workflow in `src/orchestrate.py`, ensuring that all steps run in the correct order, with proper dependency management and error handling.
+*   **Experiment Tracking with MLflow**: All model training runs, parameters, metrics, and artifacts are logged to MLflow, providing a complete history of every experiment.
+*   **Feature Store**: A lightweight, file-based feature store (`src/feature_store.py`) provides a centralized, versioned, and documented source of features for model training, decoupling feature engineering from model development.
+*   **Data Versioning with DVC**: Large data files are versioned with DVC and tracked in Git, ensuring that every commit corresponds to a specific, reproducible version of the data.
+*   **Data Validation**: Raw data is validated against expectations using Evidently AI to detect drift or quality issues early in the pipeline.
+*   **Dependency and Environment Management**: A `setup.sh` script and `requirements.txt` file ensure a consistent and reproducible Python environment.
 
 
-## Data Sources
+## Project Overview
 
-The pipeline can run on two different datasets, specified at runtime:
-
-*   **Synthetic Data (default)**:
-    *   **Source**: Generated locally by the pipeline scripts (`src/generate_csv_data.py` and `src/generate_api_data.py`).
-    *   **Content**: This dataset simulates a realistic customer scenario. It includes:
-        *   **Account Information**: Basic customer details like account start date, plan, and monthly charges.
-        *   **Customer Interactions**: A stream of interactions such as support calls, website visits, and complaints, fetched from a mock API. An example interaction record looks like this:
-            ```json
-            {
-                "customerID": "4f11d8dc-5cd3-4369-84aa-c1b75ca0c428",
-                "interaction_date": "2025-06-21T00:31:14.398957",
-                "interaction_type": "support_call",
-                "interaction_details": "Agent every development say quality throughout."
-            }
-            ```
-
-*   **Kaggle Data (`kaggle` parameter)**:
-    *   **Source**: The classic Telco Customer Churn dataset from Kaggle.
-    *   **Content**: This real-world dataset contains information about a fictional telco company's customers, including demographics, services subscribed to (phone, internet, etc.), account details, and whether they churned.
-
-## Project Structure
+### Project Structure
 
 ```
 ├── data/
@@ -88,11 +45,34 @@ The pipeline can run on two different datasets, specified at runtime:
 ├── requirements.txt  # Project dependencies
 └── setup.sh          # Setup script for environment and data
 ```
-## Project Data Flow
+### Project Data Flow
 
 ![alt text](image.png)
 
-## Getting Started
+### Pipeline Design
+
+    o   src/orchestrate.py:
+        The main conductor that defines the workflow using Prefect and calls all other scripts in the correct order. 
+    o	src/generate_csv_data.py & src/generate_api_data.py: 
+        Used when data_source=synthetic. These scripts create mock customer account and interaction data.
+    o	src/data_ingest_kaggle.py: 
+        Used when data_source=kaggle. This script downloads the real-world dataset from Kaggle. 
+    o   src/mock_api.py: 
+        A simple Flask server that starts up to simulate a live API endpoint for serving customer interaction data. It is automatically started and stopped by the orchestrator. 
+    o   src/ingest.py: 
+        Fetches data from the raw CSV files and the mock API, combining them into a single, unified dataset. 
+    o   src/validate_raw_data.py:  
+        Uses Evidently AI to generate a data validation report, checking for drift or quality issues in the raw data.
+    o   src/prepare_data.py: 
+        Cleans the ingested data by handling missing values, correcting data types, and performing initial encoding. 
+    o   src/transform_and_store.py: 
+        Performs feature engineering based on definitions in the feature store, scales the data, and saves the final features to the offline store (data/transformed/). 
+    o   src/train_model_with_feature_store.py: 
+        Retrieves the latest features from the feature store, trains multiple models (e.g., Logistic Regression, Random Forest), and logs all experiments, parameters, metrics, and model artifacts to MLflow.
+ 
+
+
+## Setup and RunBook
 
 Follow these steps to set up and run the pipeline on a new machine.
 
@@ -152,7 +132,7 @@ This script will:
 4.  Train the churn prediction model.
 5.  Log experiments and metrics to MLflow.
 
-## Viewing Results - Model Experiements
+### 4. Viewing Results - Model Experiements
 
 *   **Logs**: Check the `logs/` directory for detailed logs from each pipeline step.
 *   **MLflow**: Launch the MLflow UI to view experiment runs, parameters, and metrics:
@@ -163,9 +143,10 @@ This script will:
 *   **Data Validation Reports**: Open `reports/data_validation_report.html` to see the Evidently AI data validation report.
 Sample - 
 ![alt text](image-1.png)
-## Viewing Results - Orchestrator run
 
-*   **Prefect**: Launch the MLflow UI to view experiment runs, parameters, and metrics:
+### 5. Viewing Results - Orchestrator run
+
+*   **Prefect**: Launch the prefect UI to view orechstration runs:
     ```bash
     prefect server start
     ```

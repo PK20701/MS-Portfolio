@@ -22,7 +22,7 @@ logger.propagate = False
 # To prevent duplicate logs if the script is imported multiple times,
 # check if handlers are already present before adding them.
 if not logger.handlers:
-    log_file_path = LOG_DIR / f"generate_csv_data_{datetime.now().strftime('%Y-%m-%d')}.log"
+    log_file_path = LOG_DIR / f"generate_csv_data_{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.log"
     formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 
     file_handler = logging.FileHandler(log_file_path)

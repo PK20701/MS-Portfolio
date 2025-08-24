@@ -26,7 +26,7 @@ logger.propagate = False
 
 # Avoid adding handlers if they already exist (e.g., from a previous import)
 if not logger.handlers:
-    log_file_path = LOG_DIR / f"feature_store_{datetime.now().strftime('%Y-%m-%d')}.log"
+    log_file_path = LOG_DIR / f"feature_store_{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.log"
 
     # Create handlers
     file_handler = logging.FileHandler(log_file_path)
