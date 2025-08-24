@@ -83,7 +83,8 @@ The pipeline can run on two different datasets, specified at runtime:
 │   ├── validate_raw_data.py          # Validates raw data using Evidently AI
 │   ├── prepare_data.py               # Cleans, encodes, and prepares data
 │   ├── transform_and_store.py        # Creates features and stores them in the feature store
-│   └── train_model_with_feature_store.py # Trains model and logs to MLflow
+│   ├── train_model_with_feature_store.py # Trains model and logs to MLflow
+│   └── predict.py                    # Loads a model from the MLflow registry for inference
 ├── requirements.txt  # Project dependencies
 └── setup.sh          # Setup script for environment and data
 ```
