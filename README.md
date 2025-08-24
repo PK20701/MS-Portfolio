@@ -89,7 +89,7 @@ The pipeline can run on two different datasets, specified at runtime:
 ```
 ## Project Data Flow
 
-![alt text](image.png)
+<img width="1673" height="865" alt="image" src="https://github.com/user-attachments/assets/715428a8-e71f-441c-9146-4ce8299adb46" />
 
 ## Getting Started
 
