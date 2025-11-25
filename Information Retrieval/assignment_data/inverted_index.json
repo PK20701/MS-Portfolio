@@ -1,0 +1,31 @@
+{
+    "affidavit": [
+        "Document_1.docx"
+    ],
+    "counsel": [
+        "Document_8.eml"
+    ],
+    "defendant": [
+        "Document_9.md"
+    ],
+    "estoppel": [
+        "Document_9.md"
+    ],
+    "injunction": [
+        "Document_1.docx"
+    ],
+    "litigation": [
+        "Document_9.md"
+    ],
+    "plaintiff": [
+        "Document_3.csv"
+    ],
+    "statute": [
+        "Document_3.csv",
+        "Document_5.html",
+        "Document_9.md"
+    ],
+    "subpoena": [
+        "Document_3.csv"
+    ]
+}

@@ -1,0 +1,31 @@
+{
+    "affidavit": [
+        "06_1.xml"
+    ],
+    "counsel": [
+        "06_1018.xml"
+    ],
+    "defendant": [
+        "06_102.xml"
+    ],
+    "estoppel": [
+        "06_102.xml"
+    ],
+    "injunction": [
+        "06_1.xml"
+    ],
+    "litigation": [
+        "06_102.xml"
+    ],
+    "plaintiff": [
+        "06_1001.xml"
+    ],
+    "statute": [
+        "06_1001.xml",
+        "06_1005.xml",
+        "06_102.xml"
+    ],
+    "subpoena": [
+        "06_1001.xml"
+    ]
+}
