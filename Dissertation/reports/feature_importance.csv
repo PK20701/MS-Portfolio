@@ -1,0 +1,5002 @@
+Feature,Importance
+10,0.0
+10 error,0.0
+10 min,0.0
+10 percent,0.0
+10 source,0.0
+10 ui,0.0
+100,0.0
+100 is,0.0
+100 milliseconds,0.0
+100 percent,0.0
+100 requests,0.0
+100 where,0.0
+1000,0.0
+1000 alerts,0.0
+1000 calls,0.0
+1000 known,0.0
+1000 requests,0.0
+10000,0.0
+100k,0.0
+100m,0.0
+100m records,0.0
+10m,0.0
+10m records,0.0
+12,0.0
+12 scenarios,0.0
+15,0.0
+15 minutes,0.0
+1b,0.0
+20,0.0
+20 percent,0.0
+24,0.0
+24 hours,0.0
+24hr,0.0
+24x7,0.0
+2hr,0.0
+30,0.0
+30 days,0.0
+30 minutes,0.0
+30 seconds,0.0
+30min,0.0
+360,0.0
+360 view,0.0
+429,0.0
+4hr,0.0
+50,0.0
+5000,0.0
+70,0.0
+70 percent,0.0
+80,0.0
+80 percent,0.0
+90,0.0
+90 days,0.0
+99,0.0
+99 percent,0.0
+able,0.0
+able to,2.749219472786665e-07
+about,0.0
+acceptance,0.0
+acceptance testing,0.0
+accepted,0.0
+access,0.0
+access control,0.0
+access request,0.0
+access review,0.0
+access to,0.0
+accesses,0.0
+account,0.0
+accounts,0.0
+accounts when,0.0
+accuracy,0.0
+achieved,0.0
+across,0.0
+across multiple,0.0
+action,0.0
+action items,0.0
+actions,0.0
+active,0.0
+activities,0.0
+activity,0.0
+activity monitoring,0.0
+activity report,0.0
+actual,0.0
+add,0.0
+add comments,0.0
+add unit,0.0
+added,0.0
+additional,0.0
+address,0.0
+address it,0.0
+address the,0.0
+address them,0.0
+addressed,0.0
+admin,0.0
+admin want,0.0
+adrs,0.0
+adrs for,0.0
+after,0.0
+against,0.0
+aggregate,0.0
+aggregation,0.0
+aging,0.0
+aging report,0.0
+agreed,0.0
+agreed in,0.0
+agreement,0.0
+ahead,0.0
+ahead logging,0.0
+alert,0.0
+alert count,0.0
+alert data,0.0
+alert generation,0.0
+alert if,0.0
+alert is,0.0
+alert must,0.0
+alert prioritization,0.0
+alert review,0.0
+alert table,0.0
+alert with,0.0
+alerts,0.0
+alerts aging,0.0
+alerts are,0.0
+alerts as,0.0
+alerts for,0.0
+alerts must,0.0
+alerts so,0.0
+alerts were,0.0
+aligned,0.0
+aligned given,0.0
+aligns,0.0
+aligns with,0.0
+all,0.0
+all 12,0.0
+all alerts,0.0
+all aml,0.0
+all comments,0.0
+all components,0.0
+all data,0.0
+all environments,0.0
+all feedback,0.0
+all pii,0.0
+all services,0.0
+all tables,0.0
+all tests,0.0
+allowed,0.0
+already,0.0
+am,0.0
+am then,0.0
+am when,0.0
+aml,0.0
+aml alerts,0.0
+aml data,0.0
+aml decisions,0.0
+aml module,0.0
+aml monitoring,0.0
+aml processing,0.0
+aml project,0.0
+aml scenario,0.0
+aml scenarios,0.0
+aml solution,0.0
+amount,0.0
+amount exceeds,0.0
+an,3.907979692955013e-06
+an architect,0.0
+an auditor,0.0
+an incident,0.0
+an investigator,0.0
+an operations,0.0
+an sre,0.0
+analysis,0.0
+analysis as,0.0
+analysis for,0.0
+analysis is,0.0
+analysis runs,0.0
+analyst,0.0
+analyst so,0.0
+analyst want,0.0
+analyze,0.0
+and,0.00055746729438684
+and action,0.0
+and change,0.0
+and data,0.0
+and error,0.0
+and expected,0.0
+and indexes,0.0
+and record,0.0
+and reporting,0.0
+and risk,0.0
+and roles,0.0
+and security,0.0
+and send,0.0
+and sla,0.0
+and status,0.0
+and target,0.0
+and timeliness,0.0
+and track,0.0
+and transformation,0.0
+annual,0.0
+anomaly,0.0
+anomaly detection,0.0
+any,0.0
+any issues,0.0
+any job,0.0
+api,0.0
+api calls,0.0
+api contracts,0.0
+api credentials,0.0
+api integration,0.0
+api rate,0.00234522117594958
+api so,0.0
+api to,0.0
+apis,0.0
+application,0.0
+applied,0.0
+applied then,0.0
+apply,0.0
+approach,0.0
+appropriate,0.0
+approval,0.0
+approval for,0.0
+approval from,0.0
+approvals,0.0
+approve,0.0
+approved,0.0
+approved design,0.0
+approved given,0.0
+approved so,0.0
+approved when,0.0
+architect,0.0
+architect so,0.0
+architect want,0.0
+architecture,0.0
+architecture diagram,0.0
+architecture review,0.0
+are,5.4920397018954265e-06
+are aligned,0.0
+are applied,0.0
+are caught,0.0
+are clear,0.0
+are collected,0.0
+are defined,0.0
+are detected,0.0
+are documented,2.2204329847742073e-05
+are flagged,0.0
+are followed,0.0
+are identified,0.0
+are in,0.0
+are managed,0.0
+are met,0.0
+are mitigated,0.0
+are not,0.0
+are pending,0.0
+are reused,0.0
+are satisfied,0.0
+are submitted,0.0
+are tracked,0.0
+as,4.635679351726125e-05
+as agreed,0.0
+as an,0.0
+as batch,1.2221093621607484e-07
+as business,0.0
+as compliance,0.0
+as data,0.01199944985640644
+as database,0.0
+as dba,0.0
+as decided,0.0
+as described,0.0
+as developer,0.0034814982077355917
+as devops,0.0
+as discussed,0.0
+as dr,0.0
+as expected,0.0
+as fraud,0.0
+as instructed,0.0
+as pep,0.0
+as per,0.0
+as performance,0.0
+as planned,0.0
+as po,0.0
+as potential,0.0
+as privacy,0.0
+as procurement,0.0
+as program,0.0
+as project,0.0
+as qa,0.0
+as release,0.0
+as requested,0.0
+as risk,0.0
+as scrum,0.0
+as security,0.0
+as systems,0.0
+as talked,0.0
+as tech,0.0
+as technical,0.0
+as trainer,0.0
+asked,0.0
+assessment,0.0
+assessment as,0.0
+assessment for,0.0
+assessment so,0.0
+asset,0.0
+asset service,0.0
+assign,0.0
+assigned,0.0
+assigned to,0.0
+assigned when,0.0
+at,0.0
+at am,0.0
+at least,0.0
+at rest,0.0
+audiences,0.0
+audit,0.0
+audit as,0.0
+audit logging,0.0
+audit record,0.0
+audit requirements,0.0
+audit so,0.0
+audit trail,0.0
+audit_log,0.0
+auditor,0.0
+auditor want,0.0
+authentication,0.0
+authorization,0.0
+authorized,0.0
+authorized data,0.0
+automated,0.0
+automated deployment,0.0
+automated regression,0.0
+automatic,0.0
+automatically,0.0
+automatically so,0.0
+automation,0.0
+automation as,0.0
+availability,2.726214008755604e-05
+available,0.0
+available when,0.0
+average,0.0
+ba,0.0
+backlog,0.0
+backlog as,0.0
+backlog is,0.0
+backlog refinement,0.0
+backlog so,0.0
+backup,0.0
+bank,0.0
+bank is,0.0
+bank standards,0.0
+based,0.0
+based access,0.0
+based on,0.0
+baseline,0.0
+baseline as,0.0
+baseline for,0.0
+baseline metrics,0.0
+batch,0.0
+batch job,0.0
+batch jobs,0.0
+batch operator,0.0
+be,0.0
+be able,4.1837398362499284e-06
+be achieved,0.0
+be added,0.0
+be approved,0.0
+be better,0.0
+be calculated,0.0
+be captured,0.0
+be checked,0.0
+be closed,0.0
+be compliant,0.0
+be consistent,0.0
+be deployed,0.0
+be done,0.0
+be fixed,0.0
+be flagged,0.0
+be generated,0.0
+be identified,0.0
+be masked,0.0
+be merged,0.0
+be met,0.0
+be ready,0.0
+be reduced,0.0
+be refreshed,0.0
+be resolved,0.0
+be reviewed,1.290253276901858e-10
+be satisfied,0.0
+be secure,0.0
+be stored,5.365716175743417e-10
+be successful,0.0
+be triggered,0.0
+be updated,0.0
+before,3.6189261553560106e-08
+before merge,0.0
+behavior,0.0
+behavior should,0.0
+being,0.0
+being used,0.0
+below,0.0
+benchmark,0.0
+beneficial,0.0
+beneficial ownership,0.0
+best,0.0
+better,0.0
+between,0.0
+between source,0.0
+block,0.0
+board,0.0
+border,0.0
+border transaction,0.0
+boundaries,0.0
+brainstorming,0.0
+brainstorming session,0.0
+branch,0.0
+breach,0.0
+breaker,0.0
+budget,0.0
+bug,0.0
+bug tracking,0.0
+build,8.030280368397642e-07
+build data,0.0
+build etl,0.0
+build performance,0.0
+build social,0.0
+build the,0.0
+bulk,0.0
+bulk insert,0.0
+business,0.0
+business analyst,0.0
+business continuity,0.0
+business glossary,0.0
+business need,0.0
+business process,0.0
+business requested,0.0
+business requirement,0.0
+business requirements,0.0
+business should,0.0
+business team,0.0
+but,0.0
+by,0.0
+by at,0.0
+by hsbc,0.0
+by my,0.0
+by the,0.0
+cache,0.0
+calculated,0.0
+calculated then,0.0
+call,0.0
+call as,0.0
+call so,0.0
+calls,0.0
+came,0.0
+came out,0.0
+can,4.37047987483641e-10
+can access,0.0
+can be,0.0
+can identify,0.0
+can move,0.0
+can proceed,0.0
+can track,0.0
+can use,0.0
+canary,0.0
+canary deployments,0.0
+cannot,0.0
+cannot be,0.0
+capacity,0.0
+capture,0.0
+captured,0.0
+case,0.0
+cases,0.0
+catalog,0.0
+caught,0.0
+caught early,0.0
+cause,0.0
+cause analysis,0.0
+cd,0.0
+centralized,0.0
+certificate,0.0
+certificate rotation,0.0
+certification,0.0
+chain,0.0
+chain as,0.0
+change,0.0
+change control,0.0
+change request,0.0
+changes,0.0
+changes are,0.0
+changes as,0.0
+changes discussed,0.0
+changes from,0.0
+changes requested,0.0
+changes that,0.0
+changes then,0.0
+changes when,0.0
+chaos,3.887636278676575e-07
+charter,0.0
+chat,0.0
+check,0.0
+checked,0.0
+checklist,0.0
+checklist as,0.0
+checklist exists,0.0
+checklist for,0.0
+checks,0.0
+ci,0.0
+ci cd,0.0
+circuit,0.0
+circuit breaker,0.0
+classification,0.0
+clean,0.0
+clean performance,0.0
+clear,0.0
+client,0.0
+close,0.0
+close them,0.0
+closed,0.0
+closure,0.0
+closure report,0.0
+co,0.0
+code,3.592957479916942e-07
+code change,0.0
+code changes,0.0
+code following,0.0
+code freeze,0.0
+code quality,0.0
+code review,0.0
+code reviews,0.0
+code should,0.0
+code then,0.0
+codebase,0.0
+coding,0.0
+coin,0.0
+collected,0.0
+collected when,0.0
+collection,0.0
+column,0.0
+column name,0.0
+column statistics,0.0
+columns,0.0
+columns data,0.0
+combined,0.0
+comments,0.0
+comments exist,0.0
+comments must,0.0
+comments on,0.0
+commitment,0.0
+commitment given,0.0
+common,0.0
+communication,0.0
+communication plan,0.0
+communication template,0.0
+companies,0.0
+company,0.0
+compared,0.0
+complete,0.0
+complete audit,0.0
+complete the,0.0
+complete them,0.0
+complete then,0.0
+complete within,0.0
+completed,0.0
+completed work,0.0
+completeness,0.0
+completes,0.0
+completes then,0.0
+completes when,0.0
+completion,0.0
+completion rate,0.0
+compliance,0.0
+compliance analyst,0.0
+compliance as,0.0
+compliance dashboard,0.0
+compliance manager,0.0
+compliance officer,0.0
+compliance so,0.0
+compliance team,0.0
+compliant,0.0
+component,0.0
+components,0.0
+components as,0.0
+compression,0.0
+compression for,0.0
+concerns,0.0
+concerns exist,0.0
+concerns from,0.0
+conduct,0.0
+config,0.0
+configurable,0.0
+configuration,0.0
+configuration baseline,0.0
+configure,0.0
+configured,0.0
+configured then,0.0
+configured when,0.0
+confirmed,0.0
+confirmed suspicious,0.0
+connect,0.0
+connected,0.0
+connection,0.0
+connection pooling,0.0
+connections,0.0
+connections are,0.0
+connections must,0.0
+consecutive,0.0
+consistency,0.0
+consistency is,0.0
+consistent,0.0
+consistent and,0.0
+consistently,0.0
+contain,0.0
+contains,0.0
+content,0.0
+context,0.0
+continuity,0.0
+contract,0.0
+contracts,0.0
+control,0.0
+control as,1.9938294191092062e-06
+control job,0.0
+control jobs,4.4453131944821615e-05
+controls,0.0
+conventions,0.0
+conversation,0.0
+conversation as,0.0
+conversation happened,0.0
+conversation with,0.0
+coordinated,0.0
+coordination,0.0
+coordinator,0.0
+coordinator want,0.0
+correct,0.0
+correct given,0.0
+correctly,0.0
+correctly given,0.0
+correlation,0.0
+corrupt,0.0
+corrupt rows,0.0
+count,0.0
+counts,0.0
+coverage,0.0
+covering,0.0
+cpu,1.5157332531523395e-05
+create,1.5796944783630899e-10
+create automated,0.0
+create data,0.0
+create jira,0.0
+create onboarding,0.0
+create performance,0.0
+create project,0.0
+create security,0.0
+create service,0.0
+create social,0.0
+create table,0.0
+create technical,0.0
+create user,0.0
+created,0.0
+created then,0.0
+credentials,0.0
+credentials are,0.0
+credibility,0.0
+credibility score,0.0
+criteria,0.0
+criteria for,0.0
+critical,0.0
+critical path,2.4881385310371955e-05
+cross,0.0
+cross border,0.0
+crypto,0.0
+cryptocurrency,0.0
+csv,0.0
+currency,0.0
+current,0.0
+custom,0.0
+customer,0.0
+customer 360,0.0
+customer data,0.0
+customer has,0.0
+customer is,0.0
+customer profile,0.0
+customer risk,0.0
+customer segments,0.0
+customer uses,0.0
+customer_id,0.0
+customer_id amount,0.0
+customer_id and,0.0
+customers,0.0
+customers so,0.0
+daily,0.0
+daily batch,0.0
+daily sync,0.0
+dark,0.0
+dark web,0.0
+dashboard,2.0648331848159377e-05
+dashboard as,0.0
+dashboard for,0.0
+dashboard loads,0.0
+dashboard must,0.0
+dashboard navigation,0.0
+dashboard refreshes,0.0
+dashboard so,0.0
+data,6.912593180414578e-07
+data access,0.0
+data as,0.0
+data breach,0.0
+data catalog,0.0
+data dictionary,0.0
+data elements,0.0
+data engineer,3.0506758328025624e-05
+data flow,0.0
+data flows,0.0
+data for,0.0
+data generator,0.0
+data given,0.0
+data governance,3.883794708095397e-11
+data ingestion,0.0
+data into,0.0
+data is,0.0
+data loader,0.0
+data loading,0.0
+data loss,0.0
+data management,0.0
+data masking,0.0
+data migration,0.0
+data minimization,0.0
+data must,0.0
+data older,0.0
+data patterns,0.0
+data processing,0.0
+data processor,0.0
+data produce,0.0
+data profile,0.0
+data profiling,0.0
+data protection,0.0
+data quality,4.7465827698023843e-11
+data reconciliation,0.0
+data reliability,0.0
+data requests,0.0
+data required,0.0
+data retention,0.0
+data sampling,0.0
+data schedule,0.0
+data schema,0.0
+data scientist,0.0
+data sharing,0.0
+data should,0.0
+data so,0.0
+data source,0.0
+data sources,0.0
+data strategy,0.0
+data streams,0.0
+data structure,0.0
+data subject,0.0
+data subsetting,0.0
+data then,0.0
+data to,0.0
+data transformation,0.0
+data type,0.0
+data types,0.0
+data validation,0.0
+data versioning,0.0
+data volume,0.0
+data when,0.0
+data_accessed,0.0
+data_accessed action,0.0
+database,0.0
+database activity,0.0
+database apply,0.0
+database as,0.0
+database backup,0.0
+database changes,0.0
+database connection,0.0
+database connections,0.0
+database database,0.0
+database developer,0.0
+database fails,0.0
+database given,0.0
+database maintenance,0.0
+database must,0.0
+database page,0.0008526278848557417
+database password,0.0
+database so,0.0
+database table,0.0
+database tables,0.0
+database throttle,0.0005274276688024462
+database timeout,0.0
+database to,0.0
+database when,0.0
+datasets,0.0
+datasets given,0.0
+date,0.0
+date and,0.0
+date as,0.0
+date formats,0.0
+date given,0.0
+date range,0.0
+date set,0.0
+dates,0.0
+dates and,0.0
+dates follow,0.0
+dates for,0.0
+dates must,0.0
+dates q1,0.0
+day1,0.0
+day1 environment,0.0
+day3,0.0
+day3 codebase,0.0
+day6,0.0
+day6 pair,0.0
+day9,0.0
+day9 10,0.0
+days,0.0
+days access,0.0
+days alerts,0.0
+days before,0.0
+days database,0.0
+days encryption,0.0
+days false,0.0
+days for,0.0
+days high,0.0
+days log,0.0
+days low,0.0
+days medium,0.0
+days must,0.0
+days orange,0.0
+days red,0.0
+days rotated,0.0
+days then,0.0
+days when,0.0
+days yellow,0.0
+dba,0.0
+dba as,0.0
+dba identified,0.0
+dba team,0.0
+dba want,0.0
+dba with,0.0
+dd,0.0
+dd amount,0.0
+ddos,0.0
+ddos attacks,0.0
+dead,0.0
+dead letter,2.1163894700326487e-09
+deadline,0.0
+deadline track,0.0
+debt,0.0
+debt items,0.0
+debt list,0.0
+debt register,0.0
+debt tracked,0.0
+debugging,0.0
+debugging is,0.0
+dec,0.0
+dec with,0.0
+decided,0.0
+decided as,0.0
+decided in,0.0
+decision,0.0
+decision checklist,0.0
+decision context,0.0
+decision is,0.0
+decision records,0.0
+decision was,0.0
+decisions,0.0
+decisions as,0.0
+decisions needed,0.0
+decisions so,0.0
+dedicated,0.0
+dedicated table,0.0
+dedicated vpc,0.0
+dedicated workflow,0.0
+deduplicate,0.0
+deduplicate same,0.0
+deduplication,0.0
+deduplication for,0.0
+deduplication runs,0.0
+defects,0.0
+defects are,0.0
+define,0.0
+define alert,0.0
+define availability,0.0
+define backup,0.0
+define bug,0.0
+define change,0.0
+define chaos,0.0009147334442443713
+define code,0.0
+define data,0.0
+define disaster,0.0
+define environment,0.0
+define false,0.0
+define incident,0.0
+define log,0.0
+define minimum,0.0
+define non,0.0
+define performance,0.0
+define raci,2.95388622972382e-06
+define release,0.0
+define rollback,0.0
+define security,0.0
+define sla,0.0
+define sprint,0.0
+define team,0.0
+define test,0.0
+define uat,0.0
+define weekly,0.0
+defined,0.0
+defined by,0.0
+defined for,0.0
+defined so,0.0
+defined sprint,0.0
+defined then,0.0
+defined when,0.0
+defines,0.0
+defines that,0.0
+definition,0.0
+definition to,0.0
+definitions,0.0
+definitions so,0.0
+degrade,0.0
+degrade gracefully,0.0
+degrades,0.0
+degrades by,0.0
+delay,0.0011219270806992056
+delay network,0.00034418186627883246
+delays,0.0
+delays are,0.0
+delete,0.0
+delete to,0.0
+deletion,0.0
+deletion mechanism,0.0
+delimited,0.0
+delimited format,0.0
+delimited with,0.0
+delimiter,0.0
+delimiter is,0.0
+deliver,0.0
+deliver on,0.0
+deliver the,0.0
+deliver value,0.0
+deliver what,0.0
+deliverable,6.7721180207667745e-06
+deliverable tbd,1.405666280711913e-05
+deliverables,0.0
+deliverables given,0.0
+delivered,0.0
+delivered given,0.0
+demo,0.0
+demo as,0.0
+demo feedback,0.0
+demo of,0.0
+demo so,0.0
+demo when,0.0
+demonstrated,0.0
+demonstrated so,0.0
+dependencies,0.0
+dependencies are,0.0
+dependencies critical,0.0
+dependencies mainframe,0.0
+dependencies so,0.0
+dependency,0.0
+dependency chain,0.0
+dependency graph,0.0
+dependency management,0.0
+dependency matrix,0.0
+dependency tracking,0.0
+dependent,0.0
+dependent tasks,0.0
+deploy,0.0
+deploy to,0.0
+deployed,0.0
+deployed before,0.0
+deployed given,0.0
+deployed when,0.0
+deployed within,0.0
+deployment,0.0
+deployment as,0.0
+deployment checklist,0.0
+deployment component,0.0
+deployment fails,0.0
+deployment pipeline,0.0
+deployment so,0.0
+deployment steps,0.0
+deployment to,0.0
+deployment when,0.0
+deployments,0.0
+deployments can,0.0
+deployments for,0.0
+deployments so,0.0
+deployments validate,0.0
+deploys,0.0
+deploys to,0.0
+described,0.0
+described any,0.0
+described as,0.0
+described in,0.0
+describes,0.0
+describes so,0.0
+description,0.0
+description impact,0.0
+description source,0.0
+description when,0.0
+design,0.0
+design as,0.0
+design document,0.0
+design exists,0.0
+design given,0.0
+design index,0.0
+design is,0.0
+design oracle,0.0
+design review,0.0
+design should,0.0
+design then,0.0
+detailed,0.0
+detailed design,0.0
+detailed project,0.0
+detailed stories,0.0
+details,1.3545420378131185e-05
+details and,0.0
+details investigation,0.0
+details later,0.0
+details masked,0.0
+details relevant,3.6042415149834194e-06
+details suspicious,0.0
+detect,0.0
+detect beneficial,0.0
+detect coordinated,0.0
+detect crypto,0.0
+detect data,0.0
+detect drift,0.0
+detect duplicate,0.0
+detect funds,0.0
+detect laundering,0.0
+detect money,0.0
+detect professional,0.0
+detect shell,0.0
+detect single,0.0
+detect suspicious,0.0
+detect use,0.0
+detect when,0.0
+detected,0.0
+detected automatically,0.0
+detected document,0.0
+detected given,0.0
+detected monitor,0.0
+detected proactively,0.0
+detected then,0.0
+detected when,0.0
+detection,0.0
+detection across,0.0
+detection adapts,0.0
+detection algorithm,0.0
+detection as,0.0
+detection gaps,0.0
+detection model,0.0
+detection of,0.0
+detection so,0.0
+detection threshold,0.0
+detection time,0.0
+detects,0.0
+detects then,0.0
+dev,0.0
+dev and,0.0
+dev database,0.0
+dev deploy,0.0
+dev on,0.0
+dev or,0.0
+dev refreshed,0.0
+dev to,0.0
+develop,0.0
+develop python,0.0
+developer,0.0020636747949348178
+developer accesses,0.0
+developer joins,0.0
+developer want,4.4253695125151506e-06
+developers,0.0
+developers have,0.0
+developers so,0.0
+developers starting,0.0
+developers understand,0.0
+development,0.0
+development as,0.0
+development doesn,0.0
+development environment,0.0
+development follows,0.0
+development given,0.0
+development has,0.0
+development practices,0.0
+development process,0.0
+development seats,0.0
+development so,0.0
+development team,0.0
+deviates,0.0
+deviates significantly,0.0
+deviation,0.0
+deviation exceeds,0.0
+devops,0.0
+devops engineer,0.0
+diagram,0.0
+diagram as,0.0
+diagram exists,0.0
+diagram so,0.0
+diagram that,0.0
+diagrams,0.0
+diagrams for,0.0
+diagrams stride,0.0
+dictionary,0.0
+dictionary for,0.0
+dictionary must,0.0
+different,0.0
+different audiences,0.0
+digest,0.0
+digest of,0.0
+diligence,0.0
+diligence applies,0.0
+diligence for,0.0
+diligence given,0.0
+disaster,0.0
+disaster occurs,0.0
+disaster recovery,0.0
+disclosures,0.0
+disclosures are,0.0
+discussed,0.0
+discussed any,0.0
+discussed as,0.0
+discussed earlier,0.0
+discussed given,0.0
+discussed in,0.0
+discussed on,0.0
+discussed testing,0.0
+discussed the,0.0
+discussed when,0.0
+discussion,0.0
+discussion as,0.0
+discussion happened,0.0
+discussion in,0.0
+discussion we,0.0
+discussion when,0.0
+disk,0.0
+disk space,0.0
+distinct,0.0
+distinct values,0.0
+distributed,0.0
+distributed and,0.0
+do,0.0
+do investigator,0.0
+do it,0.0
+do the,0.0
+do them,0.0
+do what,0.0
+docs,0.0
+docs should,0.0
+document,0.0
+document 10,0.0
+document all,0.0
+document api,0.0
+document as,0.0
+document baseline,0.0
+document business,0.0
+document contains,0.0
+document describes,0.0
+document disaster,0.0
+document each,0.0
+document environment,0.0
+document exists,0.0
+document finding,0.0
+document for,0.0
+document has,0.0
+document how,0.0
+document known,0.0
+document lawful,0.0
+document lessons,0.0
+document must,0.0
+document norkom,0.0
+document restore,0.0
+document so,0.0
+document specifies,0.0
+document ssl,0.0
+document system,0.0
+document that,0.0
+document then,0.0
+document third,0.0
+document when,0.0
+document will,0.0
+documentation,0.0
+documentation and,0.0
+documentation as,0.0
+documentation complete,0.0
+documentation discussed,5.317064185145811e-07
+documentation exists,0.0
+documentation needs,0.0
+documentation related,2.3502767027739088e-07
+documentation should,0.0
+documentation so,0.0
+documented,1.4096975508928105e-08
+documented adrs,0.0
+documented coding,0.0
+documented dr,0.0
+documented in,0.0
+documented need,0.0020423110317239154
+documented slas,0.0
+documented so,0.0
+doesn,0.0
+doesn break,0.0
+doesn expose,0.0
+doesn impact,0.0
+doesn recur,0.0
+don,0.0
+don block,0.0
+don cascade,0.0
+don cause,0.0
+don hit,0.0
+don overwhelm,0.0
+don require,0.0
+done,0.0
+done approvals,0.0
+done correctly,0.0
+done given,0.0
+down,0.0
+down response,0.0
+downstream,0.0
+downstream analysis,0.0
+downstream jobs,0.0
+downstream system,0.0
+downstream systems,0.0
+downstream transformations,0.0
+downstream users,0.0
+downtime,0.0
+downtime is,0.0
+dr,0.0
+dr coordinator,0.0
+dr plan,0.0
+dr procedures,0.0
+dr requirements,0.0
+dr runbook,0.0
+dr test,0.0
+draft,0.0
+draft requirements,0.0
+drift,0.0
+drift detection,0.0
+drift is,0.0
+drift log,0.0
+drill,0.0
+drill down,0.0
+dsar,0.0
+dsar process,0.0
+due,0.0
+due dates,0.0
+due diligence,0.0
+due to,0.0
+duplicate,0.0
+duplicate extension,0.0
+duplicate file,0.0
+duplicate folder,0.0
+duplicated,0.0
+duplicated given,0.0
+duration,1.1959938872211853e-07
+duration and,0.0
+duration query,0.0
+duration so,0.0
+during,0.0
+during development,0.0
+during last,0.0
+during onboarding,0.0
+during outage,0.0
+during system,0.0
+during the,0.0
+dynamic,0.0
+dynamic data,0.0
+each,0.0
+each aml,0.0
+each component,0.0
+each data,0.0
+each deliverable,0.0016850002002852527
+each environment,0.0
+each folder,0.0
+each group,0.0
+each month,0.0
+each release,0.0
+each scenario,0.0
+each severity,0.0
+each source,0.0
+each table,0.0
+each test,0.0
+earlier,0.0
+earlier as,0.0
+earlier discussion,0.0
+earlier in,0.0
+earlier version,0.0
+earlier when,0.0
+early,0.0
+early given,0.0
+early mvp,0.0
+easier,0.0
+easier debugging,0.0
+easier selenium,0.0
+edd,0.0
+edd workflow,0.0
+edge,0.0
+edge cases,0.0
+effectively,0.0
+effectively given,0.0
+efficient,0.0
+efficient alerts,0.0
+efficiently,0.0
+efficiently given,0.0
+efficiently process,0.0
+elements,0.0
+elements given,0.0
+elements refresh,0.0
+elements required,0.0
+elk,0.0
+elk for,0.0
+elk grafana,0.0
+elk stack,0.0
+email,0.0
+email as,0.0
+email chain,0.0
+email contains,0.0
+email from,0.0
+email must,0.0
+email report,0.0
+email so,0.0
+email thread,0.0
+email to,0.0
+emerge,0.0
+emerge when,0.0
+emergency,0.0
+emergency change,0.0
+emerging,0.0
+emerging risks,0.0
+employees,0.0
+employees then,0.0
+empty,0.0
+empty record,0.0
+enable,0.0
+enable for,0.0
+enabled,0.0
+enabled then,0.0
+encrypted,0.0
+encrypted at,0.0
+encryption,0.0
+encryption at,0.0
+encryption enabled,0.0
+encryption is,0.0
+encryption logging,0.0
+encryption must,0.0
+encryption standards,0.0
+end,0.0
+end integration,0.0
+end template,0.0
+end to,0.0
+end user,0.0
+endpoint,0.0
+endpoint is,0.0
+endpoints,0.0
+endpoints as,0.0
+endpoints authentication,0.0
+enforced,0.0
+enforced given,0.0
+engine,0.0
+engine as,0.0
+engine can,0.0
+engine configuration,0.0
+engine to,0.0
+engine ui,0.0
+engineer,2.3231484242839038e-11
+engineer want,0.0013466406159162684
+engineer with,0.0
+engineering,0.0025241905121417504
+engineering experiment,0.0002517591101412706
+enhance,0.0
+enhance due,0.0
+enhanced,0.0
+enhanced due,0.0
+enhanced review,0.0
+enriched,0.0
+enriched customer,0.0
+enriched data,0.0
+enriched transaction,0.0
+enrichment,0.0
+enrichment logic,0.0
+enrichment segmentation,0.0
+enrichment_timestamp,0.0
+enrichment_timestamp and,0.0
+ensure,0.0
+ensure security,0.0
+enterprise,0.0
+enterprise architects,0.0
+enterprise architecture,0.0
+enterprise as,0.0
+enterprise norkom,0.0
+enterprise python,0.0
+entities,0.0
+entities given,0.0
+entries,0.0
+entries must,0.0
+environment,0.0
+environment as,0.0
+environment configuration,0.0
+environment os,0.0
+environment promotion,0.0
+environment refresh,0.0
+environment requirements,0.0
+environment setup,0.0
+environment should,0.0
+environment so,0.0
+environment when,0.0
+environments,0.0
+environments are,0.0
+environments as,0.0
+environments criteria,0.0
+environments pipeline,0.0
+environments so,0.0
+equals,0.0
+equals 15,0.0
+equals hours,0.0
+equals max,0.0
+equals risk_score,0.0
+eradication,0.0
+eradication and,0.0
+error,6.087937493982717e-06
+error count,0.0
+error database,0.0
+error details,0.0
+error folders,0.0
+error handling,0.0
+error logged,0.0
+error rate,0.0
+error rates,0.0
+error reasons,0.0
+error scenarios,0.0
+error table,0.0
+errors,0.0
+errors and,0.0
+errors exceed,0.0
+errors from,0.0
+escalate,0.0
+escalate if,0.0
+escalation,0.0
+escalation matrix,0.0
+establish,0.0
+establish slas,0.0
+establish standardized,0.0
+establish weekly,0.0
+established,0.0
+established coding,0.0
+established over,0.0
+estate,0.0
+estate alert,0.0
+estate money,0.0
+estate purchases,0.0
+estimate,0.0
+estimate priority,0.0
+estimated,0.0
+estimated impact,0.0
+eta,0.0
+eta and,0.0
+etl,0.0
+etl 1hr,0.0
+etl approval,0.0
+etl as,0.0
+etl code,0.0
+etl completes,0.0
+etl doesn,0.0
+etl duration,0.0
+etl enrichment,0.0
+etl job,0.0
+etl jobs,0.0
+etl latency,0.0
+etl load,0.0
+etl loads,0.0
+etl logic,0.0
+etl must,0.0
+etl output,0.0
+etl pipeline,0.0
+etl pipelines,0.0
+etl processes,0.0
+etl runs,0.0
+etl script,0.0
+etl sprint,0.0
+etl to,0.0
+eu,0.0
+eu and,0.0
+eu sanctions,0.0
+even,0.0
+even when,0.0
+event,0.0
+event is,0.0
+event management,0.0
+event then,0.0
+events,0.0
+events are,0.0
+events given,0.0
+every,0.0
+every 10000,0.0
+every 30min,0.0
+every 4hr,0.0
+every pr,0.0
+everyone,0.0
+everyone is,0.0
+everything,0.0
+everything is,0.0
+evidence,0.0
+exceed,0.0
+exceed 90,0.0
+exceed expected,0.0
+exceed percent,0.0
+exceeded,0.0
+exceeded then,0.0
+exceeding,0.0
+exceeding 5000,0.0
+exceeds,0.0
+exceeds 10,0.0
+exceeds 10000,0.0
+exceeds 20,0.0
+exceeds 5000,0.0
+exceeds 50000,0.0
+exceeds 500000,0.0
+exceeds 80,0.0
+exceeds configured,0.0
+exceeds its,0.0
+exchanges,0.0
+exchanges given,0.0
+execute,0.0
+execute given,0.0
+execute smoke,0.0
+execute the,0.0
+execute then,0.0
+executed,0.0
+executes,0.0
+executes then,0.0
+execution,0.0
+execution given,0.0
+execution plans,0.0
+execution run,0.0
+execution should,0.0
+execution time,0.0
+exist,0.0
+exist during,0.0
+exist when,0.0
+existing,0.0
+existing features,0.0
+existing functionality,0.0
+existing module,0.0
+exists,0.0
+exists and,0.0
+exists for,0.0
+exists in,0.0
+exists when,0.0
+exit,0.0
+exit strategy,0.0
+expand,0.0
+expand keywords,0.0
+expansion,0.0
+expansion engine,0.0
+expansion runs,0.0
+expectation,0.0
+expectation as,0.0
+expectations,0.0
+expectations are,0.0
+expectations exist,0.0
+expectations given,0.0
+expectations the,0.0
+expected,0.0
+expected alert,2.043537669876228e-06
+expected as,0.0
+expected by,0.0
+expected duration,0.0
+expected given,0.0
+expected outputs,0.0
+expected vs,0.0
+expects,0.0
+expects so,0.0
+experiment,1.2801513045006301e-05
+experiment plan,0.0004566571176687618
+experiments,7.513524470245075e-06
+experiments kill,1.937987308127492e-06
+experiments so,0.00042426152733565924
+expired,0.0
+expired certificates,0.0
+expires,0.0
+expires in,0.0
+expiry,0.0
+expiry dates,0.0
+expiry greater,0.0
+explanation,0.0
+exponential,0.0
+exponential backoff,0.0
+export,0.0
+export all,0.0
+export data,0.0
+export of,0.0
+export reports,0.0
+export social,0.0
+expose,0.0
+expose real,0.0
+exposed,0.0
+exposed in,0.0
+exposed person,0.0
+exposed when,0.0
+exposure,0.0
+exposure is,0.0
+extension,0.0
+external,0.0
+external api,0.0
+external calls,0.0
+external dependencies,0.0
+extract,0.0
+extract text,0.0
+extracted,0.0
+extracted text,0.0
+extraction,0.0
+extraction contract,0.0
+facebook,0.0
+facebook when,0.0
+facilitate,0.0
+facilitate story,0.0
+factors,0.0
+factors so,0.0
+fail,0.0
+fail details,0.0
+fail if,0.0
+failed,0.0001371195067883101
+failed deployment,0.0
+failed deployments,0.0
+failed filename,0.0
+failed instead,0.0
+failed jobs,0.00011685224428268632
+failed records,2.361705041326709e-07
+failing,0.0
+failing critical,0.0
+failover,0.0
+failover configuration,0.0
+failover database,0.0002520047285256918
+failover for,0.0
+failover to,0.0
+failover triggers,0.0
+fails,1.4474786152552472e-08
+fails due,0.0
+fails it,1.4782129672201409e-07
+fails processing,0.0
+fails so,0.0
+fails validation,0.0
+fails when,0.0
+failure,0.0
+failure monitor,0.0
+failure notification,0.0
+failure of,0.0
+failure saves,0.0
+failure so,0.0
+failures,0.0
+failures as,0.0
+failures don,0.0
+failures exist,0.0
+failures in,0.0
+false,1.0681820826202694e-05
+false positive,0.0
+false positives,0.0
+familiar,0.0
+familiar given,0.0
+faq,0.0
+faq section,0.0
+fast,0.0
+fast given,0.0
+faster,0.0
+faster given,0.0
+feature,0.0
+feature broken,0.0
+feature flag,0.0
+feature flags,0.0
+feature so,0.0
+features,0.0
+features are,0.0
+features only,0.0
+features regression,0.0
+features working,0.0
+feedback,0.0
+feedback as,0.0
+feedback before,0.0
+feedback collection,0.0
+feedback exists,0.0
+feedback from,0.0
+feedback is,0.0
+feedback loop,0.0
+feedback mechanism,0.0
+feedback received,0.0
+feedback so,0.0
+feedback that,0.0
+feedback was,0.0
+fetched,0.0
+fetched from,0.0
+fiat,0.0
+fiat conversion,0.0
+field,0.0
+field approval,0.0
+fields,0.0
+fields incident,0.0
+file,0.0
+file and,0.0
+file contains,0.0
+file format,0.0
+file has,0.0
+file if,0.0
+file ingestion,0.0
+file lands,0.0
+file not,0.0
+file permissions,0.0
+file processing,0.0
+file submissions,0.0
+file to,0.0
+file upload,0.0
+file when,0.0
+file with,0.0
+filename,0.0
+files,0.0
+files aml,0.0
+files are,0.0
+files arrive,0.0
+files as,0.0
+files can,4.432596172142491e-05
+files into,0.0
+files land,0.0
+files sequentially,0.0
+files service,0.0
+files so,0.0
+files to,0.0
+files with,0.0
+filing,0.0
+filing when,0.0
+filings,0.0
+filings are,0.0
+filings so,0.0
+filtered,0.0
+filtered alert,0.0
+final,0.0
+final failure,0.0
+final review,0.0
+finalize,0.0
+finalize aml,0.0
+finalized,0.0
+finalized when,0.0
+fincen,0.0
+fincen api,0.0
+fincen as,0.0
+fincen reporting,0.0
+fincen rules,0.0
+fincen via,0.0
+finding,0.0
+findings,0.0
+findings exist,0.0
+findings so,0.0
+finished,0.0
+finished in,0.0
+first,0.0
+first given,0.0
+first small,0.0
+first task,0.0
+fix,0.0
+fix as,0.0
+fix issues,0.0
+fix the,0.0
+fix them,0.0
+fix this,0.0
+fix underlying,0.0
+fixed,0.0
+fixed to,0.0
+fixed width,0.0
+fixes,0.0
+fixes allowed,0.0
+fixes before,0.0
+fixes can,0.0
+fixes operations,0.0
+flag,0.0
+flag any,0.0
+flag as,0.0
+flag enabled,0.0
+flagged,0.0
+flagged during,0.0
+flagged for,0.0
+flagged given,0.0
+flagged immediately,0.0
+flagged with,0.0
+flags,0.0
+flags for,0.0
+flags so,0.0
+flow,0.0
+flow as,0.0
+flow deployment,0.0
+flow diagrams,0.0
+flow exists,0.0
+flow that,0.0
+flows,0.0
+flows correctly,0.0
+focus,0.0
+focus on,0.0
+folder,0.0
+folder hierarchy,0.0
+folder must,0.0
+folder structure,0.0
+folder with,0.0
+folders,0.0
+folders then,0.0
+follow,0.0
+follow it,0.0
+follow the,0.0
+follow them,0.0
+follow these,0.0
+follow up,0.0
+followed,0.0
+followed config,0.0
+followed given,0.0
+followed then,0.0
+following,0.0
+following all,0.0
+following our,0.0
+following team,0.0
+following the,0.0
+follows,0.0
+follows agile,0.0
+follows so,0.0
+follows suspicious,0.0
+for,2.363778350056729e-05
+for 100k,0.0
+for 12,0.0
+for 1b,0.0
+for 30,0.0
+for 50,0.0
+for 90,0.0
+for 95,0.0
+for alert,0.0
+for alerts,0.0
+for all,0.0
+for aml,0.0
+for any,0.0
+for api,0.0
+for apis,0.0
+for audit,0.0
+for automated,0.0
+for batch,0.0
+for certification,0.0
+for choosing,0.0
+for co,0.0
+for code,0.0
+for common,0.0
+for consecutive,0.0
+for control,0.0
+for critical,0.0
+for cross,0.0
+for customer,0.0
+for data,0.0
+for database,0.0
+for date,0.0
+for deployment,0.0
+for details,0.0
+for developers,0.0
+for development,0.0
+for downstream,0.0
+for each,4.157015513243551e-07
+for easier,0.0
+for enhanced,0.0
+for enriched,0.0
+for etl,0.0
+for external,0.0
+for failed,0.0
+for false,3.6228971759106626e-06
+for filing,0.0
+for fincen,0.0
+for frequent,0.0
+for go,0.0
+for high,0.0
+for historical,0.0
+for hour,0.0
+for incoming,0.0
+for investigation,0.0
+for investigators,0.0
+for ip,0.0
+for issues,0.0
+for key,0.0
+for keyword,0.0
+for large,0.0
+for last,0.0
+for long,0.0
+for major,0.0
+for management,0.0
+for manual,0.0
+for mentions,0.0
+for missing,0.0
+for model,0.0
+for money,0.0
+for new,0.0
+for next,0.0
+for non,0.0
+for norkom,0.0
+for ocr,0.0
+for operations,0.0
+for optimization,0.0
+for oracle,0.0
+for past,0.0
+for pep,0.0
+for percent,0.0
+for performance,0.0
+for pii,0.0
+for planning,0.0
+for processed,0.0
+for production,0.0
+for real,0.0
+for reference,0.0
+for regulators,0.0
+for regulatory,0.0
+for related,0.0
+for release,0.0
+for reporting,0.0
+for reviews,0.0
+for sar,0.0
+for scenario,0.0
+for security,0.0
+for server,0.0
+for social,0.0
+for source,0.0
+for stakeholders,0.0
+for the,0.0
+for this,0.0
+for threshold,0.0
+for transaction,0.0
+for transactions,0.0
+for transient,0.0
+for ui,0.0
+for uninvestigated,0.0
+for unix,0.0
+for velocity,0.0
+for vendors,0.0
+for year,0.0
+for years,0.0
+forecast,0.0
+forecast model,0.0
+formal,0.0
+formal agreement,0.0
+formal approval,0.0
+formal authorization,0.0
+formal change,0.0
+formal review,0.0
+formal risk,0.0
+formal slas,0.0
+formal vendor,0.0
+format,0.0
+format and,0.0
+format as,0.0
+format changes,0.0
+format demo,0.0
+format monthly,0.0
+format so,0.0
+formats,0.0
+formats yyyy,0.0
+formatting,0.0
+formatting and,0.0
+forward,0.0
+forward as,0.0
+forward given,0.0
+found,0.0
+found during,0.0
+found in,0.0
+found on,0.0
+found some,0.0
+found when,0.0
+framework,0.0
+framework as,0.0
+framework must,0.0
+fraud,0.0
+fraud analyst,0.0
+fraud patterns,0.0
+freeze,0.0
+freeze days,0.0
+freeze policy,0.0
+frequency,0.0
+frequency and,0.0
+frequency audit,0.0
+frequency data,0.0
+frequency escalate,0.0
+frequent,0.0
+frequent lookups,0.0
+frequent queries,0.0
+from,0.0
+from 10000,0.0
+from backlog,0.0
+from backup,0.0
+from baseline,0.0
+from business,0.0
+from cab,0.0
+from compliance,0.0
+from enterprise,0.0
+from full,0.0
+from infrastructure,0.0
+from last,0.0
+from market,0.0
+from multiple,0.0
+from norkom,0.0
+from posted,0.0
+from previous,0.0
+from prod,0.0
+from random,0.0
+from reliable,0.0
+from retrospectives,0.0
+from security,0.0
+from staging,0.0
+from the,0.0
+from unix,0.0
+from vault,0.0
+from where,0.0
+front,0.0
+front entities,0.0
+frozen,0.0
+frozen status,0.0
+full,0.0
+full access,0.0
+full backup,0.0
+full integration,0.0
+full name,0.0
+full volume,0.0
+functional,0.0
+functional requirements,0.0
+functionality,0.0
+functionality cost,0.0
+functionality given,0.0
+functionality is,0.0
+functionality notify,0.0
+functionality while,0.0
+functions,0.0
+functions as,0.0
+fund,0.0
+fund movements,0.0
+funds,0.0
+funds are,0.0
+funds being,0.0
+funds cannot,0.0
+funds from,0.0
+funds move,0.0
+funds moving,0.0
+fungible,0.0
+fungible token,0.0
+further,0.0
+further calls,0.0
+future,0.0
+future processing,0.0
+gambling,0.0
+gambling alert,0.0
+gambling transaction,0.0
+gambling transactions,0.0
+gap,0.0
+gap analysis,0.0
+gaps,0.0
+gaps action,0.0
+gaps in,0.0
+gate,0.0
+gate as,0.0
+gate deploy,0.0
+gate should,0.0
+gate so,0.0
+gates,0.0
+gates given,0.0
+gdpr,0.0
+gdpr and,0.0
+generate,0.0
+generate access,0.0
+generate alert,0.0
+generate csv,0.0
+generate gambling,0.0
+generate high,0.0
+generate layering,0.0
+generate mixing,0.0
+generate network,0.0
+generate nft,0.0
+generate privacy,0.0
+generate real,0.0
+generate reconciliation,0.0
+generate regulatory,0.0
+generate reports,0.0
+generate sar,0.0
+generate vasp,0.0
+generated,0.0
+generated alerts,0.0
+generated given,0.0
+generated in,0.0
+generated then,0.0
+generated ui,0.0
+generated when,0.0
+generated with,0.0
+generates,0.0
+generates an,0.0
+generates on,0.0
+generating,0.0
+generating 1b,0.0
+generation,0.0
+generation by,0.0
+generation is,0.0
+generation less,0.0
+generation module,0.0
+generation rate,0.0
+generation refresh,0.0
+generation threshold,0.0
+generation time,0.0
+generation workflow,0.0
+generator,0.0
+generator as,0.0
+generator for,0.0
+get,0.0
+get approval,0.0
+get consistent,0.0
+get higher,0.0
+get new,0.0
+get relevant,0.0
+get requirements,0.0
+get resolved,0.0
+get sponsor,0.0
+get what,0.0
+gets,0.0
+gets quality,0.0
+github,0.0
+github actions,0.0
+github enterprise,0.0
+github repository,0.0
+github slack,0.0
+given,2.87692442556169e-06
+given 100m,0.0
+given account,0.0
+given action,0.0
+given agreement,0.0
+given alert,0.0
+given all,0.0
+given aml,0.0
+given any,0.0
+given api,0.0
+given application,0.0
+given architecture,0.0
+given audit,0.0
+given auditor,0.0
+given backlog,0.0
+given batch,0.0
+given benchmark,0.0
+given business,0.0
+given by,0.0
+given certificate,0.0
+given change,0.0
+given chat,0.0
+given checklist,0.0
+given co,0.0
+given code,0.0
+given comments,0.0
+given company,0.0
+given compliance,0.0
+given concerns,0.0
+given confirmed,0.0
+given conversation,0.0
+given corporate,0.0
+given current,0.0
+given customer,0.0
+given customer_id,0.0
+given daily,0.0
+given dark,0.0
+given data,0.0
+given demo,0.0
+given dependency,0.0
+given deployment,0.0
+given design,0.0
+given dev,0.0
+given developer,0.0
+given diagram,0.0
+given discussion,0.0
+given document,0.0
+given documentation,0.0
+given dr,0.0
+given draft,0.0
+given earlier,0.0
+given email,0.0
+given enriched,0.0
+given enrichment,0.0
+given environment,0.0
+given etl,0.0
+given feedback,0.0
+given file,0.0
+given files,0.0
+given go,0.0
+given high,0.0
+given historical,0.0
+given improvement,0.0
+given instagram,0.0
+given instructions,0.0
+given integration,0.0
+given investigation,0.0
+given issues,0.0
+given job,0.0
+given jobs,0.0
+given lessons,0.0
+given license,0.0
+given load,0.0
+given maintenance,0.0
+given meeting,0.0
+given metrics,0.0
+given migration,0.0
+given milestone,0.0
+given multiple,0.0
+given new,0.0
+given nft,0.0
+given norkom,0.0
+given ofac,0.0
+given performance,0.0
+given pii,0.0
+given plan,0.0
+given planning,0.0
+given posts,0.0
+given previous,0.0
+given primary,0.0
+given process,0.0
+given production,0.0
+given project,0.0
+given property,0.0
+given prototype,0.0
+given quality,0.0
+given query,0.0
+given reference,0.0
+given refinement,0.0
+given regression,0.0
+given regulations,0.0
+given regulatory,0.0
+given release,0.0
+given reports,0.0
+given request,0.0
+given requirement,0.0
+given requirements,0.0
+given review,0.0
+given reviewer,0.0
+given risk,0.0
+given roadmap,0.0
+given rule,0.0
+given same,0.0
+given sample,0.0
+given sar,0.0
+given security,0.0
+given segmentation,0.0
+given session,0.0
+given sla,0.0
+given slow,0.0
+given social,0.0
+given solution,0.0
+given source,0.0
+given spec,0.0
+given specification,0.0
+given standards,0.0
+given stg_customer_trx,0.0
+given stories,0.0
+given support,0.0
+given task,0.0
+given tasks,0.0
+given team,0.0
+given technical,0.0
+given template,0.0
+given test,0.0
+given the,0.0
+given there,0.0
+given threshold,0.0
+given ticket,0.0
+given transaction,0.0
+given troubleshooting,0.0
+given twitter,0.0
+given txt,0.0
+given uat,0.0
+given ui,0.0
+given unix,0.0
+given user,0.0
+given validation,0.0
+given velocity,0.0
+given we,0.0
+given webhook,0.0
+given when,0.0
+given workshop,0.0
+given yaml,0.0
+global,0.0
+global sanctions,0.0
+glossary,0.0
+glossary as,0.0
+glossary so,0.0
+go,0.0
+go decision,0.0
+go live,0.0
+go or,0.0
+go smoothly,0.0
+go to,0.0
+goal,0.0
+goal given,0.0
+goal should,0.0
+goals,0.0
+goals given,0.0
+good,0.0
+governance,0.0
+governance approve,0.0
+governance officer,0.0
+government,0.0
+government official,0.0
+gracefully,0.0
+gradually,0.0
+gradually given,0.0
+gradually increase,0.0
+grafana,0.0
+grafana jenkins,0.0
+grafana monitoring,0.0
+granted,0.0
+granted with,0.0
+graph,0.0
+graph need,0.0
+graph visualizer,0.0
+greater,0.0
+greater than,0.0
+green,0.0
+green indicators,0.0
+group,0.0
+group and,0.0
+group first,0.0
+group must,0.0
+grouped,0.0
+grouped as,0.0
+grouped so,0.0
+groups,0.0
+groups admin,0.0
+growth,0.0
+growth project,0.0
+guide,0.0
+guide through,0.0
+guidelines,0.0
+guidelines as,0.0
+guidelines at,0.0
+guidelines so,0.0
+had,0.0
+had discussion,0.0
+had so,0.0
+handle,0.0
+handle security,0.0
+handled,0.0
+handled legally,0.0
+handling,0.0
+handling as,0.0
+handling for,0.0
+handling is,0.0
+handling not,0.0
+handling so,0.0
+hands,0.0
+hands on,0.0
+happen,0.0
+happen as,0.0
+happened,0.0
+happened earlier,0.0
+happened when,0.0
+happy,0.0
+happy given,0.0
+happy path,0.0
+hardcoded,0.0
+hardcoded given,0.0
+has,0.0
+has 100m,0.0
+has 10m,0.0
+has clear,0.0
+has description,0.0
+has documented,0.0
+has established,0.0
+has formal,0.0
+has gambling,0.0
+has high,0.0
+has investigator,0.0
+has linked,0.0
+has no,0.0
+has rate,0.0
+has records,0.0
+has requirements,0.0
+has risk,0.0
+hash,0.0
+hash already,0.0
+hash based,0.0
+hash history,0.0
+hash is,0.0
+hashicorp,0.0
+hashicorp vault,0.0
+have,0.0
+have appropriate,0.0
+have clear,0.0
+have context,0.0
+have customer_id,0.0
+have input,0.0
+have minimum,0.0
+have partitions,0.0
+have priority,0.0
+have proper,0.0
+have rate,0.0
+have representative,0.0
+have so,0.0
+header,0.0
+header delimiter,0.0
+headers,0.0
+headers and,0.0
+health,0.0
+health check,0.0
+health in,0.0
+hierarchy,0.0
+hierarchy so,0.0
+high,0.0
+high concurrency,0.0
+high credibility,0.0
+high level,0.0
+high medium,0.0
+high priority,0.0
+high risk,0.0
+high volume,0.0
+high when,0.0
+high within,0.0
+higher,0.0
+higher alert,0.0
+highest,0.0
+highest priority,0.0
+highest risk,0.0
+hires,0.0
+hires are,0.0
+historical,0.0
+historical average,0.0
+historical data,0.0
+historical files,0.0
+historical post,0.0
+historical records,0.0
+history,0.0
+history exists,0.0
+history for,0.0
+history outcome,0.0
+history table,0.0
+history tables,0.0
+hit,0.0
+hit database,0.0
+hit rate,0.0
+hold,0.0
+hold 100m,0.0
+hold closed,0.0
+horizontal,0.0
+horizontal and,0.0
+hour,0.0
+hour auto,0.0
+hour for,0.0
+hour grouped,0.0
+hour per,0.0
+hour when,0.0
+hours,0.0
+hours and,0.0
+hours email,0.0
+hours rpo,0.0
+hours script,0.0
+hours then,0.0
+hours when,0.0
+how,0.0
+how norkom,0.0
+how to,0.0
+hsbc,0.0
+hsbc aml,0.0
+hsbc customer,0.0
+hsbc us,0.0
+https,0.0
+https and,0.0
+https api,0.0
+https with,0.0
+iam,0.0
+iam roles,0.0
+id,0.0
+id severity,0.0
+identification,0.0
+identification as,0.0
+identified,0.0
+identified and,0.0
+identified as,0.0
+identified during,0.0
+identified given,0.0
+identified in,0.0
+identified slow,0.0
+identified when,0.0
+identify,0.0
+identify 12,0.0
+identify 15,0.0
+identify accounts,0.0
+identify coordinated,0.0
+identify emerging,0.0
+identify front,0.0
+identify funds,0.0
+identify layering,0.0
+identify organized,0.0
+identify pep,0.0
+identify potential,0.0
+identify suspicious,0.0
+identify systemic,0.0
+identify ultimate,0.0
+identify unusual,0.0
+identify upstream,0.0
+identify wash,0.0
+identity,0.0
+identity document,0.0
+identity locate,0.0
+if,0.0
+if any,0.0
+if below,0.0
+if critical,0.0
+if deviation,0.0
+if errors,0.0
+if hash,0.0
+if needed,0.0
+if possible,0.0
+ii,0.0
+ii report,0.0
+image,0.0
+image data,0.0
+image urls,0.0
+images,0.0
+images for,0.0
+images using,0.0
+immediately,0.0
+immediately given,0.0
+impact,0.0
+impact assessment,0.0
+impact current,0.0
+impact detection,0.0
+impact estimate,0.0
+impact is,0.0
+impact operations,0.0
+impacted,0.0
+impacted downstream,0.0
+implement,1.4732324914192196e-05
+implement alert,0.0
+implement aml,0.0
+implement api,0.0
+implement audit,0.0
+implement automatic,0.0
+implement batch,0.0
+implement beneficial,0.0
+implement bulk,0.0
+implement canary,0.0
+implement case,0.0
+implement circuit,0.0
+implement connection,0.0
+implement cross,0.0
+implement cryptocurrency,0.0
+implement customer,0.0
+implement daily,0.0
+implement data,0.0
+implement database,0.0
+implement dead,3.4568868833461336e-08
+implement deduplication,0.0
+implement end,0.0
+implement feature,0.0
+implement hash,0.0
+implement incremental,6.3733309283889576e-09
+implement load,0.0
+implement logging,0.0
+implement machine,0.0
+implement mixing,0.0
+implement negative,0.0
+implement network,0.0
+implement non,0.0
+implement notification,0.0
+implement ofac,0.0
+implement parallel,0.0
+implement pep,0.0
+implement professional,0.0
+implement query,0.0
+implement rate,0.0
+implement real,0.0
+implement record,0.0
+implement restart,6.46320071491325e-06
+implement robust,0.0
+implement role,0.0
+implement s3,0.0
+implement schema,0.0
+implement shell,0.0
+implement sliding,0.0
+implement table,0.0
+implement the,0.0
+implement them,0.0
+implement then,0.0
+implement threshold,0.0
+implement what,0.0
+implement write,0.0
+implementation,0.0
+implementation aligns,0.0
+implementation is,0.0
+implementation matches,0.0
+implementation must,0.0
+implementation should,0.0
+implemented,0.0
+implemented given,0.0
+implemented then,0.0
+improve,0.0
+improve data,0.0
+improve details,0.0
+improvement,0.0
+improvement items,0.0
+improvement recommendations,0.0
+improvement register,0.0
+improves,0.0
+improves and,0.0
+improves as,0.0
+improves experiments,0.0030406700168061486
+improves for,0.0
+improves given,0.0
+improves ui,0.0
+in,1.0942721815544966e-06
+in 30,0.0
+in class,0.0
+in code,0.0
+in cold,0.0
+in crypto,0.0
+in database,0.0
+in dedicated,0.0
+in dr,0.0
+in inbound,0.0
+in jira,0.0
+in json,0.0
+in last,0.0
+in master,0.0
+in meeting,0.0
+in minute,0.0
+in need,0.0
+in non,0.0
+in norkom,0.0
+in oracle,0.0
+in our,0.0
+in pipeline,0.0
+in planning,0.0
+in progress,0.0
+in rapid,0.0
+in real,0.0
+in regression,0.0
+in remediation,0.0
+in so,0.0
+in social,0.0
+in team,0.0
+in test,0.0
+in testing,0.0
+in the,0.0
+in their,0.0
+in then,0.0
+in ticketing,0.0
+in tomorrow,0.0
+in ui,0.0
+in when,0.0
+in yesterday,0.0
+inbound,0.0
+inbound processing,0.0
+inbound when,0.0
+incident,0.0
+incident communication,0.0
+incident id,0.0
+incident manager,0.0
+incident occurs,0.0
+incident response,0.0
+incident severity,0.0
+incidents,0.0
+incidents are,0.0
+incidents as,0.0
+include,0.0
+include business,0.0
+include column,0.0
+include data,0.0
+include endpoints,0.0
+include for,0.0
+include login,0.0
+include perpetual,0.0
+include records,0.0
+include review,0.0
+include role,0.0
+include specific,0.0
+include step,0.0
+include stop,0.0
+include transaction_id,0.0
+include trigger,0.0
+includes,0.0
+includes occupation,0.0
+including,0.0
+including data,0.0
+including environment,0.0
+incoming,0.0
+incoming data,0.0
+incoming files,0.0
+incoming mainframe,0.0
+incorporate,0.0
+incorporate the,0.0
+incorporated,0.0
+increase,0.0
+increase by,0.0
+increase to,0.0
+increases,0.0
+increases given,0.0
+incremental,0.0
+incremental load,0.0
+indefinitely,0.0
+indefinitely indexes,0.0
+indemnification,0.0
+indemnification liability,0.0
+index,0.0
+index strategy,0.0
+indexes,0.0
+indexes are,0.0
+indexes maintained,0.0
+indexes on,0.0
+indicator,1.1130502539803343e-05
+indicator dashboard,0.0
+indicators,0.0
+individual,0.0
+individual alerts,0.0
+individual records,0.0
+individuals,0.0
+individuals are,0.0
+industry,0.0
+industry standards,0.0
+influenced,0.0
+influenced the,0.0
+influencer,0.0
+influencer risk,0.0
+influencers,0.0
+influencers connected,0.0
+influencers when,0.0
+information,0.0
+information audiences,0.0
+information event,0.0
+informed,9.188725575735657e-06
+informed for,1.8668150075580172e-05
+infrastructure,0.0
+infrastructure as,0.0
+infrastructure can,0.0
+infrastructure sprint,0.0
+infrastructure team,0.0
+ingest,0.0
+ingest social,0.0
+ingestion,0.0
+ingestion 30min,0.0
+ingestion as,0.0
+ingestion completes,0.0
+ingestion fails,0.0
+ingestion failures,0.0
+ingestion is,0.0
+ingestion pipeline,0.0
+ingestion rate,0.0
+ingestion source,0.0
+initially,0.0
+initially enable,0.0
+input,0.0
+input data,0.0
+input file,0.0
+input save,0.0
+insert,0.0
+insert is,0.0
+insert optimization,0.0
+insert update,0.0
+instagram,0.0
+instagram api,0.0
+instagram image,0.0
+instagram images,0.0
+installed,0.0
+installed kernel,0.0
+instead,0.0
+instead of,0.0
+instructed,0.0
+instructed as,0.0
+instructed by,0.0
+instructions,0.0
+instructions as,0.0
+instructions dashboard,0.0
+instructions given,0.0
+instructions were,0.0
+integrate,0.0
+integrate linkedin,0.0
+integrate norkom,0.0
+integrate twitter,0.0
+integrate with,0.0
+integrated,0.0
+integrated so,0.0
+integration,0.0
+integration as,0.0
+integration lead,0.0
+integration patterns,0.0
+integration requirements,0.0
+integration should,0.0
+integration so,0.0
+integration specification,0.0
+integration test,0.0
+integration tests,0.0
+integration works,0.0
+integrator,0.0
+integrator want,0.0
+integrity,0.0
+integrity attach,0.0
+integrity confidentiality,0.0
+integrity custom,0.0
+interaction,0.0
+interaction and,0.0
+interface,0.0
+interface boundaries,0.0
+interface for,0.0
+internal,0.0
+internal apis,0.0
+international,0.0
+international borders,0.0
+intervention,0.0
+intervention given,0.0
+interview,0.0
+interview previous,0.0
+into,0.0
+into delimited,0.0
+into elk,0.0
+into history,0.0
+into oracle,0.0
+into stg_customer_trx,0.0
+investigate,0.0
+investigate quickly,0.0
+investigating,0.0
+investigating on,0.0
+investigation,0.0
+investigation as,0.0
+investigation findings,0.0
+investigation history,0.0
+investigation is,0.0
+investigation so,0.0
+investigation steps,0.0
+investigation time,0.0
+investigation when,0.0
+investigation workflow,0.0
+investigator,0.0
+investigator actions,0.0
+investigator clicks,0.0
+investigator name,0.0
+investigator role,0.0
+investigator see,0.0
+investigator set,0.0
+investigator then,0.0
+investigator want,0.0
+investigators,0.0
+investigators as,0.0
+investigators focus,0.0
+investigators learn,0.0
+involvement,0.0
+involvement given,0.0
+involves,0.0
+involves counterparty,0.0
+involving,0.0
+involving virtual,0.0
+ip,0.0
+ip address,0.0
+ip indemnification,0.0
+ip ownership,0.0
+is,3.2429515775872896e-05
+is accepted,0.0
+is admin,0.0
+is aligned,0.0
+is analyzed,0.0
+is applied,0.0
+is approached,0.0
+is approved,0.0
+is assessed,0.0
+is assigned,0.0
+is authorized,0.0
+is available,0.0
+is best,0.0
+is built,0.0
+is business,0.0
+is calculated,0.0
+is called,0.0
+is captured,0.0
+is caught,0.0
+is closed,0.0
+is collected,0.0
+is completed,0.0
+is compliance,0.0
+is compliant,0.0
+is computed,0.0
+is configured,0.0
+is confirmed,0.0
+is consistent,0.0
+is coordinated,0.0
+is correct,0.0
+is created,0.0
+is critical,0.0
+is defined,0.0
+is delivered,0.0
+is described,0.0
+is detected,0.0
+is distributed,0.0
+is documented,0.0
+is done,0.0
+is easier,0.0
+is efficient,0.0
+is enabled,0.0
+is enforced,0.0
+is faster,0.0
+is flagged,0.0
+is followed,0.0
+is found,0.0
+is generated,0.0
+is high,0.0
+is highest,0.0
+is identified,0.0
+is implemented,0.0
+is in,0.0
+is incorporated,0.0
+is investigator,0.0
+is known,0.0
+is logged,0.0
+is made,0.0
+is maintained,0.0
+is managed,0.0
+is manager,0.0
+is measured,0.0
+is met,0.0
+is minimized,0.0
+is monitored,0.0
+is moved,0.0
+is new,0.0
+is not,0.0
+is on,0.0
+is optimized,0.0
+is pipe,0.0
+is possible,0.0
+is preserved,0.0
+is processed,0.0
+is protected,0.0
+is provisioned,0.0
+is queried,0.0
+is ready,0.0
+is realistic,0.0
+is refined,0.0
+is reliable,0.0
+is requested,0.0
+is resolved,0.0
+is responsible,0.0013743320243697957
+is retrieved,0.0
+is risk,0.0
+is satisfied,0.0
+is saved,0.0
+is scheduled,0.0
+is secure,0.0
+is selected,0.0
+is solid,0.0
+is stable,0.0
+is stored,0.0
+is successful,0.0
+is support,0.0
+is tracked,0.0
+is up,0.0
+is updated,0.0
+is used,0.0
+is validated,0.0
+is version,0.0
+is visualized,0.0
+isn,0.0
+isn processed,0.0
+iso,0.0
+iso customer_id,0.0
+isolation,0.0
+isolation for,0.0
+issue,0.0
+issue doesn,0.0
+issue is,0.0
+issue response,0.0
+issue should,0.0
+issue tracking,0.0
+issues,0.0
+issues are,0.0
+issues compile,0.0
+issues decisions,0.0
+issues don,0.0
+issues exist,0.0
+issues found,0.0
+issues from,0.0
+issues given,0.0
+issues identified,0.0
+issues in,0.0
+issues so,0.0
+issues that,0.0
+issues trend,0.0
+issues trigger,0.0
+issues were,0.0
+issues when,0.0
+issues will,0.0
+it,0.0
+it and,0.0
+it available,0.0
+it failed,2.087489388605894e-05
+it given,0.0
+it happen,0.0
+it involvement,0.0
+it must,0.0
+it operations,0.0
+it reflects,0.0
+it should,0.000415561562074974
+it then,1.7563887367757177e-07
+it work,0.0
+items,0.0
+items all,0.0
+items as,0.0
+items covering,0.0
+items exist,0.0
+items from,0.0
+items should,0.0
+items that,0.0
+items with,0.0
+its,0.0
+its sla,0.0
+java,0.0
+java control,0.0
+jenkins,0.0
+jenkins github,0.0
+jenkins pipeline,0.0
+jira,0.0
+jira as,0.0
+jira bug,0.0
+jira so,0.0
+jira ticket,0.0
+job,7.749901812803321e-05
+job completes,0.0
+job completion,0.0
+job dependency,0.0
+job etl,0.0
+job exceeds,0.0
+job fails,5.691691776418726e-07
+job ingestion,0.0
+job must,0.0
+job name,0.0
+job performance,0.0
+job runs,0.0
+job sla,0.0
+job status,0.0
+job triggers,0.0
+jobs,0.0
+jobs and,0.0
+jobs as,2.173265547174313e-06
+jobs completed,0.0
+jobs duration,0.0
+jobs exceed,0.0
+jobs in,0.0
+jobs run,0.0
+jobs showing,6.705838820268248e-06
+jobs so,0.0
+jobs succeeded,0.0
+jobs to,4.7147642408620034e-05
+jobs using,0.0
+joins,0.0
+joins team,0.0
+journey,0.0
+journey facilitate,0.0
+json,0.0
+json format,0.0
+judge,0.0
+judge military,0.0
+jun,0.0
+jun q3,0.0
+june,0.0
+june week,0.0
+jurisdictions,0.0
+jurisdictions given,0.0
+keep,0.0
+keep for,0.0
+keeping,0.0
+keeping existing,0.0
+kernel,0.0
+kernel parameters,0.0
+key,0.0
+key decisions,0.0
+key lessons,0.0
+key stakeholders,0.0
+key successes,0.0
+keyword,0.0
+keyword expansion,0.0
+keyword matching,0.0
+keywords,0.0
+keywords for,0.0
+keywords like,0.0
+kickoff,0.0
+kickoff meeting,0.0
+kill,0.00012159592333437066
+kill random,0.00011509031260147869
+know,0.0
+know which,0.0
+known,0.0
+known error,0.0
+known errors,0.0
+known given,0.0
+known laundering,0.0
+known mixer,0.0
+known money,0.0
+known transactions,0.0
+knows,0.0
+knows how,0.0
+l1,0.0
+l1 can,0.0
+land,0.0
+land on,0.0
+landing,0.0
+landing as,0.0
+landing count,0.0
+lands,0.0
+lands in,0.0
+large,0.0
+large datasets,0.0
+large tables,0.0
+large transaction,0.0
+large volumes,0.0
+last,4.062059916595149e-06
+last 24,0.0
+last checkpoint,0.00012808939853017442
+last meeting,0.0
+last quarter,0.0
+last sprint,0.0
+last week,0.0
+latency,0.0
+latency data,0.0
+latency oracle,0.0
+latency p99,0.0
+later,0.0
+latest,0.0
+latest data,0.0
+latest segments,0.0
+laundered,0.0
+laundered through,0.0
+laundering,0.0
+laundering alert,0.0
+laundering crypto,0.0
+laundering detection,0.0
+laundering is,0.0
+laundering networks,0.0
+laundering rings,0.0
+laundering so,0.0
+laundering terminology,0.0
+laundering through,0.0
+laundering trends,0.0
+laundering typologies,0.0
+laundering using,0.0
+laundering via,0.0
+lawful,0.0
+lawful basis,0.0
+layer,0.0
+layer for,0.0
+layering,0.0
+layering alert,0.0
+layering attempts,0.0
+layering detection,0.0
+layout,0.0
+layout when,0.0
+lead,0.0
+lead as,0.0
+lead should,0.0
+lead so,0.0
+lead want,0.0
+leader,0.0
+leader then,0.0
+learn,0.0
+learn at,0.0
+learned,0.0
+learned as,0.0
+learned document,0.0
+learned from,0.0
+learned recommendations,0.0
+learned session,0.0
+learning,0.0
+learning model,0.0
+learns,0.0
+learns from,0.0
+least,0.0
+least 50,0.0
+least 70,0.0
+least 80,0.0
+least approvals,0.0
+least one,0.0
+legacy,0.0
+legacy system,0.0
+legal,0.0
+legal agreement,0.0
+legal counsel,0.0
+legal review,0.0
+legally,0.0
+legally process,0.0
+less,0.0
+less than,0.0
+lessons,0.0
+lessons and,0.0
+lessons are,0.0
+lessons exist,0.0
+lessons learned,0.0
+letter,0.0
+letter queue,1.1253452646023904e-08
+level,0.0
+level agreement,0.0
+level context,0.0
+level indicator,0.0
+levels,0.0
+levels and,0.0
+levels critical,0.0
+liability,0.0
+liability limits,0.0
+license,0.0
+license as,0.0
+license compliance,0.0
+license for,0.0
+license must,0.0
+license requirements,0.0
+license so,0.0
+licenses,0.0
+licenses so,0.0
+like,0.0
+like money,0.0
+like the,0.0
+limit,0.0
+limit is,0.0
+limit of,0.0
+limiting,0.0
+limiting 100,0.0
+limiting for,0.0
+limiting on,0.0
+limits,0.0
+limits 1000,0.0
+limits data,0.0
+limits documented,0.0
+limits for,0.0
+line,0.0
+line must,0.0
+lineage,0.0
+lineage for,0.0
+lineage is,0.0
+lineage of,0.0
+linked,0.0
+linked crypto,0.0
+linked to,0.0
+linkedin,0.0
+linkedin connections,0.0
+linkedin data,0.0
+linter,0.0
+linter will,0.0
+linux,0.0
+linux python,0.0
+list,0.0
+list as,0.0
+list combined,0.0
+list exists,0.0
+list must,0.0
+list name,0.0
+list of,0.0
+list oracle,0.0
+list so,0.0
+list that,0.0
+list to,0.0
+list update,0.0
+lists,0.0
+lists must,0.0
+lists so,0.0
+live,0.0
+live date,0.0
+live so,0.0
+load,0.0
+load customer,0.0
+load into,0.0
+load less,0.0
+load logic,0.0
+load only,0.0
+load processed,0.0
+load script,0.0
+load segmentation,0.0
+load test,0.0
+load testing,0.0
+load then,0.0
+load time,0.0
+load transformed,0.0
+load years,0.0
+loaded,0.0
+loaded when,0.0
+loader,0.0
+loader for,0.0
+loader runs,0.0
+loading,0.0
+loading and,0.0
+loading is,0.0
+loads,0.0
+loads 1m,0.0
+loads database,0.0
+loads so,0.0
+loads then,0.0
+loads under,0.0
+locate,0.0
+locate all,0.0
+locked,0.0
+locked in,0.0
+log,0.0
+log all,0.0
+log change,0.0
+log corrupt,0.0
+log recorded,0.0
+log request,0.0
+log retention,0.0
+log user_id,0.0
+log warning,0.0
+logged,0.0
+logged so,0.0
+logged then,0.0
+logging,1.929440286184498e-05
+logging access,0.0
+logging aggregation,0.0
+logging for,0.0
+logging monitoring,0.0
+logging optimization,0.0
+logging optimized,0.0
+logging we,0.0
+logic,0.0
+logic according,0.0
+logic as,0.0
+logic is,0.0
+logic load,0.0
+logic produces,0.0
+logic runs,0.0
+login,0.0
+login dashboard,0.0
+login instructions,0.0
+logs,0.0
+logs 30,0.0
+logs 90,0.0
+logs from,0.0
+logs in,0.0
+logs retention,0.0
+logs year,0.0
+logs years,0.0
+long,0.0
+long running,0.0
+longer,0.0
+longer than,0.0
+lookup,0.0
+lookup as,0.0
+lookup so,0.0
+lookups,0.0
+lookups don,0.0
+lookups must,0.0
+loop,0.0
+loop for,0.0
+loss,0.0
+loss given,0.0
+loss is,0.0
+low,0.0
+low risk,0.0
+low scenario,0.0
+low volume,0.0
+low within,0.0
+low workflow,0.0
+machine,0.0
+machine learning,0.0
+made,0.0
+made by,0.0
+made then,0.0
+made when,0.0
+main,0.0
+main branch,0.0
+main dev,0.0
+main requires,0.0
+mainframe,2.757620897522273e-10
+mainframe files,2.9050229045021253e-10
+mainframe team,0.0
+maintain,0.0
+maintain consistency,0.0
+maintain register,0.0
+maintain session,0.0
+maintainability,0.0
+maintainable,0.0
+maintainable given,0.0
+maintained,0.0
+maintained given,0.0
+maintained list,0.0
+maintained on,0.0
+maintenance,0.0
+maintenance 24x7,0.0
+maintenance doesn,0.0
+maintenance tasks,0.0
+maintenance window,0.0
+major,0.0
+major feature,0.0
+major incidents,0.0
+make,0.0
+make changes,0.0
+make it,0.0
+make the,0.0
+malformed,0.0
+malformed records,0.0
+managed,0.0
+managed consistently,0.0
+managed identify,0.0
+managed need,0.0
+management,0.0
+management as,0.0
+management integration,0.0
+management plan,0.0
+management process,0.0
+management strategy,0.0
+management using,0.0
+management workflow,0.0
+manager,4.8680465374640114e-08
+manager approval,0.0
+manager as,0.0
+manager assigned,0.0
+manager can,0.0
+manager in,0.0
+manager so,0.0
+manager want,8.501128946892241e-07
+manager will,0.0
+managers,0.0
+managers for,0.0
+mandatory,0.0
+manual,0.0
+manual for,0.0
+manual intervention,0.0
+manual processes,0.0
+manual report,0.0
+manual review,1.869906645791412e-05
+manual so,0.0
+manual then,0.0
+map,0.0
+map for,0.0
+map physical,0.0
+mapping,0.0
+mapping if,0.0
+masked,0.0
+masking,0.0
+master,0.0
+master want,0.0
+match,0.0
+match the,0.0
+matches,0.0
+matches known,0.0
+matches the,0.0
+matching,0.0
+materialized,0.0
+materialized views,0.0
+matrix,1.2270026244847377e-08
+matrix for,0.0
+matrix so,3.512879044385272e-09
+max,0.0
+me,0.0
+measure,0.0
+measured,0.0
+mechanism,0.0
+media,0.0
+media alert,0.0
+media alerts,0.0
+media data,0.0
+media monitoring,0.0
+media posts,0.0
+media signals,0.0
+media watchlist,0.0
+medium,0.0
+meet,0.0
+meet our,0.0
+meet the,0.0
+meeting,0.0
+meeting as,0.0
+meeting notes,0.0
+meeting so,0.0
+meeting when,0.0
+meeting where,0.0
+meets,7.040753044222141e-11
+meets expectations,0.0
+members,0.0
+members as,0.0
+memory,0.0
+merge,0.0
+merge to,0.0
+merged,0.0
+merged given,0.0
+met,0.0
+met given,0.0
+metrics,0.0
+metrics are,0.0
+metrics so,0.0
+migration,0.0
+milestone,0.0
+milestone plan,0.0
+milestones,0.0
+min,0.0
+minimized,0.0
+minimized given,0.0
+minimum,0.0
+minute,0.0
+minute per,0.0
+minutes,0.0
+mismatch,0.0
+missing,0.0
+mistakes,0.0
+mistakes are,0.0
+mitigated,0.0
+mixing,0.0
+mixing service,0.0
+ml,0.0
+ml model,0.0
+model,0.0
+model for,0.0
+model runs,0.0
+module,0.0
+module as,0.0
+module exists,0.0
+money,0.0
+money laundering,0.0
+money mule,0.0
+money mules,0.0
+monitor,0.0
+monitor dark,0.0
+monitored,0.0
+monitoring,0.0
+monitoring as,0.0
+monitoring for,0.0
+monitoring so,0.0
+month,0.0
+monthly,0.0
+monthly then,0.0
+mortem,0.0
+mortem template,0.0
+move,0.0
+move forward,0.0
+move to,0.0
+moving,0.0
+mule,0.0
+mule account,0.0
+mules,0.0
+multiple,0.0
+multiple accounts,0.0
+must,0.0
+must be,0.0
+must capture,0.0
+must check,0.0
+must complete,0.0
+must create,0.0
+must generate,0.0
+must have,0.0
+must identify,0.0
+must include,0.0
+must log,0.0
+must match,0.0
+must receive,0.0
+must reduce,0.0
+must show,0.0
+must support,0.0
+must trigger,0.0
+must use,0.0
+mvp,0.0
+my,0.0
+my manager,0.0
+name,0.0
+name and,0.0
+navigation,0.0
+navigation alert,0.0
+need,0.009904853743837079
+need is,0.0
+need to,0.0024151333633516524
+needed,0.0
+needful,0.0
+needful for,0.0
+needful then,0.0
+needful to,0.0
+needs,0.0
+needs are,0.0
+negative,0.0
+negative news,0.0
+network,0.0
+network isolation,0.0
+new,0.0
+new alerts,0.0
+new changes,0.0
+new code,0.0
+new data,0.0
+new developers,0.0
+new functions,0.0
+new requirement,0.0
+new version,0.0
+news,0.0
+news monitoring,0.0
+next,0.0
+nfrs,0.0
+nft,0.0
+nightly,0.0
+no,0.0
+non,0.0
+non prod,0.0
+non production,0.0
+norkom,0.0
+norkom aml,0.0
+norkom api,0.0
+norkom contract,0.0
+norkom ui,0.0
+not,0.0
+notes,0.0
+notification,0.0
+null,0.0
+null counts,0.0
+oauth2,0.0
+objectives,0.0
+obtain,0.0
+obtained,0.0
+occurs,0.0
+occurs then,0.0
+ocr,0.0
+of,0.0
+of all,0.0
+of historical,0.0
+of norkom,0.0
+of the,0.0
+ofac,0.0
+ofac sanctions,0.0
+off,0.0
+off by,0.0
+officer,0.0
+officer want,0.0
+older,0.0
+older than,0.0
+on,5.7947966835549046e-05
+on 20,0.0
+on call,0.0
+on data,0.0
+on the,0.0
+on time,0.0
+onboarding,0.0
+onboarding plan,0.0
+one,0.0
+one alert,0.0
+only,6.531388948265215e-07
+only authorized,0.0
+open,0.0
+opens,0.0
+operations,0.0
+operations lead,0.0
+operations manager,0.0
+operations team,0.0
+operator,0.0
+operator want,1.0385384169149286e-05
+optimization,0.0
+optimization as,0.0
+optimization for,0.0
+optimized,0.0
+or,0.0
+oracle,0.0
+oracle as,0.0
+oracle control,0.0
+oracle so,0.0
+oracle staging,0.0
+organized,0.0
+organized by,0.0
+other,0.0
+other module,0.0
+our,0.0
+our conversation,0.0
+our discussion,0.0
+our team,0.0
+out,0.0
+out of,0.0
+outage,0.0
+outcome,0.0
+outcomes,0.0
+output,0.0
+output exists,0.0
+over,0.0
+over time,0.0
+owner,0.0
+owner so,0.0
+owners,0.0
+owners due,0.0
+ownership,0.0
+page,8.259519635265927e-05
+pagerduty,0.0
+pagerduty alert,0.0
+parallel,0.0
+parallel processing,0.0
+parameters,0.0
+parties,0.0
+partitions,0.0
+partitions by,0.0
+party,0.0
+pass,0.0
+pass security,0.0
+passes,0.0
+past,0.0
+past mistakes,0.0
+patch,0.0
+patch management,0.0
+path,0.0
+pattern,0.0
+pattern matches,0.0
+patterns,0.0
+pending,0.0
+pending code,0.0
+pending items,0.0
+pending request,0.0
+pending stories,0.0
+pep,0.0
+per,0.0
+per hour,0.0
+per minute,0.0
+per our,0.0
+per the,0.0
+percent,0.0
+percent of,0.0
+percent with,0.0
+perform,0.0
+performance,0.0019497080730368145
+performance engineer,0.0
+performance improves,0.0
+performance is,0.0
+performance regression,0.0
+performance report,0.0
+performance so,0.0
+performance test,0.0
+performance tests,0.0
+permissions,0.0
+phase,0.0
+phase so,0.0
+physical,0.0
+pii,0.0
+pii as,0.0
+pii classification,0.0
+pii columns,0.0
+pii data,0.0
+pii is,0.0
+pipe,0.0
+pipeline,0.0
+plan,3.7527611009444254e-06
+plan analysis,0.0
+plan as,0.0
+plan exists,0.0
+plan for,0.0
+plan so,0.0
+planned,0.0
+planned given,0.0
+planned in,0.0
+planning,0.0
+planning document,0.0
+planning meeting,0.0
+platforms,0.0
+playbook,0.0
+plus,0.0
+plus high,0.0
+plus low,0.0
+po,0.0
+po want,0.0
+policy,0.0
+policy for,0.0
+policy so,0.0
+pool,0.0
+pooling,0.0
+pooling for,0.0
+positive,0.0
+positive analysis,0.0
+positive rate,0.0
+positives,0.0
+possible,0.0
+possible given,0.0
+post,0.0
+post mortem,0.0
+posted,0.0
+posting,0.0
+posts,0.0
+posts as,0.0
+posts so,0.0
+potential,0.0
+potential money,0.0
+pr,0.0
+practices,0.0
+prepare,0.0
+prepare for,0.0
+preserved,0.0
+previous,0.0
+previous aml,0.0
+previous version,0.0
+price,0.0
+prioritization,0.0
+prioritize,0.0
+prioritized,0.0
+priority,0.0
+priority alert,0.0
+priority and,0.0
+privacy,0.0
+privacy coin,0.0
+privacy officer,0.0
+proactively,0.0
+problem,0.0
+problem should,0.0
+problems,0.0
+procedures,0.0
+proceed,0.0
+proceed given,0.0
+process,3.562196881408847e-10
+process as,6.592792720899828e-10
+process flow,0.0
+process instagram,0.0
+process is,0.0
+process should,0.0
+process so,0.0
+processed,8.108217867846368e-10
+processed data,0.0
+processed files,0.0
+processes,0.0
+processing,2.2930879257501976e-08
+processing completes,0.0
+processing for,0.0
+processing runs,0.0
+processing so,0.0
+procurement,0.0
+procurement lead,0.0
+prod,0.0
+product,0.0
+product manager,0.0
+product meets,0.0
+product owner,0.0
+product should,0.0
+production,0.0
+production data,0.0
+production environments,0.0
+professional,0.0
+professional money,0.0
+profile,0.0
+profile so,0.0
+profiling,0.0
+program,0.0
+program manager,0.0
+progress,0.0
+prohibited,0.0
+project,1.842420418119367e-05
+project charter,0.0
+project manager,1.9859356640907965e-05
+project plan,0.0
+project should,0.0
+project so,0.0
+projects,0.0
+promotion,0.0
+promotion criteria,0.0
+proper,0.0
+proper testing,0.0
+property,0.0
+protected,0.0
+protection,0.0
+prototype,0.0
+provided,0.0
+provided comments,0.0
+provided in,0.0
+provided when,0.0
+provides,0.0
+provisioned,0.0
+provisioning,0.0
+publishes,0.0
+pull,0.0
+pull request,0.0
+purchase,0.0
+python,0.0
+qa,0.0
+qa engineer,0.0
+qa lead,0.0
+qa team,0.0
+quality,0.0
+quality analyst,0.0
+quality dashboard,0.0
+quality gate,0.0
+quality improves,0.0
+quality is,0.0
+quality issue,0.0
+quality issues,0.0
+quality metrics,0.0
+quality rules,0.0
+quality scorecard,0.0
+quality sla,0.0
+quality thresholds,0.0
+quarterly,0.0
+queried,0.0
+queries,0.0
+queries are,0.0
+query,0.0
+query performance,0.0
+query response,0.0
+query timeout,0.0
+queue,0.0
+queue for,1.273823850248847e-07
+quickly,0.0
+quickly given,0.0
+raci,8.714889684130899e-08
+raci matrix,0.0
+raised,0.0
+raised by,0.0
+random,0.0
+range,0.0
+rate,0.0
+rate limit,0.00011828390111133688
+rate limiting,0.0
+rate limits,0.0
+rate target,0.0
+rbac,0.0
+re,0.0
+re review,0.0
+read,0.0
+ready,0.0
+ready for,0.0
+ready when,0.0
+real,0.0
+real estate,0.0
+real time,0.0
+realistic,0.0
+reason,0.0
+reasons,0.0
+receive,0.0
+received,0.0
+received in,0.0
+receives,0.0
+recent,0.0
+recommendations,0.0
+reconcile,0.0
+reconcile record,0.0
+reconciliation,0.0
+record,0.0
+record count,0.0
+record counts,0.0
+record is,0.0
+records,1.2119486789506346e-09
+records as,0.0
+records when,0.0
+records with,0.0
+recovery,0.0
+recovery test,0.0
+red,0.0
+reduce,0.0
+reduce by,0.0
+reduced,0.0
+reference,0.0
+reference data,0.0
+references,0.0
+referential,0.0
+referential integrity,0.0
+refinement,0.0
+reflect,0.0
+refresh,0.0
+refresh frequency,0.0
+refreshed,0.0
+refreshes,0.0
+refreshes then,0.0
+register,0.0
+register as,0.0
+register of,0.0
+regression,0.0
+regression detection,0.0
+regression test,0.0
+regression testing,0.0
+regressions,0.0
+regular,0.0
+regulations,0.0
+regulatory,0.0
+regulatory audit,0.0
+regulatory requirements,0.0
+regulatory reviews,0.0
+reject,0.0
+rejected,0.0
+related,0.0
+related alerts,0.0
+relationships,0.0
+release,0.0
+release is,0.0
+release manager,0.0
+release notes,0.0
+release should,0.0
+releases,0.0
+relevant,0.0
+reliability,0.0
+reliable,0.0
+remain,0.0
+remediation,0.0
+remediation plan,0.0
+report,0.0
+report as,0.0
+report exists,0.0
+report for,0.0
+report generation,0.0
+report must,0.0
+report so,0.0
+report template,0.0
+reporting,0.0
+reports,0.0
+repository,0.0
+representation,0.0
+request,0.0
+request as,0.0
+request exists,0.0
+request so,0.0
+request was,0.0
+request when,0.0
+requested,0.0
+requested as,0.0
+requested by,0.0
+requested in,0.0
+requests,0.0
+requests per,0.0
+require,0.0
+required,0.0
+requirement,0.0
+requirement as,0.0
+requirement document,0.0
+requirements,0.0
+requirements are,0.0
+requirements as,0.0
+requirements document,0.0
+requirements exist,0.0
+requirements should,0.0
+requirements when,0.0
+resolved,0.0
+resolved given,0.0
+resource,0.0
+response,0.0
+response playbook,0.0
+response time,0.0
+response times,0.0
+rest,0.0
+restart,0.0
+restore,0.0
+retain,0.0
+retained,0.0
+retention,0.0
+retention and,0.0
+retention audit,0.0
+retention policy,0.0
+retrospective,0.0
+retry,0.0
+returns,0.0
+returns 429,0.0
+reused,0.0
+review,0.0
+review as,0.0
+review comments,0.0
+review feedback,0.0
+review format,0.0
+review given,0.0
+review of,0.0
+review so,0.0
+review the,0.0
+review will,0.0
+reviewed,0.0
+reviewer,0.0
+reviewer provided,0.0
+reviews,0.0
+reviews are,0.0
+risk,0.0
+risk analyst,0.0
+risk assessment,0.0
+risk customers,0.0
+risk score,0.0
+risk scoring,0.0
+risk tier,0.0
+risk_score,0.0
+risks,0.0
+roadmap,0.0
+role,0.0
+role based,0.0
+role is,0.0
+roles,0.0
+roles and,0.0
+rollback,0.0
+root,0.0
+root cause,0.0
+rotation,0.0
+routine,0.0
+rows,0.0
+rpo,0.0
+rpo 15,0.0
+rto,0.0
+rule,0.0
+rules,0.0
+rules as,0.0
+rules engine,0.0
+rules must,0.0
+rules so,0.0
+run,0.0
+run daily,0.0
+run then,0.0
+runbook,0.0
+running,0.0
+runs,0.0
+runs at,0.0
+runs automatically,0.0
+runs then,0.0
+runs when,0.0
+s3,0.0
+same,0.0
+same content,0.0
+sample,0.0
+sampling,0.0
+sanctions,0.0
+sanctions list,0.0
+sanctions lists,0.0
+sar,0.0
+sar filings,0.0
+sar generation,0.0
+satisfied,0.0
+satisfied given,0.0
+satisfy,0.0
+satisfy the,0.0
+scalability,0.0
+scan,0.0
+scan clean,0.0
+scenario,0.0
+scenario engine,0.0
+scenario execution,0.0
+scenarios,0.0
+scenarios as,0.0
+scenarios can,0.0
+scenarios run,0.0
+scenarios so,0.0
+schedule,0.0
+schedule as,0.0
+scheduled,0.0
+schema,0.0
+scientist,0.0
+scientist want,0.0
+scope,0.0
+scope is,0.0
+score,0.0
+score is,0.0
+score must,0.0
+score so,0.0
+scorecard,0.0
+scorecard for,0.0
+scores,0.0
+scoring,0.0
+scoring as,0.0
+scoring model,0.0
+screened,0.0
+screening,0.0
+screenshot,0.0
+screenshot on,0.0
+script,0.0
+scrum,0.0
+scrum master,0.0
+searchable,0.0
+seconds,0.0
+secrets,0.0
+secrets management,0.0
+sections,0.0
+secure,0.0
+secure given,0.0
+security,0.013444014378456891
+security admin,0.0
+security analyst,0.0
+security architect,0.0
+security architecture,0.0
+security audit,0.0
+security compliance,0.0
+security controls,0.0
+security engineer,0.0
+security events,0.0
+security findings,0.0
+security incident,0.0
+security manager,0.0
+security patch,0.0
+security review,0.0
+security scan,0.0
+security training,0.0
+see,0.0
+seg_customer_classification,0.0
+segment,0.0
+segmentation,0.0
+segmentation logic,0.0
+segments,0.0
+select,0.0
+selected,0.0
+send,0.0
+send alert,0.0
+send pagerduty,0.0
+send to,0.0
+sensitive,0.0
+sensitive data,0.0
+sent,4.285675867089262e-08
+sent to,0.0
+sentiment,0.0
+sentiment trend,0.0
+server,0.0
+server is,0.0
+server so,0.0
+service,0.0
+service level,0.0
+services,0.0
+session,0.0
+session as,0.0
+session output,0.0
+session so,0.0
+set,0.0
+set up,0.0
+setup,0.0
+severity,0.0
+severity levels,0.0
+shared,0.0
+shell,0.0
+shell companies,0.0
+shell company,0.0
+should,0.017428510199128274
+should approve,0.0
+should be,0.0
+should follow,0.0
+should go,0.0
+should have,0.0
+should improve,0.0
+should match,0.0
+should meet,0.0
+should pass,0.0
+should reflect,0.0
+should satisfy,0.0
+should work,0.0
+show,0.0
+showing,0.00016743007977043208
+siem,0.0
+sign,0.0
+sign off,0.0
+signals,0.0
+signed,0.0
+signed off,0.0
+single,0.0
+sla,0.0
+sla compliance,0.0
+sla for,0.0
+sla is,0.0
+sla monitoring,0.0
+slack,0.0
+slas,0.0
+slas are,0.0
+slas for,0.0
+slas given,0.0
+slow,0.0
+slow queries,0.0
+small,0.0
+smoke,0.0
+smoke tests,0.0
+smoothly,0.0
+so,0.00046894332170610656
+so that,0.00041452024569731507
+soc2,0.0
+social,0.0
+social media,0.0
+software,0.0
+solution,0.0
+solution as,0.0
+source,0.0
+source and,0.0
+source file,0.0
+source files,0.0
+sources,8.614129426889546e-11
+sources as,0.0
+sources so,0.0
+spec,0.0
+spec as,0.0
+specification,0.0
+specification document,0.0
+specifications,0.0
+specifies,0.0
+specifies so,0.0
+sponsor,0.0
+sprint,0.0
+sprint backlog,0.0
+sprint commitment,0.0
+sprint goal,0.0
+sprint plan,0.0
+sprint planning,0.0
+sprint review,0.0
+sprint should,0.0
+sprint so,0.0
+sprint when,0.0
+sprints,0.0
+sql,0.0
+sre,0.0
+sre want,0.0
+ssn,0.0
+stable,0.0
+stable given,0.0
+stack,0.0
+stages,0.0
+staging,0.0
+staging tables,0.0
+staging to,0.0
+stakeholder,0.0
+stakeholder review,0.0
+stakeholders,6.317202802738675e-07
+stakeholders are,0.0
+stakeholders as,2.70133913627311e-06
+stakeholders should,0.0
+standard,0.0
+standard development,0.0
+standard template,0.0
+standardized,0.0
+standards,0.0
+standards are,0.0
+standards exist,0.0
+standards so,0.0
+standby,0.0
+standup,0.0
+start,0.0
+starts,0.0
+starts then,0.0
+statistics,0.0
+statistics null,0.0
+status,0.0
+status call,0.0
+status report,0.0
+stay,0.0
+stay current,0.0
+stay within,0.0
+step,0.0
+steps,0.0
+steps must,0.0
+stg_customer_trx,0.0
+stg_customer_trx table,0.0
+storage,0.0
+store,0.0
+store customer,0.0
+stored,0.0
+stored in,0.0
+stories,0.0
+stories that,0.0
+story,0.0
+story mapping,0.0
+strategy,0.0
+strategy as,0.0
+strategy for,0.0
+structure,0.0
+structured,0.0
+structured onboarding,0.0
+submitted,0.0
+submitted on,0.0
+success,0.0
+success criteria,0.0
+successful,0.0
+successful given,0.0
+suite,0.0
+suite for,0.0
+summary,0.0
+support,0.0
+support ticket,0.0
+suspicious,0.0
+suspicious activities,0.0
+suspicious activity,0.0
+sync,0.0
+sync meeting,0.0
+system,0.0
+system as,0.0
+system given,0.0
+system health,0.0
+system is,0.0
+system matches,0.0
+system meets,0.0
+system must,0.0
+system outage,0.0
+system should,0.0
+system so,0.0
+systems,0.0
+systems integrator,0.0
+table,0.0
+table has,0.0
+table must,0.0
+tables,0.0
+tables and,0.0
+tables as,0.0
+tables so,0.0
+talked,0.0
+talked about,0.0
+target,0.0
+target 99,0.0
+task,0.0
+task as,0.0
+task list,0.0
+tasks,0.0
+tasks are,0.0
+tasks from,0.0
+tasks that,0.0
+tbd,0.0
+team,0.0
+team as,0.0
+team can,0.0
+team has,0.0
+team meeting,0.0
+team members,0.0
+team performance,0.0
+team so,0.0
+team standards,0.0
+team will,0.0
+tech,0.0
+tech lead,0.0
+technical,0.0
+technical architect,0.0
+technical debt,0.0
+technical design,0.0
+technical lead,0.0
+technical review,0.0
+technical spec,0.0
+template,0.0
+template as,0.0
+template sections,0.0
+template so,0.0
+template with,0.0
+templates,0.0
+temporal,0.0
+temporal analysis,0.0
+termination,0.0
+terms,0.0
+test,0.0
+test as,0.0
+test data,0.0
+test environment,0.0
+test feedback,0.0
+test scenarios,0.0
+test schedule,0.0
+test should,0.0
+test suite,0.0
+test team,0.0
+test with,0.0
+tested,0.0
+testing,0.0
+testing as,0.0
+testing is,0.0
+testing phase,0.0
+testing so,0.0
+testing team,0.0
+testing uses,0.0
+tests,0.0
+tests for,0.0
+tests pass,0.0
+tests run,0.0
+tests should,0.0
+text,0.0
+than,0.0
+than 15,0.0
+than 24hr,0.0
+than 30,0.0
+than 80,0.0
+than 99,0.0
+than seconds,0.0
+that,0.05729308816277748
+that all,0.0
+that aml,0.0
+that are,0.0
+that audit,0.0
+that bank,0.0
+that came,0.0
+that can,0.0
+that code,0.0
+that consistency,0.0
+that customer,0.0
+that data,0.0
+that development,0.0
+that downstream,0.0
+that downtime,0.0
+that etl,0.0
+that everyone,0.0
+that false,0.0
+that high,0.0
+that incoming,1.33647238604359e-09
+that investigators,0.0
+that is,0.0
+that issues,0.0
+that it,0.0
+that new,0.0
+that norkom,0.0
+that only,0.0
+that past,0.0
+that performance,0.0
+that pii,0.0
+that processing,0.0
+that prohibited,0.0
+that quality,0.0
+that recovery,0.0
+that regulatory,0.0
+that requirements,0.0
+that runs,0.0
+that slas,0.0
+that solution,0.0
+that stakeholders,0.0
+that system,0.0
+that team,0.0
+that testing,0.0
+that the,0.0
+that they,0.0
+that users,0.0
+that vulnerabilities,0.0
+that was,0.0
+that we,0.0
+that were,0.0
+the,0.838504874726762
+the action,0.0
+the approved,0.0
+the architect,0.0
+the architecture,0.0
+the ba,0.0
+the backlog,0.0
+the brainstorming,0.0
+the business,0.0
+the call,0.0
+the change,0.0
+the changes,0.0
+the code,0.0
+the codebase,0.0
+the comments,0.0
+the completed,0.0
+the concerns,0.0
+the conversation,0.0
+the daily,0.0
+the data,0.0
+the dba,0.0
+the demo,0.0
+the dependency,0.0
+the deployment,0.0
+the design,0.0
+the disaster,0.0
+the discussion,0.0
+the document,0.0
+the documentation,0.0
+the earlier,0.0
+the email,0.0
+the environment,0.0
+the existing,0.0
+the feedback,0.0
+the final,0.0
+the implementation,0.0
+the instructions,0.0
+the issue,0.0
+the issues,0.0
+the jira,0.0
+the last,0.0
+the lead,0.0
+the lessons,0.0
+the manager,0.0
+the meeting,0.0
+the milestone,0.0
+the module,0.0
+the need,0.0
+the needful,0.0
+the new,0.0
+the other,0.0
+the pending,0.0
+the performance,0.0
+the plan,0.0
+the planning,0.0
+the pr,0.0
+the previous,0.0
+the problem,0.0
+the process,0.0
+the product,0.0
+the project,0.0
+the prototype,0.0
+the quality,0.0
+the queries,0.0
+the release,0.0
+the request,0.0
+the requirement,0.0
+the requirements,0.0
+the retrospective,0.0
+the review,0.0
+the reviewer,0.0
+the risk,0.0
+the scope,0.0
+the security,0.0
+the solution,0.0
+the spec,0.0
+the specification,0.0
+the sprint,0.0
+the stakeholder,0.0
+the stakeholders,0.0
+the standard,0.0
+the status,0.0
+the stories,0.0
+the support,0.0
+the system,0.0
+the task,0.0
+the tasks,0.0
+the team,0.0
+the technical,0.0
+the test,0.0
+the testing,0.0
+the things,0.0
+the ticket,0.0
+the troubleshooting,0.0
+the upcoming,0.0
+the user,0.0
+the users,0.0
+the validation,0.0
+the whiteboard,0.0
+the work,0.0
+the workflow,0.0
+their,0.0
+them,0.0
+them given,0.0
+them then,0.0
+then,1.2182152525688943e-06
+then alert,0.0
+then all,0.0
+then behavior,0.0
+then customer,0.0
+then customers,0.0
+then dashboard,0.0
+then data,0.0
+then each,0.0
+then flag,0.0
+then generate,0.0
+then high,0.0
+then it,0.0
+then must,0.0
+then new,0.0
+then only,0.0
+then output,0.0
+then report,0.0
+then response,0.0
+then risk,0.0
+then send,0.0
+then steps,0.0
+then system,0.0
+then the,1.0060887939387187e-10
+then they,0.0
+there,0.0
+they,0.0
+they are,0.0
+they can,0.0
+they must,0.0
+they should,0.0
+things,0.0
+things we,0.0
+third,0.0
+third party,0.0
+this,9.115189570037885e-05
+thread,0.0
+threshold,0.0
+threshold changes,0.0
+threshold tuning,0.0
+thresholds,0.0
+thresholds so,0.0
+throttle,0.0
+throttling,0.0
+through,0.0
+throughput,0.0
+ticket,0.0
+ticket as,0.0
+ticket has,0.0
+ticket that,0.0
+tier,0.0
+tier refresh,0.0
+time,0.0
+time given,0.0
+time must,0.0
+time so,0.0
+time social,0.0
+timeline,0.0
+timeline and,0.0
+timeliness,0.0
+timeout,0.0
+timeout handling,0.0
+timeout when,0.0
+times,0.0
+times plus,0.0
+timestamp,0.0
+timestamp and,0.0
+tls,0.0
+tls configuration,0.0
+to,0.0003057731298019503
+to 100,0.0
+to access,0.0
+to address,0.0
+to analyze,0.0
+to assign,0.0
+to backup,0.0
+to be,0.0
+to build,0.0
+to complete,0.0
+to configure,0.0
+to create,0.0
+to database,0.0
+to dead,2.8020838239625797e-09
+to detect,0.0
+to dev,0.0
+to do,0.0
+to document,0.0
+to end,0.0
+to export,0.0
+to fix,0.0
+to generate,0.0
+to have,0.0
+to identify,0.0
+to implement,0.0
+to improve,0.0
+to integrate,0.0
+to load,0.0
+to main,0.0
+to make,0.0
+to me,0.0
+to monitor,0.0
+to norkom,0.0
+to prepare,0.0
+to prod,0.0
+to receive,0.0
+to reconcile,0.0
+to s3,0.0
+to score,0.0
+to see,0.0
+to set,0.0
+to staging,0.0
+to standby,0.0
+to store,0.0
+to the,0.0
+to track,0.0
+to update,0.0
+to validate,0.0
+to write,0.0
+token,0.0
+tomorrow,0.0
+tomorrow standup,0.0
+top,0.0
+top 10,0.0
+total,0.0
+track,0.0
+track data,0.0
+tracked,0.0
+tracking,0.0
+tracking process,0.0
+trail,0.0
+trail for,0.0
+trail of,0.0
+trainer,0.0
+trainer want,0.0
+training,0.0
+training for,0.0
+training plan,0.0
+transaction,0.0
+transaction data,0.0
+transaction lookup,0.0
+transaction monitoring,0.0
+transaction patterns,0.0
+transaction summary,0.0
+transaction volume,0.0
+transaction_date,0.0
+transaction_id,0.0
+transaction_id customer_id,0.0
+transactions,0.0
+transactions so,0.0
+transactions when,0.0
+transformation,0.0
+transformed,0.0
+trend,0.0
+trends,0.0
+trigger,0.0
+triggered,0.0
+triggers,0.0
+troubleshooting,0.0
+troubleshooting session,0.0
+tuning,0.0
+twitter,0.0
+twitter api,0.0
+txt,0.0
+txt file,0.0
+type,0.0
+typologies,0.0
+typologies then,0.0
+uat,0.0
+uat test,0.0
+ui,0.0
+ui as,0.0
+ui changes,0.0
+ui effectively,0.0
+ui so,0.0
+ui to,0.0
+ui when,0.0
+ultimate,0.0
+un,0.0
+under,0.0
+understand,0.0
+understand data,0.0
+unit,0.0
+unit tests,0.0
+unix,0.0
+unix oracle,0.0
+unix server,0.0
+unusual,0.0
+up,0.0
+up the,0.0
+up to,0.0
+upcoming,0.0
+update,0.0
+update automation,0.0
+update every,0.0
+update the,0.0
+updated,0.0
+updates,0.0
+updates when,0.0
+upstream,0.0
+uptime,0.0
+us,0.0
+us compliance,0.0
+use,0.0
+use norkom,0.0
+used,0.0
+used for,0.0
+user,0.0
+user acceptance,0.0
+user accesses,0.0
+user demo,0.0
+user expectations,0.0
+user logs,0.0
+user should,0.0
+user story,0.0
+user_id,0.0
+users,0.0
+users are,0.0
+users get,0.0
+uses,0.0
+using,0.0
+validate,0.0
+validated,0.0
+validation,0.0
+validation framework,0.0
+validation report,0.0
+value,0.0
+values,0.0
+vasp,0.0
+vault,0.0
+velocity,0.0
+vendor,0.0
+vendor assessment,0.0
+verification,0.0
+verified,0.0
+verify,0.0
+verify identity,0.0
+version,0.0
+version as,0.0
+version exists,0.0
+version of,0.0
+via,0.0
+video,0.0
+view,0.0
+views,0.0
+views for,0.0
+virtual,0.0
+virtual asset,0.0
+volume,0.0
+volume is,0.0
+volume plus,0.0
+vpc,0.0
+vs,0.0
+vs actual,0.0
+vulnerabilities,0.0
+vulnerabilities are,0.0
+vulnerability,0.0
+want,2.6931337712289797e-05
+want alerts,0.0
+want all,0.0
+want api,0.0
+want automated,0.0
+want baseline,0.0
+want checklist,0.0
+want code,0.0
+want complete,0.0
+want configurable,0.0
+want connection,0.0
+want data,0.0
+want detailed,0.0
+want failed,0.00017899222119991846
+want formal,0.0
+want github,0.0
+want quarterly,0.0
+want rate,0.0
+want rbac,0.0
+want standard,0.0
+want standardized,0.0
+want structured,0.0
+want to,8.994509348367677e-05
+want ui,0.0
+want weekly,0.0
+was,0.0
+was agreed,0.0
+was approved,0.0
+was asked,0.0
+was assigned,0.0
+was discussed,0.0
+was made,0.0
+was planned,0.0
+was provided,0.0
+was requested,0.0
+watchlist,0.0
+watchlist screening,0.0
+watchlist update,0.0
+we,0.0
+we are,0.0
+we can,0.0
+we deliver,0.0
+we detect,0.0
+we discussed,0.0
+we identify,0.0
+we meet,0.0
+we need,0.0
+we prioritize,0.0
+we talked,0.0
+we understand,0.0
+web,0.0
+webhook,0.0
+week,0.0
+week plan,0.0
+weekly,0.0
+weekly from,0.0
+weekly report,0.0
+weekly status,0.0
+weeks,0.0
+were,0.0
+were discussed,0.0
+were found,0.0
+were identified,0.0
+were raised,0.0
+what,0.0
+what the,0.0
+what was,0.0
+when,1.5974066141244444e-07
+when address,0.0
+when any,0.0
+when audit,0.0
+when complete,0.0
+when compliance,0.0
+when connection,0.0
+when create,0.0
+when customer,0.0
+when daily,0.0
+when dashboard,0.0
+when data,0.0
+when do,0.0
+when document,0.0
+when etl,0.0
+when fix,0.0
+when follow,0.0
+when funds,0.0
+when implement,0.0
+when job,0.0
+when make,0.0
+when model,0.0
+when new,0.0
+when pattern,0.0
+when performance,0.0
+when role,0.0
+when run,0.0
+when source,0.0
+when the,0.0
+when training,0.0
+when transaction,0.0
+when update,0.0
+when write,0.0
+where,0.00022043242085335795
+which,0.0
+which alerts,0.0
+while,0.0
+whiteboard,0.0
+whiteboard discussion,0.0
+will,1.4641029491146703e-05
+will be,0.0
+will review,0.0
+will verify,0.0
+window,0.0
+window for,0.0
+with,0.0
+with hsbc,0.0
+with owners,0.0
+with priority,0.0
+with proper,0.0
+with risk,0.0
+with the,0.0
+with transaction,0.0
+within,0.0
+within 30,0.0
+within days,0.0
+within hour,0.0
+within hours,0.0
+within minutes,0.0
+without,0.0
+without code,0.0
+work,1.984403315084534e-06
+work as,0.0
+work from,0.0
+work is,0.0
+work like,0.0
+work should,0.0
+work that,0.0
+workflow,0.0
+workflow as,0.0
+workflow diagram,0.0
+workflow for,0.0
+workflow starts,0.0
+working,0.0
+works,0.0
+workshop,0.0
+write,0.0
+write ahead,0.0
+write code,0.0
+xxx,0.0
+xxx xx,0.0
+yaml,0.0
+yaml configuration,0.0
+year,0.0
+year application,0.0
+year data,0.0
+year of,0.0
+year when,0.0
+years,0.0
+years as,0.0
+years for,0.0
+years maintenance,0.0
+years of,0.0
+years security,0.0
+yellow,0.0
+yellow days,0.0
+yesterday,0.0
+vague_term_density,0.017417622231367808

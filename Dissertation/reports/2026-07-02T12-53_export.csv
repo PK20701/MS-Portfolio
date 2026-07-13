@@ -1,0 +1,526 @@
+﻿,Issue key,Rule_Score,ML_Score,Hybrid_Score,Tier,Explanation,Summary
+0,AML-001,95,98.46149338095671,96.38459735238268,GOOD,Ticket meets all quality standards.,Set up Unix server for data ingestion
+1,AML-002,95,99.22842643538606,96.69137057415443,GOOD,Ticket meets all quality standards.,Configure user permissions and roles on Unix
+2,AML-003,95,99.49020206797924,96.7960808271917,GOOD,Ticket meets all quality standards.,Create folder structure for data landing
+3,AML-004,95,98.45959928631012,96.38383971452404,GOOD,Ticket meets all quality standards.,Implement data validation for incoming mainframe files
+4,AML-005,35,0.03368207262213742,21.013472829048855,BAD,Semantic hollowness: Vague language detected. | Description too short | AC not in Gherkin format | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Build ETL code for data transformation
+5,AML-006,95,98.46083870893622,96.38433548357449,GOOD,Ticket meets all quality standards.,Develop Python ETL script to parse mainframe files
+6,AML-007,95,98.46132189113675,96.3845287564547,GOOD,Ticket meets all quality standards.,Create error handling for missing or malformed records
+7,AML-008,95,99.57080867272218,96.82832346908887,GOOD,Ticket meets all quality standards.,Schedule ETL jobs using Control-M
+8,AML-009,95,99.25749409331253,96.70299763732501,GOOD,Ticket meets all quality standards.,Load transformed data into Oracle staging tables
+9,AML-010,50,0.159754679729063,30.063901871891627,BAD,Semantic hollowness: Vague language detected. | AC not in Gherkin format | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Implement incremental load logic
+10,AML-011,95,98.4597476378424,96.38389905513696,GOOD,Ticket meets all quality standards.,Design Oracle table partitions by transaction date
+11,AML-012,95,99.38557262974648,96.75422905189859,GOOD,Ticket meets all quality standards.,Build data enrichment logic to add customer risk score
+12,AML-013,95,98.85074324552578,96.5402972982103,GOOD,Ticket meets all quality standards.,Create transformed table for enriched transaction data
+13,AML-014,95,99.26185864922947,96.7047434596918,GOOD,Ticket meets all quality standards.,Implement customer segmentation logic
+14,AML-015,75,95.44216913323844,83.17686765329537,GOOD,Ticket meets all quality standards.,Build segmentation table SEG_CUSTOMER_CLASSIFICATION
+15,AML-016,95,99.32335233395405,96.72934093358162,GOOD,Ticket meets all quality standards.,Load customer segments into Oracle
+16,AML-017,95,98.45938224210653,96.38375289684262,GOOD,Ticket meets all quality standards.,Integrate NORKOM AML scenario engine
+17,AML-018,95,99.99906634885119,96.99962653954049,GOOD,Ticket meets all quality standards.,Implement AML Scenario 1 - Large Transaction Detection
+18,AML-019,95,99.4453352771793,96.77813411087172,GOOD,Ticket meets all quality standards.,Implement AML Scenario 2 - Rapid Movement Detection
+19,AML-020,95,99.11285397656061,96.64514159062425,GOOD,Ticket meets all quality standards.,Implement AML Scenario 3 - High Risk Country Transfer
+20,AML-021,50,17.285255928232083,36.914102371292834,BAD,Semantic hollowness: Vague language detected. | AC not in Gherkin format | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Implement AML Scenario 4 - Unusual Velocity Detection
+21,AML-022,95,98.90793615402083,96.56317446160833,GOOD,Ticket meets all quality standards.,Store AML alerts in Oracle alert table
+22,AML-023,95,94.17598879912367,94.67039551964947,GOOD,Ticket meets all quality standards.,Implement alert deduplication logic
+23,AML-024,95,97.75258277435812,96.10103310974324,GOOD,Ticket meets all quality standards.,Build NORKOM UI integration for alert display
+24,AML-025,85,97.80488056202313,90.12195222480926,GOOD,Ticket meets all quality standards.,Create alert detail view with transaction history
+25,AML-026,95,98.46184534702664,96.38473813881066,GOOD,Ticket meets all quality standards.,Implement daily alert summary email
+26,AML-027,95,98.45819548446191,96.38327819378478,GOOD,Ticket meets all quality standards.,Set up monitoring for data ingestion failures
+27,AML-028,95,98.4592856096734,96.38371424386936,GOOD,Ticket meets all quality standards.,Implement record count reconciliation
+28,AML-029,95,98.95213208255281,96.58085283302113,GOOD,Ticket meets all quality standards.,Create data quality dashboard
+29,AML-030,60,36.84861872927628,50.739447491710514,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Document NORKOM API integration specification
+30,AML-031,95,99.52065637983162,96.80826255193264,GOOD,Ticket meets all quality standards.,Set up development vs production environments
+31,AML-032,95,98.46370132705388,96.38548053082155,GOOD,Ticket meets all quality standards.,Implement audit logging for all data access
+32,AML-033,95,99.99863603931806,96.99945441572723,GOOD,Ticket meets all quality standards.,Create masking policy for non-production environments
+33,AML-034,75,20.75634365473647,53.30253746189459,BAD,Semantic hollowness: Vague language detected. | AC not in Gherkin format | Due date is missing or invalid | Missing Assignee,Write unit tests for ETL Python code
+34,AML-035,95,98.46122144658133,96.38448857863253,GOOD,Ticket meets all quality standards.,Implement end-to-end integration test
+35,AML-036,95,99.6567732076453,96.86270928305812,GOOD,Ticket meets all quality standards.,Build performance test suite for 1 year data
+36,AML-037,95,98.46298055211571,96.38519222084628,GOOD,Ticket meets all quality standards.,Create disaster recovery runbook
+37,AML-038,95,98.88219734731521,96.55287893892609,GOOD,Ticket meets all quality standards.,Implement data archival strategy
+38,AML-039,95,98.46383037918316,96.38553215167326,GOOD,Ticket meets all quality standards.,Set up Control-M job dependency chain
+39,AML-040,60,1.7533662302212518,36.701346492088504,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Implement restart capability for failed jobs
+40,AML-041,95,98.45951181475169,96.38380472590069,GOOD,Ticket meets all quality standards.,Create technical design document for AML scenarios
+41,AML-042,95,99.39416174636953,96.75766469854781,GOOD,Ticket meets all quality standards.,Implement customer watchlist screening
+42,AML-043,95,99.33507797360028,96.73403118944012,GOOD,Ticket meets all quality standards.,Implement PEP (Politically Exposed Person) detection
+43,AML-044,95,99.12252446511522,96.6490097860461,GOOD,Ticket meets all quality standards.,Create SAR (Suspicious Activity Report) generation module
+44,AML-045,95,98.45911628894333,96.38364651557734,GOOD,Ticket meets all quality standards.,Implement case management workflow
+45,AML-046,50,97.53258994564855,69.01303597825942,BAD,AC not in Gherkin format | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Create weekly MIS report for management
+46,AML-047,95,98.45994842253768,96.38397936901507,GOOD,Ticket meets all quality standards.,Build historical data loader for past 5 years
+47,AML-048,95,99.14812858667894,96.65925143467157,GOOD,Ticket meets all quality standards.,Implement data retention policy for alerts
+48,AML-049,95,98.45986769611021,96.3839470784441,GOOD,Ticket meets all quality standards.,Create user training manual for operations team
+49,AML-050,95,99.2502001061865,96.70008004247461,GOOD,Ticket meets all quality standards.,Implement role-based access control in UI
+50,AML-051,50,98.1391509078091,69.25566036312364,BAD,AC not in Gherkin format | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Set up automated backup for Oracle database
+51,AML-052,95,99.11220300786796,96.64488120314718,GOOD,Ticket meets all quality standards.,Implement data lineage tracking
+52,AML-053,95,99.30784474526362,96.72313789810545,GOOD,Ticket meets all quality standards.,Create smoke test suite for deployment
+53,AML-054,95,99.35135087892638,96.74054035157056,GOOD,Ticket meets all quality standards.,Implement alert prioritization scoring
+54,AML-055,50,5.743699830969047,32.29747993238762,BAD,Semantic hollowness: Vague language detected. | AC not in Gherkin format | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Create feedback loop for false positive analysis
+55,AML-056,95,98.46186380016837,96.38474552006736,GOOD,Ticket meets all quality standards.,Implement bulk export of alerts for regulatory audit
+56,AML-057,95,98.87828139877105,96.55131255950843,GOOD,Ticket meets all quality standards.,Optimize Oracle indexes for query performance
+57,AML-058,60,0.1803961994451851,36.072158479778075,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Implement dead letter queue for failed records
+58,AML-059,95,98.54744835407982,96.41897934163194,GOOD,Ticket meets all quality standards.,Create data dictionary for all tables
+59,AML-060,85,98.46360657757862,90.38544263103145,GOOD,Ticket meets all quality standards.,Implement S3 backup for processed files
+60,AML-061,95,98.96473779030165,96.58589511612067,GOOD,Ticket meets all quality standards.,Set up Grafana monitoring dashboard
+61,AML-062,45,90.30925345352215,63.12370138140886,BAD,Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Category | Missing Assignee | Missing Sub-area,API Integration
+62,AML-063,95,99.34786926339443,96.73914770535777,GOOD,Ticket meets all quality standards.,Create data quality rules engine
+63,AML-064,95,98.84921904083465,96.53968761633386,GOOD,Ticket meets all quality standards.,Implement schema drift detection
+64,AML-065,95,98.46169148506459,96.38467659402585,GOOD,Ticket meets all quality standards.,Build reconciliation dashboard for operations
+65,AML-066,95,98.46219073112155,96.38487629244862,GOOD,Ticket meets all quality standards.,Implement automatic retry for transient failures
+66,AML-067,50,90.32927718127203,66.13171087250882,BAD,AC not in Gherkin format | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Create onboarding documentation for new developers
+67,AML-068,95,99.2502488967564,96.70009955870256,GOOD,Ticket meets all quality standards.,Implement sliding window for velocity detection
+68,AML-069,95,99.37801703696955,96.75120681478782,GOOD,Ticket meets all quality standards.,Threshold tuning interface for CO
+69,AML-070,95,96.01993762172964,95.40797504869187,GOOD,Ticket meets all quality standards.,Implement detailed logging of all scenario executions
+70,AML-071,50,6.769561790918679,32.70782471636747,BAD,Semantic hollowness: Vague language detected. | AC not in Gherkin format | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Create integration tests for each AML scenario
+71,AML-072,95,99.50122362967953,96.80048945187181,GOOD,Ticket meets all quality standards.,Implement hash-based deduplication for incoming files
+72,AML-073,95,98.46007256527389,96.38402902610956,GOOD,Ticket meets all quality standards.,Build customer 360 view for investigators
+73,AML-074,95,99.679080995083,96.8716323980332,GOOD,Ticket meets all quality standards.,Implement alert aging report
+74,AML-075,50,0.5762337887066562,30.230493515482664,BAD,Semantic hollowness: Vague language detected. | AC not in Gherkin format | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Create post-deployment verification checklist
+75,AML-076,95,98.45835723114244,96.38334289245698,GOOD,Ticket meets all quality standards.,Implement rate limiting for API endpoints
+76,AML-077,95,99.20383742231412,96.68153496892566,GOOD,Ticket meets all quality standards.,Build automation for certificate rotation
+77,AML-078,95,98.46142738778106,96.38457095511242,GOOD,Ticket meets all quality standards.,Implement audit trail for threshold changes
+78,AML-079,95,99.67338098042853,96.86935239217141,GOOD,Ticket meets all quality standards.,Create weekly data quality report
+79,AML-080,95,98.45980198208355,96.38392079283342,GOOD,Ticket meets all quality standards.,Implement notification for long-running jobs
+80,AML-081,85,98.46119827583749,90.384479310335,GOOD,Ticket meets all quality standards.,Build source code repository with CI/CD
+81,AML-082,95,99.56107798576569,96.82443119430627,GOOD,Ticket meets all quality standards.,Implement encryption at rest for sensitive data
+82,AML-083,95,99.07680217716035,96.63072087086414,GOOD,Ticket meets all quality standards.,Create incident response playbook
+83,AML-084,85,98.98104546949456,90.59241818779782,GOOD,Ticket meets all quality standards.,Implement VPN access for developers
+84,AML-085,95,99.37143462781552,96.74857385112621,GOOD,Ticket meets all quality standards.,Create SLA dashboard for management
+85,AML-086,50,74.73325241814636,59.89330096725855,BAD,AC not in Gherkin format | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Implement logging aggregation with ELK stack
+86,AML-087,95,98.46129625384326,96.38451850153731,GOOD,Ticket meets all quality standards.,Build automated regression test suite
+87,AML-088,95,98.4605735488357,96.38422941953428,GOOD,Ticket meets all quality standards.,Implement feature flags for scenario rollout
+88,AML-089,50,93.76232793731832,67.50493117492732,BAD,AC not in Gherkin format | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Create monthly regulatory filing report
+89,AML-090,95,99.21519019446082,96.68607607778432,GOOD,Ticket meets all quality standards.,Implement data validation framework
+90,AML-091,50,20.973818837840835,38.38952753513634,BAD,Semantic hollowness: Vague language detected. | AC not in Gherkin format | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Build dependency graph visualizer for Control-M
+91,AML-092,95,99.3027731958919,96.72110927835676,GOOD,Ticket meets all quality standards.,Implement canary deployments for UI changes
+92,AML-093,95,99.71839121419114,96.88735648567646,GOOD,Ticket meets all quality standards.,Create performance benchmark baseline
+93,AML-094,95,98.4635404008188,96.38541616032752,GOOD,Ticket meets all quality standards.,Implement circuit breaker for external calls
+94,AML-095,50,44.16292060603246,47.66516824241299,BAD,Semantic hollowness: Vague language detected. | AC not in Gherkin format | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Create developer productivity metrics dashboard
+95,AML-096,95,99.42537941888418,96.77015176755367,GOOD,Ticket meets all quality standards.,Implement database connection pooling
+96,AML-097,95,98.65434757233436,96.46173902893375,GOOD,Ticket meets all quality standards.,Build data catalog with business glossary
+97,AML-098,95,98.4607709795781,96.38430839183124,GOOD,Ticket meets all quality standards.,Implement role-based data masking
+98,AML-099,95,98.46073894563408,96.38429557825364,GOOD,Ticket meets all quality standards.,Create automated failover for Oracle
+99,AML-100,95,98.65336847117283,96.46134738846914,GOOD,Ticket meets all quality standards.,Implement batch job SLA monitoring
+100,AML-101,95,98.45897063617167,96.38358825446866,GOOD,Ticket meets all quality standards.,Finalize AML solution requirements with HSBC US compliance team
+101,AML-102,95,98.46174214509631,96.38469685803852,GOOD,Ticket meets all quality standards.,Obtain architecture approval from enterprise architects
+102,AML-103,95,99.67022939186488,96.86809175674595,GOOD,Ticket meets all quality standards.,Secure funding approval for AML project
+103,AML-104,95,99.03506545711878,96.61402618284751,GOOD,Ticket meets all quality standards.,Create project charter and get sponsor sign-off
+104,AML-105,50,7.283093703440258,32.9132374813761,BAD,Semantic hollowness: Vague language detected. | AC not in Gherkin format | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Define RACI matrix for AML project stakeholders
+105,AML-106,95,98.46110050584402,96.3844402023376,GOOD,Ticket meets all quality standards.,Procure NORKOM software license
+106,AML-107,95,99.73913767141647,96.89565506856658,GOOD,Ticket meets all quality standards.,Allocate HSBC US data access approvals
+107,AML-108,85,98.46005793735144,90.38402317494058,GOOD,Ticket meets all quality standards.,Create project management plan
+108,AML-109,95,98.46239284584783,96.38495713833913,GOOD,Ticket meets all quality standards.,Define sprint plan for 12 two-week sprints
+109,AML-110,85,98.46299023438371,90.38519609375348,GOOD,Ticket meets all quality standards.,Conduct vendor assessment for NORKOM
+110,AML-111,85,98.46112216075063,90.38444886430025,GOOD,Ticket meets all quality standards.,Setup project repository on GitHub Enterprise
+111,AML-112,95,95.08368205049035,95.03347282019615,GOOD,Ticket meets all quality standards.,Create technical specification document for ETL layer
+112,AML-113,85,98.46147284600798,90.38458913840319,GOOD,Ticket meets all quality standards.,Complete security risk assessment
+113,AML-114,95,98.72948701618259,96.49179480647304,GOOD,Ticket meets all quality standards.,Define data retention policy for AML system
+114,AML-115,85,98.45951590536207,90.38380636214484,GOOD,Ticket meets all quality standards.,Obtain legal review of NORKOM contract
+115,AML-116,85,98.46101944217217,90.38440777686887,GOOD,Ticket meets all quality standards.,Conduct stakeholder kickoff meeting
+116,AML-117,85,98.4578653095022,90.38314612380088,GOOD,Ticket meets all quality standards.,Create onboarding plan for new team members
+117,AML-118,95,98.74087221098445,96.49634888439378,GOOD,Ticket meets all quality standards.,Define UAT test scenarios with HSBC US
+118,AML-119,85,98.4586068677726,90.38344274710904,GOOD,Ticket meets all quality standards.,Establish SLAs with infrastructure team
+119,AML-120,95,99.27875745577904,96.71150298231163,GOOD,Ticket meets all quality standards.,Create training plan for operations team
+120,AML-121,85,98.46041837599608,90.38416735039843,GOOD,Ticket meets all quality standards.,Document lessons learned from previous AML projects
+121,AML-122,85,98.46336719582452,90.38534687832981,GOOD,Ticket meets all quality standards.,Define change management process
+122,AML-123,85,98.46296214988645,90.38518485995459,GOOD,Ticket meets all quality standards.,Create communication plan for stakeholders
+123,AML-124,95,98.46084709131404,96.38433883652561,GOOD,Ticket meets all quality standards.,Conduct compliance gap analysis
+124,AML-125,85,99.60414551930799,90.8416582077232,GOOD,Ticket meets all quality standards.,Obtain data sharing agreement with legacy system owners
+125,AML-126,85,98.46178285402021,90.38471314160809,GOOD,Ticket meets all quality standards.,Define disaster recovery requirements
+126,AML-127,85,98.458521301825,90.38340852073,GOOD,Ticket meets all quality standards.,Create vendor exit strategy
+127,AML-128,85,98.60714710221504,90.44285884088602,GOOD,Ticket meets all quality standards.,Establish weekly status reporting cadence
+128,AML-129,85,99.57809310439303,90.83123724175721,GOOD,Ticket meets all quality standards.,Conduct privacy impact assessment
+129,AML-130,85,98.46193809156784,90.38477523662715,GOOD,Ticket meets all quality standards.,Create bug tracking process in Jira
+130,AML-131,85,99.53837176271915,90.81534870508767,GOOD,Ticket meets all quality standards.,Define release management process
+131,AML-132,85,98.68917885438529,90.47567154175411,GOOD,Ticket meets all quality standards.,Document system architecture diagram
+132,AML-133,95,98.21556878220161,96.28622751288066,GOOD,Ticket meets all quality standards.,Create capacity planning document
+133,AML-134,85,99.32701877570358,90.73080751028144,GOOD,Ticket meets all quality standards.,Define non-functional requirements
+134,AML-135,85,98.25960433945299,90.30384173578119,GOOD,Ticket meets all quality standards.,Conduct vendor technical review of NORKOM
+135,AML-136,95,99.36988995450876,96.7479559818035,GOOD,Ticket meets all quality standards.,Create data migration plan from legacy system
+136,AML-137,95,99.15595368136357,96.66238147254543,GOOD,Ticket meets all quality standards.,Define test data management strategy
+137,AML-138,95,98.4599249504539,96.38396998018156,GOOD,Ticket meets all quality standards.,Conduct security architecture review
+138,AML-139,85,99.10272015792391,90.64108806316958,GOOD,Ticket meets all quality standards.,Create operational runbook for support team
+139,AML-140,85,98.58876043858795,90.43550417543518,GOOD,Ticket meets all quality standards.,Define quality gates for each sprint
+140,AML-141,85,97.7500506457218,90.10002025828872,GOOD,Ticket meets all quality standards.,Create product backlog prioritization framework
+141,AML-142,85,98.46253743448433,90.38501497379374,GOOD,Ticket meets all quality standards.,Document API contracts between components
+142,AML-143,85,98.57865102789266,90.43146041115708,GOOD,Ticket meets all quality standards.,Define incident severity levels and response times
+143,AML-144,85,98.46171437179652,90.38468574871861,GOOD,Ticket meets all quality standards.,Create continuous improvement register
+144,AML-145,85,98.46119397174674,90.3844775886987,GOOD,Ticket meets all quality standards.,Define code review guidelines
+145,AML-146,85,99.06145927049941,90.62458370819976,GOOD,Ticket meets all quality standards.,Conduct performance baseline testing
+146,AML-147,95,98.4632488990029,96.38529955960117,GOOD,Ticket meets all quality standards.,Create technical debt register
+147,AML-148,95,98.4575945501099,96.38303782004397,GOOD,Ticket meets all quality standards.,Define rollback procedure for failed deployment
+148,AML-149,85,98.46080131667614,90.38432052667045,GOOD,Ticket meets all quality standards.,Create user story mapping session output
+149,AML-150,85,98.61388983999689,90.44555593599875,GOOD,Ticket meets all quality standards.,Define minimum viable product scope
+150,AML-151,85,98.45931153830266,90.38372461532106,GOOD,Ticket meets all quality standards.,Create architecture decision records
+151,AML-152,85,99.12456843218408,90.64982737287363,GOOD,Ticket meets all quality standards.,Define data quality thresholds
+152,AML-153,85,99.59567622548589,90.83827049019436,GOOD,Ticket meets all quality standards.,Create compliance validation checklist
+153,AML-154,85,99.1019781954277,90.6407912781711,GOOD,Ticket meets all quality standards.,Define team onboarding schedule for new members
+154,AML-155,85,98.45956617908041,90.38382647163218,GOOD,Ticket meets all quality standards.,Create production readiness checklist
+155,AML-156,85,98.45887152644289,90.38354861057715,GOOD,Ticket meets all quality standards.,Document known errors and workarounds
+156,AML-157,85,98.45878725653782,90.38351490261513,GOOD,Ticket meets all quality standards.,Define sprint review format
+157,AML-158,85,99.74466535901277,90.89786614360511,GOOD,Ticket meets all quality standards.,Create data profiling report for source files
+158,AML-159,85,98.46115661449042,90.38446264579616,GOOD,Ticket meets all quality standards.,Define test environment refresh schedule
+159,AML-160,85,99.17888371363497,90.67155348545398,GOOD,Ticket meets all quality standards.,Create dependency management plan
+160,AML-161,85,99.53436539163705,90.81374615665482,GOOD,Ticket meets all quality standards.,Document SSL TLS configuration for all services
+161,AML-162,85,99.28155472828078,90.71262189131232,GOOD,Ticket meets all quality standards.,Define performance test environment specifications
+162,AML-163,85,99.37430282215742,90.74972112886297,GOOD,Ticket meets all quality standards.,Create security exception register
+163,AML-164,85,98.60784937169758,90.44313974867904,GOOD,Ticket meets all quality standards.,Define alert throttling rules
+164,AML-165,85,99.29077091442596,90.71630836577039,GOOD,Ticket meets all quality standards.,Create infrastructure as code templates
+165,AML-166,85,98.46187486041941,90.38474994416777,GOOD,Ticket meets all quality standards.,Document disaster recovery test schedule
+166,AML-167,85,98.45994103868304,90.38397641547323,GOOD,Ticket meets all quality standards.,Define incident communication template
+167,AML-168,85,99.3737041771395,90.7494816708558,GOOD,Ticket meets all quality standards.,Create automated deployment pipeline
+168,AML-169,85,98.76340057046181,90.50536022818473,GOOD,Ticket meets all quality standards.,Define backup retention policy verification
+169,AML-170,85,99.09298118681104,90.63719247472443,GOOD,Ticket meets all quality standards.,Create service level indicator dashboard
+170,AML-171,85,98.46041554305664,90.38416621722266,GOOD,Ticket meets all quality standards.,Document environment configuration baseline
+171,AML-172,85,96.4080404639815,89.56321618559261,GOOD,Ticket meets all quality standards.,Define change request approval matrix
+172,AML-173,85,98.88497814725923,90.5539912589037,GOOD,Ticket meets all quality standards.,Create license compliance register
+173,AML-174,85,99.99869622088373,90.9994784883535,GOOD,Ticket meets all quality standards.,Define alert aggregation rules for related alerts
+174,AML-175,85,99.51386374414575,90.8055454976583,GOOD,Ticket meets all quality standards.,Create onboarding video for new investigators
+175,AML-176,85,98.4627138574338,90.38508554297351,GOOD,Ticket meets all quality standards.,Document API rate limits for downstream systems
+176,AML-177,85,99.58136049527083,90.83254419810834,GOOD,Ticket meets all quality standards.,Define security patch management process
+177,AML-178,85,99.28851197925827,90.71540479170332,GOOD,Ticket meets all quality standards.,Create data subject access request handling
+178,AML-179,85,98.45872646080235,90.38349058432095,GOOD,Ticket meets all quality standards.,Define log retention and rotation policy
+179,AML-180,85,98.46288170392377,90.38515268156951,GOOD,Ticket meets all quality standards.,Create system health check automation
+180,AML-181,85,98.4623539097079,90.38494156388316,GOOD,Ticket meets all quality standards.,Document third-party SOC2 reports review
+181,AML-182,85,98.46112833168883,90.38445133267552,GOOD,Ticket meets all quality standards.,Define code freeze policy before releases
+182,AML-183,85,99.48139553330043,90.79255821332018,GOOD,Ticket meets all quality standards.,Create performance test data generator
+183,AML-184,85,99.04240850183918,90.61696340073567,GOOD,Ticket meets all quality standards.,Define availability monitoring for all components
+184,AML-185,85,98.81662650653178,90.5266506026127,GOOD,Ticket meets all quality standards.,Create post-mortem template for major incidents
+185,AML-186,85,99.16957044880124,90.6678281795205,GOOD,Ticket meets all quality standards.,Document database backup restore procedure
+186,AML-187,85,98.45917792994042,90.38367117197618,GOOD,Ticket meets all quality standards.,Define environment promotion criteria
+187,AML-188,85,99.27451006898255,90.70980402759302,GOOD,Ticket meets all quality standards.,Create user access review process
+188,AML-189,85,98.46039786601655,90.38415914640663,GOOD,Ticket meets all quality standards.,Define false positive feedback mechanism
+189,AML-190,85,98.68575575427751,90.474302301711,GOOD,Ticket meets all quality standards.,Create service level agreement dashboard for vendors
+190,AML-191,85,95.3158611186881,89.12634444747525,GOOD,Ticket meets all quality standards.,Document troubleshooting guides for top 20 errors
+191,AML-192,85,99.50030743726795,90.80012297490718,GOOD,Ticket meets all quality standards.,Define performance regression detection threshold
+192,AML-193,85,99.23950975009774,90.6958039000391,GOOD,Ticket meets all quality standards.,Create credential rotation schedule for service accounts
+193,AML-194,50,86.8797611835252,64.7519044734101,BAD,AC not in Gherkin format | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Define chaos engineering experiment plan
+194,AML-195,85,99.60217117954308,90.84086847181723,GOOD,Ticket meets all quality standards.,Create capacity forecast model for next 3 years
+195,AML-196,85,98.46037484630403,90.38414993852162,GOOD,Ticket meets all quality standards.,Document business continuity plan for operations team
+196,AML-197,85,97.6811620786337,90.07246483145349,GOOD,Ticket meets all quality standards.,Define security incident severity matrix
+197,AML-198,85,98.45986405520912,90.38394562208364,GOOD,Ticket meets all quality standards.,Create automated screenshot capture for UI tests
+198,AML-199,85,98.46013740371235,90.38405496148494,GOOD,Ticket meets all quality standards.,Define release notes format and audience
+199,AML-200,85,99.2142386956484,90.68569547825936,GOOD,Ticket meets all quality standards.,Create project closure report template
+200,AML-211,60,0.06365305071098955,36.0254612202844,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Implement the changes discussed in team meeting
+201,AML-212,60,0.39093094149764945,36.15637237659906,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Build the solution as per standard practice
+202,AML-213,60,1.4138456595137123,36.565538263805486,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Fix the issue reported by business team
+203,AML-214,60,0.4058539727829775,36.16234158911319,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Develop functionality as requested by stakeholder
+204,AML-215,60,18.625050001617055,43.45002000064682,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Optimize system performance for better user experience
+205,AML-216,60,0.5065685163921696,36.20262740655687,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Complete the pending work from previous sprint
+206,AML-217,60,0.4018544726285102,36.16074178905141,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Address feedback received in code review
+207,AML-218,60,0.4201774891166472,36.16807099564666,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Implement the logic as per technical design
+208,AML-219,60,0.32437468402836833,36.129749873611345,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Update the existing module with new changes
+209,AML-220,60,1.1251248672012837,36.45004994688051,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Write code following team conventions
+210,AML-401,60,0.06019981213046779,36.02407992485219,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Implement the changes discussed in meeting
+211,AML-402,60,0.030357324271756816,36.0121429297087,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Do the needful as per standard process
+212,AML-403,60,0.33978350801238383,36.13591340320495,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Complete the pending items from last sprint
+213,AML-404,60,0.418440850042636,36.16737634001706,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Address the feedback received on the PR
+214,AML-405,60,0.042502218168182025,36.01700088726727,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Make the changes as requested by PO
+215,AML-406,60,0.42543891053451127,36.17017556421381,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Fix the issues found in testing
+216,AML-407,60,0.42008398122474017,36.1680335924899,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Update the module as per new requirement
+217,AML-408,95,0.40290228001959094,57.16116091200784,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Optimize the code for better performance
+218,AML-409,95,0.1482426500856056,57.05929706003424,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Implement what was discussed in the email
+219,AML-410,60,0.15638189268053196,36.06255275707221,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Complete the work assigned by manager
+220,AML-411,50,0.35846546867986395,30.143386187471947,BAD,Semantic hollowness: Vague language detected. | AC not in Gherkin format | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Complete documentation discussed in last meeting
+221,AML-501,95,0.2564260510811117,57.10257042043244,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Address code review feedback on the PR
+222,AML-502,60,0.24762869669845006,36.09905147867938,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Update the API endpoint as per feedback
+223,AML-503,60,0.4258415248425539,36.170336609937024,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Implement database changes requested by DBA
+224,AML-504,60,0.4129627601156185,36.165185104046245,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Add unit tests for the new functions as discussed
+225,AML-601,95,99.26507615097199,96.7060304603888,GOOD,Ticket meets all quality standards.,Integrate Twitter API for AML monitoring
+226,AML-602,95,99.99813371123524,96.99925348449409,GOOD,Ticket meets all quality standards.,Set up webhook for real-time social media alerts
+227,AML-603,95,99.06375314912992,96.62550125965197,GOOD,Ticket meets all quality standards.,Process Facebook comment data for sentiment analysis
+228,AML-604,95,99.55670710539307,96.82268284215723,GOOD,Ticket meets all quality standards.,Create data schema for social media posts
+229,AML-605,95,98.46163682634199,96.3846547305368,GOOD,Ticket meets all quality standards.,Implement deduplication for cross-platform posts
+230,AML-606,95,99.48641176742001,96.794564706968,GOOD,Ticket meets all quality standards.,Build social media crawler for dark web forums
+231,AML-607,95,99.99927352233627,96.9997094089345,GOOD,Ticket meets all quality standards.,Create alert correlation for social media signals
+232,AML-608,95,98.46293320497091,96.38517328198836,GOOD,Ticket meets all quality standards.,Implement rate limiting for social media APIs
+233,AML-609,95,98.54852737520991,96.41941095008397,GOOD,Ticket meets all quality standards.,Build social media dashboard for investigators
+234,AML-610,95,98.57675117363843,96.43070046945537,GOOD,Ticket meets all quality standards.,Integrate LinkedIn data for PEP detection
+235,AML-611,95,99.23644223697015,96.69457689478807,GOOD,Ticket meets all quality standards.,Process Instagram image data for OCR
+236,AML-612,95,99.07179219708674,96.6287168788347,GOOD,Ticket meets all quality standards.,Implement social media watchlist screening
+237,AML-613,95,98.45937439737219,96.38374975894888,GOOD,Ticket meets all quality standards.,Build temporal analysis for social media patterns
+238,AML-614,95,98.57313160640001,96.42925264256002,GOOD,Ticket meets all quality standards.,Create social media source credibility scoring
+239,AML-615,95,99.3747593082291,96.74990372329165,GOOD,Ticket meets all quality standards.,Implement geolocation tagging for social media posts
+240,AML-616,95,99.656026751811,96.86241070072441,GOOD,Ticket meets all quality standards.,Create social media alert prioritization rules
+241,AML-617,95,99.62088682964642,96.84835473185856,GOOD,Ticket meets all quality standards.,Implement social media data retention policy
+242,AML-618,95,99.19611007958278,96.67844403183312,GOOD,Ticket meets all quality standards.,Build social media anomaly detection model
+243,AML-619,95,99.1656792691301,96.66627170765204,GOOD,Ticket meets all quality standards.,Create social media investigation workflow
+244,AML-620,95,99.45774045166628,96.78309618066652,GOOD,Ticket meets all quality standards.,Implement social media API error handling
+245,AML-621,95,99.36032864756467,96.74413145902588,GOOD,Ticket meets all quality standards.,Build social media keyword expansion engine
+246,AML-622,95,98.46094227853519,96.38437691141408,GOOD,Ticket meets all quality standards.,Create social media alert audit trail
+247,AML-623,95,99.71115736019192,96.88446294407677,GOOD,Ticket meets all quality standards.,Implement social media data quality checks
+248,AML-624,95,99.45849323210257,96.78339729284103,GOOD,Ticket meets all quality standards.,Build social media influencer risk scoring
+249,AML-625,95,99.99973637093007,96.99989454837203,GOOD,Ticket meets all quality standards.,Create social media monitoring SLA
+250,AML-626,95,99.99837194753621,96.9993487790145,GOOD,Ticket meets all quality standards.,Implement social media alert grouping
+251,AML-627,95,98.5725979935693,96.42903919742773,GOOD,Ticket meets all quality standards.,Build social media sentiment trend dashboard
+252,AML-628,95,99.09260066004397,96.6370402640176,GOOD,Ticket meets all quality standards.,Create social media watchlist update automation
+253,AML-629,95,99.99886222428302,96.9995448897132,GOOD,Ticket meets all quality standards.,Implement social media data anonymization
+254,AML-630,95,99.99862577942439,96.99945031176975,GOOD,Ticket meets all quality standards.,Build social media alert reporting API
+255,AML-631,95,99.20677623359963,96.68271049343986,GOOD,Ticket meets all quality standards.,Implement cryptocurrency transaction monitoring
+256,AML-632,95,97.61091345582652,96.04436538233061,GOOD,Ticket meets all quality standards.,Detect peer-to-peer lending money laundering
+257,AML-633,95,99.73062000505004,96.89224800202001,GOOD,Ticket meets all quality standards.,Monitor dark web marketplace references
+258,AML-634,95,99.35993963807222,96.74397585522888,GOOD,Ticket meets all quality standards.,Implement cross-border transaction pattern analysis
+259,AML-635,95,99.01739320547357,96.60695728218943,GOOD,Ticket meets all quality standards.,Build trade-based money laundering detection
+260,AML-636,95,98.46141223433492,96.38456489373397,GOOD,Ticket meets all quality standards.,Implement shell company detection algorithm
+261,AML-637,95,98.57361931571477,96.4294477262859,GOOD,Ticket meets all quality standards.,Create layering detection across multiple accounts
+262,AML-638,95,98.327376041764,96.3309504167056,GOOD,Ticket meets all quality standards.,Build smurfing detection for structured deposits
+263,AML-639,95,98.91666591650889,96.56666636660356,GOOD,Ticket meets all quality standards.,Implement professional money laundering detection
+264,AML-640,95,98.45914299163478,96.38365719665391,GOOD,Ticket meets all quality standards.,Create money mule account identification
+265,AML-641,95,98.46121952504978,96.38448781001992,GOOD,Ticket meets all quality standards.,Implement beneficial ownership detection
+266,AML-642,95,98.45798619936602,96.38319447974641,GOOD,Ticket meets all quality standards.,Build tax evasion detection for offshore accounts
+267,AML-643,95,98.76801825329284,96.50720730131714,GOOD,Ticket meets all quality standards.,Create gambling transaction monitoring
+268,AML-644,95,98.46122913443963,96.38449165377585,GOOD,Ticket meets all quality standards.,Implement real estate money laundering detection
+269,AML-645,95,98.99471922649496,96.59788769059799,GOOD,Ticket meets all quality standards.,Build art market money laundering detection
+270,AML-646,95,99.17708900786371,96.67083560314549,GOOD,Ticket meets all quality standards.,Create virtual asset service provider monitoring
+271,AML-647,95,98.46006234847754,96.38402493939103,GOOD,Ticket meets all quality standards.,Implement non-fungible token laundering detection
+272,AML-648,95,99.20631300244148,96.68252520097658,GOOD,Ticket meets all quality standards.,Build decentralized finance monitoring
+273,AML-649,95,99.36504632085558,96.74601852834223,GOOD,Ticket meets all quality standards.,Create privacy coin transaction analysis
+274,AML-650,95,98.5998167951467,96.43992671805867,GOOD,Ticket meets all quality standards.,Implement mixing service detection
+275,AML-651,95,98.49659234342803,96.39863693737121,GOOD,Ticket meets all quality standards.,Implement data quality scorecard for AML sources
+276,AML-652,95,98.46300492164197,96.38520196865679,GOOD,Ticket meets all quality standards.,Create data lineage for customer risk score
+277,AML-653,95,99.00913499360068,96.60365399744028,GOOD,Ticket meets all quality standards.,Implement data quality alerts for missing fields
+278,AML-654,95,99.41279305332989,96.76511722133196,GOOD,Ticket meets all quality standards.,Build data reconciliation between source and target
+279,AML-655,95,98.52466634323844,96.40986653729539,GOOD,Ticket meets all quality standards.,Create data quality dashboard for management
+280,AML-656,95,99.66146093821921,96.86458437528768,GOOD,Ticket meets all quality standards.,Implement data quality rules for customer master
+281,AML-657,95,99.99833935928817,96.99933574371528,GOOD,Ticket meets all quality standards.,Create data quality SLA for transaction data
+282,AML-658,95,98.46230058023592,96.38492023209437,GOOD,Ticket meets all quality standards.,Build data quality issue tracking system
+283,AML-659,95,99.67259414449279,96.86903765779712,GOOD,Ticket meets all quality standards.,Implement data quality score for AML alerts
+284,AML-660,95,99.20676728049406,96.68270691219763,GOOD,Ticket meets all quality standards.,Create data quality improvement recommendations
+285,AML-661,95,98.46069813915558,96.38427925566224,GOOD,Ticket meets all quality standards.,Implement data profiling for new data sources
+286,AML-662,95,98.96428271414258,96.58571308565703,GOOD,Ticket meets all quality standards.,Create data quality rules engine configuration UI
+287,AML-663,95,99.35845413450035,96.74338165380014,GOOD,Ticket meets all quality standards.,Build data quality trend analysis
+288,AML-664,95,99.186097597935,96.674439039174,GOOD,Ticket meets all quality standards.,Implement data quality root cause analysis
+289,AML-665,95,98.46122348260755,96.38448939304303,GOOD,Ticket meets all quality standards.,Create data quality certification process
+290,AML-666,95,99.99901526996639,96.99960610798655,GOOD,Ticket meets all quality standards.,Implement query performance optimization for alerts
+291,AML-667,95,98.46124935606146,96.3844997424246,GOOD,Ticket meets all quality standards.,Create index strategy for transaction lookup
+292,AML-668,95,99.16915431618361,96.66766172647345,GOOD,Ticket meets all quality standards.,Build partition management automation
+293,AML-669,95,98.4605044660478,96.38420178641911,GOOD,Ticket meets all quality standards.,Implement connection pooling for database
+294,AML-670,95,98.9740950566252,96.58963802265009,GOOD,Ticket meets all quality standards.,Create caching layer for reference data
+295,AML-671,95,98.46338340362676,96.38535336145071,GOOD,Ticket meets all quality standards.,Build batch job performance monitoring
+296,AML-672,95,98.6502556549414,96.46010226197657,GOOD,Ticket meets all quality standards.,Implement parallel processing for ETL
+297,AML-673,95,97.12468570017883,95.84987428007153,GOOD,Ticket meets all quality standards.,Create resource utilization dashboard
+298,AML-674,95,98.46379494957957,96.38551797983183,GOOD,Ticket meets all quality standards.,Implement query timeout handling
+299,AML-675,95,99.65236300399785,96.86094520159915,GOOD,Ticket meets all quality standards.,Build data compression for historical records
+300,AML-676,95,98.46107940365287,96.38443176146114,GOOD,Ticket meets all quality standards.,Implement bulk insert optimization
+301,AML-677,95,98.46197182622683,96.38478873049073,GOOD,Ticket meets all quality standards.,Create materialized views for common queries
+302,AML-678,95,98.46016898474652,96.3840675938986,GOOD,Ticket meets all quality standards.,Implement load testing for AML scenarios
+303,AML-679,95,97.87575681437434,96.15030272574974,GOOD,Ticket meets all quality standards.,Build auto-scaling for processing jobs
+304,AML-680,95,99.06843947087505,96.62737578835002,GOOD,Ticket meets all quality standards.,Implement query plan analysis
+305,AML-681,95,99.59187786113112,96.83675114445245,GOOD,Ticket meets all quality standards.,Create data sampling for development
+306,AML-682,95,98.4626673246714,96.38506692986857,GOOD,Ticket meets all quality standards.,Implement write-ahead logging optimization
+307,AML-683,95,99.01529646757953,96.60611858703182,GOOD,Ticket meets all quality standards.,Build performance regression detection
+308,AML-684,95,96.88620219052116,95.75448087620848,GOOD,Ticket meets all quality standards.,Implement connection retry logic
+309,AML-685,95,98.4612963245288,96.38451852981152,GOOD,Ticket meets all quality standards.,Create database maintenance window scheduler
+310,AML-686,95,99.62839138488847,96.85135655395538,GOOD,Ticket meets all quality standards.,Implement data encryption at rest for PII
+311,AML-687,95,99.29303843053812,96.71721537221525,GOOD,Ticket meets all quality standards.,Create role-based access control for AML data
+312,AML-688,95,99.08102571669926,96.63241028667971,GOOD,Ticket meets all quality standards.,Implement audit logging for all data access
+313,AML-689,95,99.15706121092929,96.66282448437173,GOOD,Ticket meets all quality standards.,Build data masking for non-production environments
+314,AML-690,95,98.45896054914866,96.38358421965947,GOOD,Ticket meets all quality standards.,Implement API authentication with OAuth2
+315,AML-691,95,98.46068265842185,96.38427306336874,GOOD,Ticket meets all quality standards.,Create security incident response playbook
+316,AML-692,95,97.22172129976796,95.88868851990719,GOOD,Ticket meets all quality standards.,Implement vulnerability scanning pipeline
+317,AML-693,95,98.46225449871262,96.38490179948505,GOOD,Ticket meets all quality standards.,Build secrets management using vault
+318,AML-694,95,98.46037536832509,96.38415014733005,GOOD,Ticket meets all quality standards.,Implement network isolation for AML processing
+319,AML-695,95,98.79207190462222,96.5168287618489,GOOD,Ticket meets all quality standards.,Create certificate rotation automation
+320,AML-696,95,99.38546155292707,96.75418462117082,GOOD,Ticket meets all quality standards.,Implement data loss prevention controls
+321,AML-697,95,98.45941250275393,96.38376500110158,GOOD,Ticket meets all quality standards.,Build security information event management integration
+322,AML-698,95,99.1943550185489,96.67774200741957,GOOD,Ticket meets all quality standards.,Implement database activity monitoring
+323,AML-699,95,99.13814849826728,96.65525939930691,GOOD,Ticket meets all quality standards.,Create security training for development team
+324,AML-700,95,99.32727207020142,96.73090882808057,GOOD,Ticket meets all quality standards.,Implement file integrity monitoring
+325,AML-701,95,98.65087175503443,96.46034870201377,GOOD,Ticket meets all quality standards.,Implement OFAC sanctions list update automation
+326,AML-702,95,98.73613806603879,96.49445522641551,GOOD,Ticket meets all quality standards.,Create AML risk scoring model for new customer onboarding
+327,AML-703,60,98.88235864802964,75.55294345921186,GOOD,Ticket meets all quality standards.,Implement real-time transaction monitoring dashboard
+328,AML-704,60,41.99823897163916,52.79929558865567,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Build audit trail for all AML decisions
+329,AML-705,95,99.61161665226757,96.84464666090703,GOOD,Ticket meets all quality standards.,Create customer risk profile enrichment from external data
+330,AML-706,95,98.45942188739244,96.38376875495698,GOOD,Ticket meets all quality standards.,Implement machine learning model for transaction scoring
+331,AML-707,95,99.0970152524985,96.6388061009994,GOOD,Ticket meets all quality standards.,Build regulatory reporting automation for FinCEN
+332,AML-708,95,99.4023938452651,96.76095753810604,GOOD,Ticket meets all quality standards.,Create suspicious activity report generation workflow
+333,AML-709,95,98.92098303717175,96.5683932148687,GOOD,Ticket meets all quality standards.,Implement customer due diligence automation
+334,AML-710,95,99.56016244126522,96.8240649765061,GOOD,Ticket meets all quality standards.,Build enhanced due diligence for high-risk customers
+335,AML-711,95,99.19136545337265,96.67654618134907,GOOD,Ticket meets all quality standards.,Create watchlist screening for all customer transactions
+336,AML-712,95,99.1395571356794,96.65582285427176,GOOD,Ticket meets all quality standards.,Implement negative news monitoring integration
+337,AML-713,95,97.86063505150031,96.14425402060013,GOOD,Ticket meets all quality standards.,Build geographic risk scoring for transactions
+338,AML-714,95,99.44286457307003,96.777145829228,GOOD,Ticket meets all quality standards.,Create customer risk tier refresh automation
+339,AML-715,95,98.45957575443988,96.38383030177596,GOOD,Ticket meets all quality standards.,Implement alert closure reason tracking
+340,AML-741,60,0.277511755221194,36.11100470208848,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Implement the things we talked about
+341,AML-742,60,0.005575900525678773,36.00223036021027,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Do whatever is needed for compliance
+342,AML-743,60,0.08683710548974007,36.034734842195896,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Make it work as requested
+343,AML-744,60,0.3287345101851395,36.131493804074054,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Complete the tasks assigned
+344,AML-745,60,0.19189007640939099,36.07675603056376,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Update as per the feedback received
+345,AML-746,60,1.6274072913412847,36.650962916536514,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Address all concerns raised
+346,AML-747,60,0.15437080329120584,36.06174832131648,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Make the changes as discussed earlier
+347,AML-748,60,0.6974768187824391,36.278990727512976,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Deliver the pending deliverables
+348,AML-749,60,0.20922815997660046,36.08369126399064,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Implement the changes from the document
+349,AML-750,60,0.07762224741351766,36.03104889896541,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Complete the work as per standard operating procedure
+350,AML-751,60,0.4061432731289498,36.16245730925158,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Fix the issues identified in testing
+351,AML-752,60,0.19413601474448383,36.077654405897796,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Implement the changes requested by QA
+352,AML-753,60,0.20000547676768105,36.08000219070707,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Do the needful for the release
+353,AML-754,60,0.5452234078967227,36.21808936315869,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Make it happen as planned
+354,AML-755,60,0.37940187128860275,36.15176074851544,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Address the feedback from the demo
+355,AML-756,60,0.07190409698662353,36.02876163879465,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Complete the remaining work
+356,AML-757,60,0.346162094192207,36.138464837676885,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Implement the solution as agreed
+357,AML-758,60,0.34495915134551847,36.137983660538204,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Do what was discussed in the email
+358,AML-759,60,0.15486945080395945,36.06194778032158,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Make the changes as per the meeting notes
+359,AML-760,60,0.3296206837216979,36.13184827348868,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Complete the tasks from the backlog
+360,AML-761,60,0.42933098794027946,36.171732395176114,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Implement what was discussed on the call
+361,AML-762,60,0.026820535977440284,36.01072821439097,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Do the needful as per the conversation
+362,AML-763,60,0.1545230676720073,36.0618092270688,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Make the changes as requested
+363,AML-764,60,0.043358991580711055,36.01734359663229,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Complete the work as discussed
+364,AML-765,60,0.13797582548596157,36.055190330194385,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Implement the solution as per discussion
+365,AML-766,60,0.5344920657249419,36.21379682628998,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Do what we agreed upon
+366,AML-767,60,0.15346308446434329,36.061385233785735,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Make it happen as decided
+367,AML-768,60,0.10883738548955807,36.04353495419582,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Complete the work from the email
+368,AML-769,60,0.237343659008397,36.09493746360336,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Address the points raised in review
+369,AML-770,60,0.029154971869619396,36.011661988747846,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Implement the changes from the chat
+370,AML-771,60,0.0640185522101603,36.025607420884064,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Do the needful for the audit
+371,AML-772,60,0.4509598495216184,36.18038393980865,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Make the changes as per the ticket
+372,AML-773,60,0.4388485296386549,36.17553941185546,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Complete the task as instructed
+373,AML-774,60,0.06182661071766559,36.02473064428707,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Implement what was asked
+374,AML-775,60,0.36525164556956313,36.14610065822782,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Do the work as per the standard
+375,AML-776,60,0.40808058746767295,36.16323223498707,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Make it work like the other module
+376,AML-777,60,0.04952296732491546,36.01980918692997,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Complete the pending request
+377,AML-778,60,0.6621552322820757,36.26486209291283,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Address the comments on the PR
+378,AML-779,60,0.283295265151898,36.11331810606076,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Implement the feedback from the review
+379,AML-780,60,0.17391784153320608,36.06956713661328,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Do the needful for the deployment
+380,AML-781,60,0.37438616081595816,36.149754464326385,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Make the changes as discussed on the call
+381,AML-782,60,0.23892200771483948,36.09556880308594,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Complete the work from the meeting
+382,AML-783,60,0.2851604254132407,36.1140641701653,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Implement the solution as described
+383,AML-784,60,0.7548668874011161,36.30194675496045,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Do what was planned
+384,AML-785,60,0.3163035109944089,36.126521404397764,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Make it work as expected
+385,AML-786,60,0.41381697367954146,36.16552678947182,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Complete the assigned stories
+386,AML-787,60,0.25902832612988513,36.103611330451955,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Address the issues from UAT
+387,AML-788,60,0.3941754019718114,36.157670160788726,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Implement the changes from the spec
+388,AML-789,60,0.25739206979202506,36.10295682791681,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Do the needful for the integration
+389,AML-790,60,0.17376591845153036,36.06950636738061,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Make it work like the specification
+390,AML-791,60,0.432932247564024,36.17317289902561,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Complete the work from the ticket
+391,AML-792,60,0.2808245516620882,36.11232982066483,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Address the concerns from compliance
+392,AML-793,60,0.0636006479705927,36.02544025918824,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Implement the changes from the walkthrough
+393,AML-794,60,0.4322504169573042,36.172900166782924,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Do what the business requested
+394,AML-795,60,0.07788983935782264,36.03115593574313,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Make it work as per the standard
+395,AML-796,60,0.3154428510806646,36.12617714043227,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Complete the pending tasks
+396,AML-797,60,0.4319008617915566,36.17276034471662,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Address the feedback from security
+397,AML-798,60,0.4259766209025292,36.170390648361014,BAD,Semantic hollowness: Vague language detected. | Missing User Story format | Due date is missing or invalid | Missing Priority | Missing Assignee,Implement the solution as discussed earlier
+398,AML-799,95,0.10775551481690324,57.043102205926765,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Do the needful for the migration
+399,AML-800,95,0.19291060146015832,57.07716424058406,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Make it work like the prototype
+400,AML-801,95,0.13476328062170687,57.05390531224868,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Implement the changes from the email thread
+401,AML-802,95,1.723518970995843,57.68940758839834,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Do whatever is required for the release
+402,AML-803,95,0.35909774560007296,57.14363909824003,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Make it work like the previous version
+403,AML-804,95,0.07694987145308252,57.030779948581234,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Complete the work as per the instructions
+404,AML-805,95,0.1848663084116047,57.07394652336464,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Address the feedback from the stakeholder
+405,AML-806,95,0.3314948760159436,57.13259795040638,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Implement the solution as per the conversation
+406,AML-807,95,0.1023054136356543,57.04092216545426,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Do the needful for the data migration
+407,AML-808,95,0.43344909522601777,57.17337963809041,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Make the changes as per the ticket description
+408,AML-809,95,0.35820744237063745,57.14328297694826,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Complete the tasks from the planning meeting
+409,AML-810,95,0.19787861825534148,57.07915144730214,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Address the comments from the reviewer
+410,AML-811,95,0.15145517441021528,57.06058206976409,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Implement what was discussed in the standup
+411,AML-812,95,0.13218905431090108,57.05287562172436,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Do the needful for the API integration
+412,AML-813,95,0.03835877271139694,57.01534350908456,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Make it work like the requirement document
+413,AML-814,95,0.2257038533181751,57.09028154132727,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Complete the work as per the schedule
+414,AML-815,95,0.14576136877785192,57.05830454751114,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Address the issues from the test team
+415,AML-816,95,0.22375292557583865,57.089501170230335,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Implement the changes from the design document
+416,AML-817,95,0.6214301813081881,57.248572072523274,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Do what was agreed in the meeting
+417,AML-818,95,0.08942424596944627,57.03576969838778,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Make the changes as per the feedback
+418,AML-819,95,0.3584986485748895,57.14339945942996,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Complete the pending stories from backlog
+419,AML-820,95,0.16313721252871205,57.065254885011484,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Address the concerns from the audit
+420,AML-821,95,0.21867787587857235,57.087471150351426,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Implement the solution as per the technical spec
+421,AML-822,95,0.3594242176960895,57.14376968707844,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Do the needful for the environment setup
+422,AML-823,95,0.18345788579585592,57.07338315431834,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Make it work like the sample implementation
+423,AML-824,95,0.35831190161602505,57.14332476064641,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Complete the work as per the standard process
+424,AML-825,95,0.2321655762902999,57.09286623051612,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Address the feedback from the design review
+425,AML-826,95,0.05831813033608389,57.023327252134436,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Implement the changes from the walkthrough
+426,AML-827,95,0.3587881967567274,57.143515278702694,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Do what was requested in the Jira ticket
+427,AML-828,95,0.3587000471838762,57.143480018873554,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Make the changes as per the conversation
+428,AML-829,95,0.2767703984796634,57.11070815939186,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Complete the tasks from the retrospective
+429,AML-830,95,0.35916728352663435,57.143666913410655,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Address the concerns from the security review
+430,AML-831,95,0.21111365829187836,57.084445463316754,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Implement the solution as per the architecture
+431,AML-832,95,0.18313377333858766,57.07325350933544,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Do the needful for the performance testing
+432,AML-833,95,0.3018674458316803,57.12074697833267,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Make it work like the user expectation
+433,AML-834,95,0.28680116800540806,57.11472046720216,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Complete the work from the technical debt list
+434,AML-835,95,0.39525354611837293,57.15810141844735,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Address the feedback from the demo session
+435,AML-836,95,0.06938484360916436,57.02775393744366,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Implement the changes from the discussion
+436,AML-837,95,0.3587509423468902,57.14350037693875,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Do what was planned in the roadmap
+437,AML-838,95,0.07649683050972428,57.03059873220389,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Make the changes as per the specification
+438,AML-839,95,0.3584350891065415,57.143374035642616,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Complete the pending code reviews
+439,AML-840,95,0.31857765161821644,57.12743106064729,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Address the issues from the regression test
+440,AML-841,95,0.07042868877647135,57.02817147551059,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Implement the solution as per the guidelines
+441,AML-842,95,0.04236365003045875,57.01694546001218,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Do the needful for the documentation
+442,AML-843,95,0.0923026237880231,57.03692104951521,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Make it work like the business requirement
+443,AML-844,95,0.027362298121830143,57.01094491924873,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Complete the work from the incident tickets
+444,AML-845,95,0.35904085041133194,57.143616340164535,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Address the feedback from the product owner
+445,AML-846,95,0.03301379921152944,57.01320551968461,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Implement the changes from the retrospective
+446,AML-847,95,0.23617675134690533,57.094470700538764,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Do what was discussed in the workshop
+447,AML-848,95,0.11239956095105805,57.04495982438042,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Make the changes as per the technical review
+448,AML-849,95,0.3075942810315189,57.12303771241261,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Complete the work from the project plan
+449,AML-850,95,0.27524860113165117,57.11009944045266,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Address the concerns from the compliance team
+450,AML-851,95,0.24123064282401155,57.096492257129604,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Implement the solution as per the approved design
+451,AML-852,95,0.05930026290016262,57.023720105160066,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Do the needful for the security fix
+452,AML-853,95,0.1842539307898734,57.07370157231595,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Make it work like the reference implementation
+453,AML-854,95,0.3582437124488179,57.14329748497953,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Complete the tasks from the technical design
+454,AML-855,95,0.3584209341873365,57.14336837367493,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Address the feedback from the user demo
+455,AML-856,95,0.1640175901750377,57.06560703607001,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Implement the changes from the discussion
+456,AML-857,95,0.19266053402473712,57.077064213609894,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Do what was requested in the requirements
+457,AML-858,95,0.24722434201056412,57.098889736804225,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Make the changes as per the code review
+458,AML-859,95,0.05208520270121357,57.02083408108049,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Complete the work from the bug list
+459,AML-860,95,0.35902165416121806,57.14360866166449,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Address the concerns from the architecture review
+460,AML-861,95,0.17207694515623104,57.06883077806249,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Implement the solution as per the standards
+461,AML-862,95,0.08933301112428021,57.03573320444971,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Do the needful for the database optimization
+462,AML-863,95,0.33509433352966556,57.134037733411866,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Make it work like the user story
+463,AML-864,95,0.13931318577682497,57.05572527431073,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Complete the work from the sprint backlog
+464,AML-865,95,0.3747183934582792,57.149887357383314,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Address the feedback from the performance test
+465,AML-866,95,0.35875892880206045,57.143503571520824,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Implement the changes from the support ticket
+466,AML-867,95,0.34650457971442206,57.13860183188577,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Do what was discussed in the planning
+467,AML-868,95,0.16447127993826335,57.065788511975306,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Make the changes as per the test report
+468,AML-869,95,0.1314377943123327,57.052575117724935,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Complete the work from the change request
+469,AML-870,95,0.3580202637377369,57.14320810549509,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Address the concerns from the risk assessment
+470,AML-871,95,0.19398434523532382,57.07759373809413,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Implement the solution as per the prototype
+471,AML-872,95,0.2768149721231657,57.11072598884927,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Do the needful for the environment
+472,AML-873,95,0.09789493727555447,57.039157974910225,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Make it work like the specification document
+473,AML-874,95,0.3258389512167974,57.13033558048672,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Complete the tasks from the dependency list
+474,AML-875,95,0.3487474478253956,57.13949897913016,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Address the feedback from the security audit
+475,AML-876,95,0.35820180818823133,57.14328072327529,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Implement the changes from the investigation
+476,AML-877,95,0.4167579470505678,57.16670317882023,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Do what was agreed in the sign-off meeting
+477,AML-878,95,0.35889095659513226,57.14355638263805,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Make the changes as per the validation report
+478,AML-879,95,0.3592157526672704,57.14368630106691,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Complete the work from the lessons learned
+479,AML-880,95,0.1473470275106324,57.05893881100425,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Address the concerns from the vendor assessment
+480,AML-881,95,0.09422205444762113,57.03768882177905,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Implement the solution as per the discussion
+481,AML-882,95,0.309139950232653,57.12365598009306,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Do whatever is needed for the milestone
+482,AML-883,95,0.358187861473465,57.14327514458939,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Make it work like the earlier version
+483,AML-884,95,0.07752222931487884,57.03100889172595,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Complete the work from the task list
+484,AML-885,95,0.06688343500156249,57.02675337400063,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Address the feedback from the review board
+485,AML-886,95,0.08909404643620585,57.035637618574484,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Implement the changes from the discussion
+486,AML-887,95,0.08278176522824791,57.0331127060913,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Do the needful for the deployment checklist
+487,AML-888,95,0.1633293943859472,57.06533175775438,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Make the changes as per the user feedback
+488,AML-889,95,0.35887014534320494,57.143548058137284,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Complete the tasks from the planning document
+489,AML-890,95,0.24771900166416666,57.09908760066567,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Address the concerns from the technical lead
+490,AML-891,95,0.15341342929133273,57.06136537171653,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Implement the solution as per the meeting notes
+491,AML-892,95,0.35843610575888135,57.14337444230355,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Do what was requested in the email chain
+492,AML-893,95,0.2500586714515181,57.10002346858061,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Make it work like the standard template
+493,AML-894,95,0.13815325929252054,57.05526130371701,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Complete the work from the requirements document
+494,AML-895,95,0.3590885868392857,57.143635434735714,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Address the feedback from the quality gate
+495,AML-896,95,0.35846475116477333,57.14338590046591,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Implement the changes from the workshop
+496,AML-897,95,0.03849649131032551,57.01539859652413,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Do the needful for the integration test
+497,AML-898,95,0.35809339322918254,57.143237357291675,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Make the changes as per the change request
+498,AML-899,95,0.3589227875821922,57.143569115032875,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Complete the tasks from the milestone plan
+499,AML-900,95,0.2829056552494351,57.11316226209978,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Address the concerns from the code quality report
+500,AML-901,95,0.1559848224855725,57.062393928994226,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Implement the solution as per the whiteboard discussion
+501,AML-902,95,0.31158271279437033,57.12463308511775,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Do what was agreed in the status call
+502,AML-903,95,0.2905327202093585,57.11621308808375,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Make it work like the sample application
+503,AML-904,95,0.24940655849775278,57.0997626233991,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Complete the work from the action items
+504,AML-905,95,0.13354667555746497,57.05341867022299,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Address the feedback from the stakeholder review
+505,AML-906,95,0.09036590427084805,57.03614636170834,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Implement the changes from the design session
+506,AML-907,95,0.09182093095329509,57.03672837238132,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Do the needful for the security compliance
+507,AML-908,95,0.04825696919593395,57.01930278767837,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Make the changes as per the test feedback
+508,AML-909,95,0.045228955334862465,57.01809158213395,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Complete the work from the iteration plan
+509,AML-910,95,0.20263509994855317,57.08105403997942,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Address the concerns from the product manager
+510,AML-911,95,0.10819376424809955,57.04327750569924,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Implement the solution as per the brainstorming session
+511,AML-912,95,0.1275489307083142,57.05101957228332,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Do what was specified in the requirement traceability matrix
+512,AML-913,95,0.2737512365704163,57.109500494628165,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Make it work like the workflow diagram
+513,AML-914,95,0.14718334294190188,57.05887333717676,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Complete the work from the backlog refinement
+514,AML-915,95,0.27871469265117915,57.111485877060474,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Address the feedback from the operational review
+515,AML-916,95,0.13361116586682042,57.053444466346726,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Implement the changes from the troubleshooting session
+516,AML-917,95,0.3582508210582055,57.14330032842328,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Do the needful for the disaster recovery test
+517,AML-918,95,1.6076271392612949,57.643050855704516,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Make the changes as per the lessons learned document
+518,AML-919,95,0.04740683850093251,57.01896273540037,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Complete the work from the dependency matrix
+519,AML-920,95,0.2707757855215129,57.1083103142086,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Address the concerns from the performance report
+520,AML-921,95,0.1352682079495239,57.05410728317981,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Implement the solution as per the technical specification document
+521,AML-922,95,0.20522845606949774,57.0820913824278,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Do what was discussed in the daily sync
+522,AML-923,95,0.17906911172383588,57.071627644689535,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Make it work like the business process flow
+523,AML-924,95,0.3865598727956386,57.15462394911825,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Complete the work from the project closure checklist
+524,AML-925,95,0.21279514984010867,57.08511805993604,BAD,Semantic hollowness: Vague language detected. | Missing Assignee,Address the feedback from the final review
