@@ -42,30 +42,26 @@ if uploaded_file:
         st.rerun()
 
 if uploaded_file:
-    # 1. Data Loading - FIXED: Handle different file types properly
+    # 1. Data Loading - SERVER COMPATIBLE
     @st.cache_data
     def get_data(file):
         file_name = file.name.lower()
         
         try:
             if file_name.endswith('.xlsx'):
-                # Use openpyxl for .xlsx files
                 df = pd.read_excel(file, engine='openpyxl')
             elif file_name.endswith('.xls'):
-                # Use xlrd for old .xls files
+                # Try xlrd first, fallback to openpyxl
                 try:
                     df = pd.read_excel(file, engine='xlrd')
-                except Exception as e:
-                    # If xlrd fails, try using openpyxl with raw data
-                    st.warning(f"Reading .xls file with fallback method: {e}")
-                    # Read as raw bytes and try to parse
+                except:
+                    # Fallback: read as CSV if Excel fails
                     file.seek(0)
-                    df = pd.read_excel(file, engine=None)  # Let pandas choose
+                    df = pd.read_csv(file, encoding='utf-8')
             else:
-                # CSV file
                 df = pd.read_csv(file, encoding='utf-8')
         except Exception as e:
-            # Fallback: Try to read as CSV if Excel reading fails
+            # Ultimate fallback: try reading as CSV
             st.warning(f"Excel reading failed ({e}), trying as CSV...")
             file.seek(0)
             df = pd.read_csv(file, encoding='utf-8')
@@ -76,24 +72,23 @@ if uploaded_file:
 
     df = get_data(uploaded_file)
 
-    # 2. Hybrid Scoring Engine
+    # 2. Hybrid Scoring Engine - SERVER COMPATIBLE
     @st.cache_resource
     def load_model():
         try:
-            if os.path.exists("models/best_model.pkl"):
-                model = joblib.load("models/best_model.pkl")
+            model_path = "models/best_model.pkl"
+            if os.path.exists(model_path):
+                model = joblib.load(model_path)
+                st.sidebar.success("✅ ML Model loaded")
                 return model
+            else:
+                st.sidebar.warning("⚠️ Model file not found at: " + model_path)
+                return None
         except Exception as e:
             st.sidebar.error(f"Model loading failed: {str(e)}")
-        return None
+            return None
 
     pipeline = load_model()
-    
-    # Show model status
-    if pipeline:
-        st.sidebar.success("✅ ML Model loaded")
-    else:
-        st.sidebar.warning("⚠️ ML Model not loaded - using fallback")
     
     scorer = JiraHybridScorer(rule_engine_weight=weight_rule)
     
@@ -116,12 +111,10 @@ if uploaded_file:
     # --- OPTIMIZATION: Vectorized ML Predictions ---
     if pipeline:
         try:
-            # Prepare inputs in batch
             input_df = pd.DataFrame({
                 'Combined': df['Combined'],
                 'vague_term_density': df.get('vague_term_density', 0)
             })
-            # Predict entire column at once to avoid loop bottleneck
             df['precalc_ml_prob'] = pipeline.predict_proba(input_df)[:, 1] * 100
         except:
             df['precalc_ml_prob'] = 50.0
@@ -156,10 +149,9 @@ if uploaded_file:
     df['Tier'], df['Explanation'] = tiers, explanations
     df['Failed_Rules'] = failed_rules_list
     
-    # Calculate Description Length for new visualization
     df['Desc_Length'] = df['Description'].fillna("").astype(str).apply(len)
 
-    # 3. Universal Filtering - FIXED: Pandas 3.0 compatibility
+    # 3. Universal Filtering - PANDAS 3.0 COMPATIBLE
     st.sidebar.subheader("Universal Filters")
     filters = {}
     exclude_cols = ['Summary', 'Description', 'Acceptance criteria', 'Combined', 'Issue key', 
@@ -217,6 +209,7 @@ if uploaded_file:
         )
         fig_hist.add_vline(x=threshold, line_dash="dash", line_color="orange", annotation_text=f"Threshold: {threshold}%")
         fig_hist.add_vline(x=50, line_dash="dot", line_color="red", annotation_text="Attention: 50%")
+        # SERVER COMPATIBLE: use_container_width works on server
         st.plotly_chart(fig_hist, use_container_width=True)
         
         st.divider()
@@ -281,7 +274,7 @@ if uploaded_file:
 
         st.divider()
 
-        # Row 4: Advanced Analytics (New Visualizations)
+        # Row 4: Advanced Analytics
         st.subheader("Advanced Analytics")
         adv1, adv2 = st.columns(2)
         
@@ -300,7 +293,6 @@ if uploaded_file:
         with adv2:
             st.markdown("**Score Distribution by Assignee**")
             if 'Assignee' in res_df.columns and res_df['Assignee'].nunique() > 0:
-                # Filter to top 10 assignees to keep the chart clean
                 top_assignees = res_df['Assignee'].value_counts().nlargest(10).index
                 box_df = res_df[res_df['Assignee'].isin(top_assignees)]
                 
@@ -384,7 +376,7 @@ if uploaded_file:
         view_df = res_df[res_df['Issue key'].astype(str).str.contains(search_id, case=False)] if search_id else res_df
         st.dataframe(view_df[['Issue key', 'Rule_Score', 'ML_Score', 'Hybrid_Score', 'Tier', 'Explanation', 'Summary', 'Description']], use_container_width=True)
 
-    # ============ TAB 3: RAG CHATBOT (FIXED) ============
+    # ============ TAB 3: RAG CHATBOT ============
     with tab3:
         st.subheader("Conversational Auditor")
         col1, col2, col3 = st.columns([1, 4, 1])
@@ -403,7 +395,7 @@ if uploaded_file:
         
         st.divider()
         
-        # Display chat messages - FIXED: Removed conditional expression
+        # Display chat messages
         if st.session_state.messages:
             for msg in st.session_state.messages:
                 with st.chat_message(msg["role"]):
