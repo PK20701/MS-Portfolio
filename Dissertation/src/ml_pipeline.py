@@ -1,8 +1,6 @@
 import pandas as pd
 import joblib
 import os
-import numpy as np
-from collections import Counter
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import MinMaxScaler
