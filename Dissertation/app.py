@@ -42,10 +42,34 @@ if uploaded_file:
         st.rerun()
 
 if uploaded_file:
-    # 1. Data Loading
+    # 1. Data Loading - FIXED: Handle different file types properly
     @st.cache_data
     def get_data(file):
-        df = pd.read_excel(file) if file.name.endswith(('.xls', '.xlsx')) else pd.read_csv(file)
+        file_name = file.name.lower()
+        
+        try:
+            if file_name.endswith('.xlsx'):
+                # Use openpyxl for .xlsx files
+                df = pd.read_excel(file, engine='openpyxl')
+            elif file_name.endswith('.xls'):
+                # Use xlrd for old .xls files
+                try:
+                    df = pd.read_excel(file, engine='xlrd')
+                except Exception as e:
+                    # If xlrd fails, try using openpyxl with raw data
+                    st.warning(f"Reading .xls file with fallback method: {e}")
+                    # Read as raw bytes and try to parse
+                    file.seek(0)
+                    df = pd.read_excel(file, engine=None)  # Let pandas choose
+            else:
+                # CSV file
+                df = pd.read_csv(file, encoding='utf-8')
+        except Exception as e:
+            # Fallback: Try to read as CSV if Excel reading fails
+            st.warning(f"Excel reading failed ({e}), trying as CSV...")
+            file.seek(0)
+            df = pd.read_csv(file, encoding='utf-8')
+        
         df.columns = [c.strip() for c in df.columns]
         df = DataPreprocessor.clean_data(df)
         return FeatureEngineer.engineer_features(df)
@@ -55,11 +79,22 @@ if uploaded_file:
     # 2. Hybrid Scoring Engine
     @st.cache_resource
     def load_model():
-        if os.path.exists("models/best_model.pkl"):
-            return joblib.load("models/best_model.pkl")
+        try:
+            if os.path.exists("models/best_model.pkl"):
+                model = joblib.load("models/best_model.pkl")
+                return model
+        except Exception as e:
+            st.sidebar.error(f"Model loading failed: {str(e)}")
         return None
 
     pipeline = load_model()
+    
+    # Show model status
+    if pipeline:
+        st.sidebar.success("✅ ML Model loaded")
+    else:
+        st.sidebar.warning("⚠️ ML Model not loaded - using fallback")
+    
     scorer = JiraHybridScorer(rule_engine_weight=weight_rule)
     
     # Extract or create vectorizer
@@ -124,14 +159,15 @@ if uploaded_file:
     # Calculate Description Length for new visualization
     df['Desc_Length'] = df['Description'].fillna("").astype(str).apply(len)
 
-    # 3. Universal Filtering
+    # 3. Universal Filtering - FIXED: Pandas 3.0 compatibility
     st.sidebar.subheader("Universal Filters")
     filters = {}
     exclude_cols = ['Summary', 'Description', 'Acceptance criteria', 'Combined', 'Issue key', 
                     'Quality_Label', 'Explanation', 'Tier', 'Label_Numeric', 'Rule_Score', 'ML_Score', 
                     'Hybrid_Score', 'Failed_Rules', 'precalc_ml_prob', 'Desc_Length']
     
-    for col in df.select_dtypes(include=['object']).columns:
+    # FIXED: Use include=['object', 'string'] for pandas 3.0 compatibility
+    for col in df.select_dtypes(include=['object', 'string']).columns:
         if col not in exclude_cols:
             filters[col] = st.sidebar.multiselect(col, df[col].unique())
     
