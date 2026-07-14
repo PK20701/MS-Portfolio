@@ -76,13 +76,16 @@ if uploaded_file:
     @st.cache_resource
     def load_model():
         try:
-            model_path = "models/best_model.pkl"
+             # Get the directory where app.py is located
+            current_dir = os.path.dirname(os.path.abspath(__file__))
+            model_path = os.path.join(current_dir, "models", "best_model.pkl")
+        
             if os.path.exists(model_path):
                 model = joblib.load(model_path)
                 st.sidebar.success("✅ ML Model loaded")
                 return model
             else:
-                st.sidebar.warning("⚠️ Model file not found at: " + model_path)
+                st.sidebar.warning(f"⚠️ Model file not found at: {model_path}")
                 return None
         except Exception as e:
             st.sidebar.error(f"Model loading failed: {str(e)}")
