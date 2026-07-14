@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import joblib
+import pickle
 import os
 import plotly.express as px
 import plotly.graph_objects as go
@@ -51,17 +52,14 @@ if uploaded_file:
             if file_name.endswith('.xlsx'):
                 df = pd.read_excel(file, engine='openpyxl')
             elif file_name.endswith('.xls'):
-                # Try xlrd first, fallback to openpyxl
                 try:
                     df = pd.read_excel(file, engine='xlrd')
                 except:
-                    # Fallback: read as CSV if Excel fails
                     file.seek(0)
                     df = pd.read_csv(file, encoding='utf-8')
             else:
                 df = pd.read_csv(file, encoding='utf-8')
         except Exception as e:
-            # Ultimate fallback: try reading as CSV
             st.warning(f"Excel reading failed ({e}), trying as CSV...")
             file.seek(0)
             df = pd.read_csv(file, encoding='utf-8')
@@ -72,59 +70,108 @@ if uploaded_file:
 
     df = get_data(uploaded_file)
 
-    # 2. Hybrid Scoring Engine - SERVER COMPATIBLE
+    # ============ 2. MODEL LOADING (FIXED) ============
     @st.cache_resource
     def load_model():
         try:
-             # Get the directory where app.py is located
             current_dir = os.path.dirname(os.path.abspath(__file__))
             model_path = os.path.join(current_dir, "models", "best_model.pkl")
-        
-            if os.path.exists(model_path):
-                model = joblib.load(model_path)
-                st.sidebar.success("✅ ML Model loaded")
-                return model
-            else:
+            
+            if not os.path.exists(model_path):
                 st.sidebar.warning(f"⚠️ Model file not found at: {model_path}")
                 return None
+            
+            # Try joblib first
+            try:
+                model = joblib.load(model_path)
+                st.sidebar.success("✅ ML Model loaded (joblib)")
+                return model
+            except Exception as e1:
+                st.sidebar.warning(f"Joblib failed: {e1}")
+                
+                # Try pickle as fallback
+                try:
+                    with open(model_path, "rb") as f:
+                        model = pickle.load(f)
+                    st.sidebar.success("✅ ML Model loaded (pickle)")
+                    return model
+                except Exception as e2:
+                    st.sidebar.error(f"Both load methods failed: {e2}")
+                    return None
+                    
         except Exception as e:
             st.sidebar.error(f"Model loading failed: {str(e)}")
             return None
 
     pipeline = load_model()
-    
     scorer = JiraHybridScorer(rule_engine_weight=weight_rule)
     
-    # Extract or create vectorizer
-    vectorizer = None
-    if pipeline:
+    # ============ 3. VECTORIZER LOADING (FIXED) ============
+    @st.cache_resource
+    def load_vectorizer():
         try:
-            for name, transformer, column in pipeline.named_steps['prep'].transformers_:
-                if name == 'text':
-                    vectorizer = transformer
-                    break
+            current_dir = os.path.dirname(os.path.abspath(__file__))
+            vectorizer_path = os.path.join(current_dir, "models", "vectorizer.pkl")
+            
+            if os.path.exists(vectorizer_path):
+                return joblib.load(vectorizer_path)
         except:
             pass
+        return None
+
+    vectorizer = load_vectorizer()
     
+    # If vectorizer not found, extract from pipeline or create new
+    if vectorizer is None and pipeline is not None:
+        try:
+            # Try to extract vectorizer from pipeline
+            vectorizer = pipeline.named_steps['prep'].named_transformers_['text']
+            st.sidebar.success("✅ Vectorizer extracted from pipeline")
+            
+            # Save it for next time
+            current_dir = os.path.dirname(os.path.abspath(__file__))
+            vectorizer_path = os.path.join(current_dir, "models", "vectorizer.pkl")
+            joblib.dump(vectorizer, vectorizer_path)
+        except Exception as e:
+            st.sidebar.warning(f"Could not extract vectorizer: {e}")
+    
+    # If still None, create new
     if vectorizer is None:
         search_corpus = df["Issue key"].fillna("") + " " + df["Summary"].fillna("") + " " + df["Description"].fillna("")
         vectorizer = TfidfVectorizer(max_features=1000, ngram_range=(1,2), sublinear_tf=True)
         vectorizer.fit(search_corpus)
+        st.sidebar.info("ℹ️ New vectorizer created")
     
-    # --- OPTIMIZATION: Vectorized ML Predictions ---
-    if pipeline:
+    # ============ 4. ML PREDICTIONS (FIXED WITH DEBUG) ============
+    # Test the pipeline before running predictions
+    if pipeline is not None:
         try:
-            input_df = pd.DataFrame({
-                'Combined': df['Combined'],
-                'vague_term_density': df.get('vague_term_density', 0)
+            # Test with a single sample
+            test_input = pd.DataFrame({
+                'Combined': df['Combined'].head(1),
+                'vague_term_density': df['vague_term_density'].head(1)
             })
-            df['precalc_ml_prob'] = pipeline.predict_proba(input_df)[:, 1] * 100
-        except:
+            test_pred = pipeline.predict_proba(test_input)
+            st.sidebar.success(f"✅ Model test passed! Sample: {test_pred[0][1]:.3f}")
+            
+            # Now run full predictions
+            try:
+                input_df = pd.DataFrame({
+                    'Combined': df['Combined'],
+                    'vague_term_density': df.get('vague_term_density', 0)
+                })
+                df['precalc_ml_prob'] = pipeline.predict_proba(input_df)[:, 1] * 100
+                st.sidebar.info(f"📊 ML predictions completed for {len(df)} tickets")
+            except Exception as e:
+                st.sidebar.error(f"❌ Batch prediction failed: {e}")
+                df['precalc_ml_prob'] = 50.0
+        except Exception as e:
+            st.sidebar.error(f"❌ Model test failed: {e}")
             df['precalc_ml_prob'] = 50.0
     else:
         df['precalc_ml_prob'] = 50.0
 
-    # Calculate scores
+    # ============ 5. CALCULATE SCORES ============
     rule_scores, ml_scores, hybrid_scores, tiers, explanations = [], [], [], [], []
     failed_rules_list = []
     
@@ -154,14 +201,13 @@ if uploaded_file:
     
     df['Desc_Length'] = df['Description'].fillna("").astype(str).apply(len)
 
-    # 3. Universal Filtering - PANDAS 3.0 COMPATIBLE
+    # ============ 6. UNIVERSAL FILTERING ============
     st.sidebar.subheader("Universal Filters")
     filters = {}
     exclude_cols = ['Summary', 'Description', 'Acceptance criteria', 'Combined', 'Issue key', 
                     'Quality_Label', 'Explanation', 'Tier', 'Label_Numeric', 'Rule_Score', 'ML_Score', 
                     'Hybrid_Score', 'Failed_Rules', 'precalc_ml_prob', 'Desc_Length']
     
-    # FIXED: Use include=['object', 'string'] for pandas 3.0 compatibility
     for col in df.select_dtypes(include=['object', 'string']).columns:
         if col not in exclude_cols:
             filters[col] = st.sidebar.multiselect(col, df[col].unique())
@@ -212,7 +258,6 @@ if uploaded_file:
         )
         fig_hist.add_vline(x=threshold, line_dash="dash", line_color="orange", annotation_text=f"Threshold: {threshold}%")
         fig_hist.add_vline(x=50, line_dash="dot", line_color="red", annotation_text="Attention: 50%")
-        # SERVER COMPATIBLE: use_container_width works on server
         st.plotly_chart(fig_hist, use_container_width=True)
         
         st.divider()
