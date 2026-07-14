@@ -1,24 +1,35 @@
 # chatbot_engine.py
-# Hybrid LLM-powered conversation engine with fallback to working patterns
+# Optimized for server - LLM calls disabled on Streamlit Cloud
 
 import pandas as pd
 import requests
-import json
 import re
 from datetime import datetime
-import numpy as np
+import os
 
 class JiraAuditChatbot:
     def __init__(self, df, vectorizer, ml_pipeline=None):
         self.project_data = df
         self.text_vectorizer = vectorizer
         self.ml_pipeline = ml_pipeline
-        self.ollama_endpoint = "http://127.0.0.1:11434/api/generate"
-        self.local_model_name = "llama3:latest"
         self.support_contact = "Prasanna Kamthekar"
         self.bot_name = "Jira Quality Assistant"
         
+        # Detect if running on server
+        self.is_server = os.environ.get('STREAMLIT_SHARING') == 'true' or 'STREAMLIT_SERVER' in os.environ
+        
+        # Only initialize Ollama if NOT on server
+        if not self.is_server:
+            self.ollama_endpoint = "http://127.0.0.1:11434/api/generate"
+            self.local_model_name = "llama3:latest"
+        else:
+            self.ollama_endpoint = None
+            self.local_model_name = None
+    
     def check_ollama_health(self):
+        """Skip Ollama check on server"""
+        if self.is_server:
+            return False
         try:
             response = requests.get("http://127.0.0.1:11434/api/tags", timeout=2)
             return response.status_code == 200
@@ -88,10 +99,7 @@ class JiraAuditChatbot:
     def get_irrelevant_response(self):
         return f"I am **{self.bot_name}**.\n\nI can help with:\n• Ticket lookup (e.g., 'what is AML-809')\n• Statistics (e.g., 'average rule score')\n• Distributions (e.g., 'distribution by status')\n• Filtered lists (e.g., 'show me high priority tickets')\n• Counts (e.g., 'how many tickets in backlog')\n\nAsk me about your Jira data!"
     
-    # ============ EXISTING WORKING METHODS (KEPT AS IS) ============
-    
     def parse_query_conditions_structural(self, query_lower):
-        """Existing working parser - kept for fallback"""
         conditions = {
             'priority': None,
             'status': None,
@@ -122,7 +130,6 @@ class JiraAuditChatbot:
                 conditions['status'] = status
                 break
         
-        # FIX: Only capture assignee if it's a valid name, not common words
         common_words = ['tickets', 'score', 'priority', 'status', 'distribution', 'review', 'all', 'any', 'high', 'medium', 'low', 'critical']
         assignee_match = re.search(r'(?:to|for|by|assigned to)\s+([a-zA-Z_\.]+)', query_lower)
         if assignee_match:
@@ -143,7 +150,6 @@ class JiraAuditChatbot:
         return conditions
     
     def execute_query_from_conditions(self, conditions):
-        """Existing working executor - kept for fallback"""
         filtered = self.project_data.copy()
         filter_description = []
         
@@ -171,7 +177,6 @@ class JiraAuditChatbot:
         return filtered, filter_description
     
     def handle_average_query(self, query_lower):
-        """Existing working average handler"""
         conditions = self.parse_query_conditions_structural(query_lower)
         filtered_data, filter_description = self.execute_query_from_conditions(conditions)
         total_count = len(filtered_data)
@@ -207,11 +212,9 @@ class JiraAuditChatbot:
         return response
     
     def handle_distribution_query(self, query_lower, conditions):
-        """Existing working distribution handler"""
         filtered_data, filter_description = self.execute_query_from_conditions(conditions)
         total_count = len(filtered_data)
         
-        # Determine distribution type
         dist_type = None
         if "priority" in query_lower:
             dist_type = "Priority"
@@ -278,174 +281,8 @@ class JiraAuditChatbot:
                     response += f"• {col}\n"
             return response
     
-    # ============ NEW LLM ENHANCEMENT (SAFE ADDITION) ============
-    
-    def get_data_context(self):
-        """Get data context for LLM"""
-        df = self.project_data
-        
-        categorical_info = {}
-        for col in ['Priority', 'Status', 'Assignee', 'Category']:
-            if col in df.columns:
-                categorical_info[col] = df[col].dropna().unique().tolist()[:20]
-        
-        stats = {
-            'total': len(df),
-            'avg_hybrid': float(df['Hybrid_Score'].mean()) if 'Hybrid_Score' in df.columns else None,
-        }
-        
-        return {
-            'categorical_values': categorical_info,
-            'statistics': stats
-        }
-    
-    def process_with_llm(self, query):
-        """Use LLM to parse complex queries"""
-        
-        context = self.get_data_context()
-        
-        prompt = f"""Analyze the user query and return JSON with intent and parameters.
-
-Available Priority values: {context['categorical_values'].get('Priority', [])}
-Available Status values: {context['categorical_values'].get('Status', [])}
-
-User Query: {query}
-
-Return JSON with:
-intent: "distribution" or "average" or "count" or "list" or "unknown"
-parameters: {{priority, status, score_type, score_operator, score_threshold, distribution_column}}
-
-Example: {{"intent": "average", "parameters": {{"priority": "high"}}}}
-
-Return ONLY the JSON."""
-
-        try:
-            payload = {
-                "model": self.local_model_name,
-                "prompt": prompt,
-                "stream": False,
-                "temperature": 0.1,
-                "max_tokens": 250
-            }
-            response = requests.post(self.ollama_endpoint, json=payload, timeout=12)
-            
-            if response.status_code == 200:
-                llm_response = response.json().get("response")
-                json_match = re.search(r'\{.*\}', llm_response, re.DOTALL)
-                if json_match:
-                    try:
-                        return json.loads(json_match.group())
-                    except:
-                        pass
-            return None
-        except:
-            return None
-    
-    def execute_llm_query(self, intent, params):
-        """Execute query from LLM-parsed intent"""
-        
-        filtered = self.project_data.copy()
-        filter_description = []
-        
-        if params.get('priority'):
-            if 'Priority' in filtered.columns:
-                filtered = filtered[filtered['Priority'].astype(str).str.lower().str.contains(
-                    params['priority'].lower(), na=False
-                )]
-                filter_description.append(f"Priority: {params['priority'].title()}")
-        
-        if params.get('status'):
-            if 'Status' in filtered.columns:
-                filtered = filtered[filtered['Status'].astype(str).str.lower().str.contains(
-                    params['status'].lower(), na=False
-                )]
-                filter_description.append(f"Status: {params['status'].title()}")
-        
-        if params.get('assignee'):
-            if 'Assignee' in filtered.columns:
-                filtered = filtered[filtered['Assignee'].astype(str).str.lower().str.contains(
-                    params['assignee'].lower(), na=False
-                )]
-                filter_description.append(f"Assignee: {params['assignee']}")
-        
-        if params.get('score_threshold') is not None:
-            score_col = params.get('score_type', 'Hybrid_Score')
-            operator = params.get('score_operator', '<')
-            if score_col in filtered.columns:
-                if operator == '<':
-                    filtered = filtered[filtered[score_col] < params['score_threshold']]
-                elif operator == '>':
-                    filtered = filtered[filtered[score_col] > params['score_threshold']]
-                filter_description.append(f"{score_col.replace('_', ' ')} {operator} {params['score_threshold']}%")
-        
-        total_count = len(filtered)
-        
-        if intent == 'average':
-            score_col = params.get('score_type', 'Hybrid_Score')
-            if score_col not in filtered.columns:
-                score_col = 'Hybrid_Score'
-            
-            if total_count == 0:
-                response = "**No tickets found.**\n\n"
-                if filter_description:
-                    for desc in filter_description:
-                        response += f"• {desc}\n"
-                return response
-            
-            avg_score = filtered[score_col].mean()
-            response = f"**Average {score_col.replace('_', ' ')}**\n\n"
-            for desc in filter_description:
-                response += f"• {desc}\n"
-            response += f"\n• Average: {avg_score:.1f}%\n"
-            response += f"• Tickets: {total_count}\n"
-            response += f"• Range: {filtered[score_col].min():.1f}% - {filtered[score_col].max():.1f}%"
-            return response
-        
-        elif intent == 'distribution':
-            dist_col = params.get('distribution_column', 'Tier')
-            if dist_col not in filtered.columns:
-                dist_col = 'Tier'
-            
-            dist_data = filtered[filtered[dist_col].notna()]
-            dist_data = dist_data[dist_data[dist_col].astype(str).str.strip() != '']
-            
-            if dist_data.empty:
-                return f"No valid {dist_col} data found."
-            
-            response = f"**{dist_col} Distribution**"
-            if filter_description:
-                response += " (" + ", ".join([d.lower() for d in filter_description]) + ")"
-            response += f"\nTotal: {total_count} tickets\n\n"
-            
-            dist = dist_data[dist_col].value_counts()
-            for item, count in dist.items():
-                pct = (count / total_count) * 100
-                response += f"• {item}: {count} tickets ({pct:.1f}%)\n"
-            return response
-        
-        elif intent == 'list':
-            if total_count == 0:
-                return "No tickets found."
-            response = f"**Found {total_count} tickets**\n\n"
-            for desc in filter_description:
-                response += f"• {desc}\n"
-            response += "\n"
-            for i, (_, row) in enumerate(filtered.head(10).iterrows(), 1):
-                response += f"{i}. **{row['Issue key']}**\n"
-                response += f"   • Score: {row['Hybrid_Score']:.1f}% ({row['Tier']})\n"
-                if 'Priority' in row and pd.notna(row['Priority']):
-                    response += f"   • Priority: {row['Priority']}\n"
-                if 'Status' in row and pd.notna(row['Status']):
-                    response += f"   • Status: {row['Status']}\n"
-                response += f"   • {row['Summary'][:80]}...\n\n"
-            return response
-        
-        return None
-    
-    # ============ MAIN ENTRY POINT ============
-    
     def evaluate_user_input_intent(self, query, threshold_gate=70.0):
-        """Main entry point - uses existing working logic + LLM enhancement"""
+        """Main entry point - No LLM on server"""
         try:
             clean_query = query.strip()
             query_lower = clean_query.lower()
@@ -454,7 +291,7 @@ Return ONLY the JSON."""
             if self.is_irrelevant_query(query_lower):
                 return {"type": "irrelevant", "content": self.get_irrelevant_response()}
             
-            # ============ STEP 2: TICKET LOOKUP (WORKING) ============
+            # ============ STEP 2: TICKET LOOKUP ============
             ticket_keys = self.extract_ticket_keys(query)
             
             if not ticket_keys:
@@ -485,20 +322,18 @@ Return ONLY the JSON."""
                     "content": f"**Ticket not found.**\n\nPlease use format: **'AML-829'** (with hyphen).\n\nContact {self.support_contact} if needed."
                 }
             
-            # ============ STEP 3: EXISTING WORKING LOGIC (PRIORITY) ============
-            
-            # Average queries (working)
+            # ============ STEP 3: AVERAGE QUERIES ============
             if "average" in query_lower or "avg" in query_lower or "mean" in query_lower:
                 response = self.handle_average_query(query_lower)
                 return {"type": "metric_display", "content": response}
             
-            # Distribution queries (working)
+            # ============ STEP 4: DISTRIBUTION QUERIES ============
             if "distribution" in query_lower or "breakdown" in query_lower or "wise" in query_lower:
                 conditions = self.parse_query_conditions_structural(query_lower)
                 response = self.handle_distribution_query(query_lower, conditions)
                 return {"type": "metric_display", "content": response}
             
-            # Count queries (working)
+            # ============ STEP 5: COUNT QUERIES ============
             if "how many" in query_lower or "count" in query_lower:
                 conditions = self.parse_query_conditions_structural(query_lower)
                 filtered_data, filter_description = self.execute_query_from_conditions(conditions)
@@ -510,7 +345,7 @@ Return ONLY the JSON."""
                         response += f"• {desc}\n"
                 return {"type": "metric_display", "content": response}
             
-            # Show/List queries (working)
+            # ============ STEP 6: SHOW/LIST QUERIES ============
             if "show" in query_lower or "list" in query_lower or "find" in query_lower:
                 conditions = self.parse_query_conditions_structural(query_lower)
                 filtered_data, filter_description = self.execute_query_from_conditions(conditions)
@@ -542,7 +377,7 @@ Return ONLY the JSON."""
                     response += f"\n... and {total_count - 10} more tickets."
                 return {"type": "metric_display", "content": response}
             
-            # Due date queries (working)
+            # ============ STEP 7: DUE DATE QUERIES ============
             if "due" in query_lower or "overdue" in query_lower:
                 if 'Due Date' in self.project_data.columns:
                     try:
@@ -588,7 +423,7 @@ Return ONLY the JSON."""
                     except:
                         pass
             
-            # Anomaly detection (working)
+            # ============ STEP 8: ANOMALY DETECTION ============
             if "max rule" in query_lower and ("ml" in query_lower or "low ml" in query_lower):
                 if 'Rule_Score' in self.project_data.columns and 'ML_Score' in self.project_data.columns:
                     self.project_data["Variance"] = self.project_data["Rule_Score"] - self.project_data["ML_Score"]
@@ -604,26 +439,7 @@ Return ONLY the JSON."""
                                   f"Description: {target['Description']}"
                     }
             
-            # ============ STEP 4: LLM ENHANCEMENT (FOR COMPLEX QUERIES) ============
-            # Only try LLM if we haven't matched any pattern above
-            
-            if self.check_ollama_health():
-                try:
-                    llm_result = self.process_with_llm(query)
-                    
-                    if llm_result:
-                        intent = llm_result.get('intent')
-                        params = llm_result.get('parameters', {})
-                        
-                        # Only use LLM if we have valid intent and parameters
-                        if intent and params:
-                            result = self.execute_llm_query(intent, params)
-                            if result:
-                                return {"type": "metric_display", "content": result}
-                except Exception as e:
-                    print(f"LLM enhancement error: {e}")
-            
-            # ============ STEP 5: SEMANTIC SEARCH (FALLBACK) ============
+            # ============ STEP 9: SEMANTIC SEARCH (FALLBACK) ============
             if self.text_vectorizer is not None:
                 try:
                     search_corpus = self.project_data["Issue key"].fillna("") + " " + \
@@ -652,7 +468,7 @@ Return ONLY the JSON."""
                 except:
                     pass
             
-            # ============ STEP 6: UNMATCHED QUERY ============
+            # ============ STEP 10: UNMATCHED QUERY ============
             return {
                 "type": "unmatched_fallback",
                 "content": f"**I don't understand that query.**\n\nTry these examples:\n• 'AML-809' - Look up a ticket\n• 'average rule score' - Statistics\n• 'distribution by status' - Distribution\n• 'show me high priority tickets' - List tickets\n• 'how many tickets in backlog' - Count\n\nContact {self.support_contact} if stuck."
