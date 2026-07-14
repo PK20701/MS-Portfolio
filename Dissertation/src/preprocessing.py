@@ -7,5 +7,5 @@ class DataPreprocessor:
         df = df.copy()
         text_cols = ['Summary', 'Description', 'Acceptance criteria']
         for col in text_cols:
-            df[col] = df[col].fillna("").astype(str).str.strip()
+            df[col] = df[col].fillna("").astype(str).replace(r'\r\n|\r|\n', ' ', regex=True).str.strip()
         return df
