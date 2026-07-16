@@ -6,6 +6,8 @@ import os
 import plotly.express as px
 import plotly.graph_objects as go
 from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.pipeline import Pipeline
+from sklearn.compose import ColumnTransformer
 from src.preprocessing import DataPreprocessor
 from src.feature_engineering import FeatureEngineer
 from src.rule_engine import JiraRuleEngine
@@ -43,7 +45,7 @@ if uploaded_file:
         st.rerun()
 
 if uploaded_file:
-    # 1. Data Loading - SERVER COMPATIBLE
+    # 1. Data Loading
     @st.cache_data
     def get_data(file):
         file_name = file.name.lower()
@@ -70,35 +72,65 @@ if uploaded_file:
 
     df = get_data(uploaded_file)
 
-    # ============ 2. MODEL LOADING (FIXED) ============
+    # ============ 2. MODEL LOADING - COMPLETE FIX ============
     @st.cache_resource
     def load_model():
         try:
             current_dir = os.path.dirname(os.path.abspath(__file__))
-            model_path = os.path.join(current_dir, "models", "best_model.pkl")
             
-            if not os.path.exists(model_path):
-                st.sidebar.warning(f"⚠️ Model file not found at: {model_path}")
-                return None
+            # METHOD 1: Try loading components (most robust)
+            preprocessor_path = os.path.join(current_dir, "models", "preprocessor.pkl")
+            classifier_path = os.path.join(current_dir, "models", "classifier.pkl")
             
-            # Try joblib first
-            try:
-                model = joblib.load(model_path)
-                st.sidebar.success("✅ ML Model loaded (joblib)")
-                return model
-            except Exception as e1:
-                st.sidebar.warning(f"Joblib failed: {e1}")
-                
-                # Try pickle as fallback
+            if os.path.exists(preprocessor_path) and os.path.exists(classifier_path):
+                try:
+                    with open(preprocessor_path, "rb") as f:
+                        preprocessor = pickle.load(f)
+                    with open(classifier_path, "rb") as f:
+                        classifier = pickle.load(f)
+                    model = Pipeline([
+                        ('prep', preprocessor),
+                        ('clf', classifier)
+                    ])
+                    st.sidebar.success("✅ ML Model loaded from components")
+                    return model
+                except Exception as e:
+                    st.sidebar.warning(f"Component loading failed: {e}")
+            
+            # METHOD 2: Try pickle version
+            model_path = os.path.join(current_dir, "models", "best_model_pickle.pkl")
+            if os.path.exists(model_path):
                 try:
                     with open(model_path, "rb") as f:
                         model = pickle.load(f)
                     st.sidebar.success("✅ ML Model loaded (pickle)")
                     return model
-                except Exception as e2:
-                    st.sidebar.error(f"Both load methods failed: {e2}")
-                    return None
-                    
+                except Exception as e:
+                    st.sidebar.warning(f"Pickle loading failed: {e}")
+            
+            # METHOD 3: Try joblib V2
+            model_path = os.path.join(current_dir, "models", "best_model_v2.pkl")
+            if os.path.exists(model_path):
+                try:
+                    model = joblib.load(model_path)
+                    st.sidebar.success("✅ ML Model loaded (joblib v2)")
+                    return model
+                except Exception as e:
+                    st.sidebar.warning(f"Joblib v2 loading failed: {e}")
+            
+            # METHOD 4: Try original joblib
+            model_path = os.path.join(current_dir, "models", "best_model.pkl")
+            if os.path.exists(model_path):
+                try:
+                    model = joblib.load(model_path)
+                    st.sidebar.success("✅ ML Model loaded (joblib)")
+                    return model
+                except Exception as e:
+                    st.sidebar.warning(f"Joblib loading failed: {e}")
+            
+            st.sidebar.warning("⚠️ No model file found")
+            return None
+            
         except Exception as e:
             st.sidebar.error(f"Model loading failed: {str(e)}")
             return None
@@ -106,7 +138,7 @@ if uploaded_file:
     pipeline = load_model()
     scorer = JiraHybridScorer(rule_engine_weight=weight_rule)
     
-    # ============ 3. VECTORIZER LOADING (FIXED) ============
+    # ============ 3. VECTORIZER LOADING ============
     @st.cache_resource
     def load_vectorizer():
         try:
@@ -121,29 +153,24 @@ if uploaded_file:
 
     vectorizer = load_vectorizer()
     
-    # If vectorizer not found, extract from pipeline or create new
     if vectorizer is None and pipeline is not None:
         try:
-            # Try to extract vectorizer from pipeline
             vectorizer = pipeline.named_steps['prep'].named_transformers_['text']
             st.sidebar.success("✅ Vectorizer extracted from pipeline")
             
-            # Save it for next time
             current_dir = os.path.dirname(os.path.abspath(__file__))
             vectorizer_path = os.path.join(current_dir, "models", "vectorizer.pkl")
             joblib.dump(vectorizer, vectorizer_path)
         except Exception as e:
             st.sidebar.warning(f"Could not extract vectorizer: {e}")
     
-    # If still None, create new
     if vectorizer is None:
         search_corpus = df["Issue key"].fillna("") + " " + df["Summary"].fillna("") + " " + df["Description"].fillna("")
         vectorizer = TfidfVectorizer(max_features=1000, ngram_range=(1,2), sublinear_tf=True)
         vectorizer.fit(search_corpus)
         st.sidebar.info("ℹ️ New vectorizer created")
     
-    # ============ 4. ML PREDICTIONS (FIXED WITH DEBUG) ============
-    # Test the pipeline before running predictions
+    # ============ 4. ML PREDICTIONS ============
     if pipeline is not None:
         try:
             # Test with a single sample
@@ -154,7 +181,7 @@ if uploaded_file:
             test_pred = pipeline.predict_proba(test_input)
             st.sidebar.success(f"✅ Model test passed! Sample: {test_pred[0][1]:.3f}")
             
-            # Now run full predictions
+            # Run full predictions
             try:
                 input_df = pd.DataFrame({
                     'Combined': df['Combined'],
@@ -162,6 +189,7 @@ if uploaded_file:
                 })
                 df['precalc_ml_prob'] = pipeline.predict_proba(input_df)[:, 1] * 100
                 st.sidebar.info(f"📊 ML predictions completed for {len(df)} tickets")
+                st.sidebar.info(f"📊 ML Score range: {df['precalc_ml_prob'].min():.1f}% - {df['precalc_ml_prob'].max():.1f}%")
             except Exception as e:
                 st.sidebar.error(f"❌ Batch prediction failed: {e}")
                 df['precalc_ml_prob'] = 50.0
@@ -338,7 +366,20 @@ if uploaded_file:
             fig_scatter.update_layout(height=400, showlegend=False)
             st.plotly_chart(fig_scatter, use_container_width=True)
             
-        
+        with adv2:
+            st.markdown("**Score Distribution by Assignee**")
+            if 'Assignee' in res_df.columns and res_df['Assignee'].nunique() > 0:
+                top_assignees = res_df['Assignee'].value_counts().nlargest(10).index
+                box_df = res_df[res_df['Assignee'].isin(top_assignees)]
+                
+                fig_box = px.box(
+                    box_df, x='Assignee', y='Hybrid_Score', color='Assignee',
+                    labels={'Hybrid_Score': 'Hybrid Score (%)', 'Assignee': 'Ticket Assignee'}
+                )
+                fig_box.update_layout(height=400, showlegend=False, xaxis={'categoryorder':'median descending'})
+                st.plotly_chart(fig_box, use_container_width=True)
+            else:
+                st.info("Assignee data unavailable or insufficient for visualization.")
 
         st.divider()
         
