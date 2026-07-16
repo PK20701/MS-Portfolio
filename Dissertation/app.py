@@ -338,20 +338,7 @@ if uploaded_file:
             fig_scatter.update_layout(height=400, showlegend=False)
             st.plotly_chart(fig_scatter, use_container_width=True)
             
-        with adv2:
-            st.markdown("**Score Distribution by Assignee**")
-            if 'Assignee' in res_df.columns and res_df['Assignee'].nunique() > 0:
-                top_assignees = res_df['Assignee'].value_counts().nlargest(10).index
-                box_df = res_df[res_df['Assignee'].isin(top_assignees)]
-                
-                fig_box = px.box(
-                    box_df, x='Assignee', y='Hybrid_Score', color='Assignee',
-                    labels={'Hybrid_Score': 'Hybrid Score (%)', 'Assignee': 'Ticket Assignee'}
-                )
-                fig_box.update_layout(height=400, showlegend=False, xaxis={'categoryorder':'median descending'})
-                st.plotly_chart(fig_box, use_container_width=True)
-            else:
-                st.info("Assignee data unavailable or insufficient for visualization.")
+        
 
         st.divider()
         
