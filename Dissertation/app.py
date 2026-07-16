@@ -76,11 +76,11 @@ if uploaded_file:
     df = get_data(uploaded_file)
 
     # Debug: Show columns after feature engineering
-    st.sidebar.write("📊 Columns after feature engineering:", df.columns.tolist())
+    st.sidebar.write("📊 Columns:", df.columns.tolist())
     if 'Label_Numeric' in df.columns:
-        st.sidebar.write("📊 Label_Numeric values:", df['Label_Numeric'].value_counts().to_dict())
+        st.sidebar.write("📊 Label_Numeric:", df['Label_Numeric'].value_counts().to_dict())
     if 'Quality_Label' in df.columns:
-        st.sidebar.write("📊 Quality_Label values:", df['Quality_Label'].value_counts().to_dict())
+        st.sidebar.write("📊 Quality_Label:", df['Quality_Label'].value_counts().to_dict())
 
     # ============ 2. SMART MODEL LOADING OR TRAINING ============
     @st.cache_resource
@@ -88,13 +88,23 @@ if uploaded_file:
         """Load existing model or train a new one if labels exist"""
         try:
             current_dir = os.path.dirname(os.path.abspath(__file__))
-            model_path = os.path.join(current_dir, "models", "best_model.pkl")
-            vectorizer_path = os.path.join(current_dir, "models", "vectorizer.pkl")
+            
+            # ============ CREATE MODELS DIRECTORY IF IT DOESN'T EXIST ============
+            models_dir = os.path.join(current_dir, "models")
+            if not os.path.exists(models_dir):
+                os.makedirs(models_dir)
+                st.sidebar.info("📁 Created models directory")
+            
+            model_path = os.path.join(models_dir, "best_model.pkl")
+            vectorizer_path = os.path.join(models_dir, "vectorizer.pkl")
             
             # Check if we have training labels (created by feature_engineering.py)
             has_labels = 'Label_Numeric' in data_df.columns
             
-            # Try to load existing model first
+            st.sidebar.info(f"📁 Model path: {model_path}")
+            st.sidebar.info(f"📊 Has labels: {has_labels}")
+            
+            # ============ TRY TO LOAD EXISTING MODEL ============
             if os.path.exists(model_path):
                 try:
                     model = joblib.load(model_path)
@@ -102,12 +112,13 @@ if uploaded_file:
                     vectorizer = None
                     if os.path.exists(vectorizer_path):
                         vectorizer = joblib.load(vectorizer_path)
+                        st.sidebar.success("✅ Vectorizer loaded from file")
                     return model, vectorizer
                 except Exception as e:
                     st.sidebar.warning(f"Model load failed: {e}")
-                    st.sidebar.info("🔄 Attempting to train new model...")
+                    # Continue to training
             
-            # If labels exist, train a new model
+            # ============ TRAIN NEW MODEL IF LABELS EXIST ============
             if has_labels:
                 st.sidebar.info("📊 Training new ML model from uploaded data...")
                 
@@ -125,31 +136,47 @@ if uploaded_file:
                 st.sidebar.info(f"📊 Class distribution: GOOD={class_counts.get(1, 0)}, BAD={class_counts.get(0, 0)}")
                 
                 if len(X) > 0 and y.nunique() >= 2:
-                    # Create pipeline
-                    text_transformer = TfidfVectorizer(max_features=1000, ngram_range=(1,2), sublinear_tf=True)
-                    preprocessor = ColumnTransformer([
-                        ('text', text_transformer, 'Combined'),
-                        ('num', MinMaxScaler(), ['vague_term_density'])
-                    ])
-                    
-                    model = Pipeline([
-                        ('prep', preprocessor),
-                        ('clf', RandomForestClassifier(n_estimators=100, random_state=42))
-                    ])
-                    
-                    # Train
-                    model.fit(X, y)
-                    
-                    # Save the model
-                    joblib.dump(model, model_path)
-                    st.sidebar.success(f"✅ Model trained and saved! ({len(X)} samples)")
-                    
-                    # Extract and save vectorizer
-                    vectorizer = model.named_steps['prep'].named_transformers_['text']
-                    joblib.dump(vectorizer, vectorizer_path)
-                    st.sidebar.success("✅ Vectorizer saved")
-                    
-                    return model, vectorizer
+                    try:
+                        # Create pipeline
+                        text_transformer = TfidfVectorizer(max_features=1000, ngram_range=(1,2), sublinear_tf=True)
+                        preprocessor = ColumnTransformer([
+                            ('text', text_transformer, 'Combined'),
+                            ('num', MinMaxScaler(), ['vague_term_density'])
+                        ])
+                        
+                        model = Pipeline([
+                            ('prep', preprocessor),
+                            ('clf', RandomForestClassifier(n_estimators=100, random_state=42))
+                        ])
+                        
+                        # Train
+                        model.fit(X, y)
+                        st.sidebar.success(f"✅ Model trained successfully! ({len(X)} samples)")
+                        
+                        # Save the model
+                        try:
+                            joblib.dump(model, model_path)
+                            st.sidebar.success(f"✅ Model saved to: {model_path}")
+                        except Exception as save_error:
+                            st.sidebar.error(f"Failed to save model: {save_error}")
+                            # Still return the model even if save fails
+                        
+                        # Extract and save vectorizer
+                        try:
+                            vectorizer = model.named_steps['prep'].named_transformers_['text']
+                            joblib.dump(vectorizer, vectorizer_path)
+                            st.sidebar.success("✅ Vectorizer saved")
+                        except Exception as vec_error:
+                            st.sidebar.warning(f"Vectorizer save failed: {vec_error}")
+                            vectorizer = None
+                        
+                        return model, vectorizer
+                        
+                    except Exception as train_error:
+                        st.sidebar.error(f"Training failed: {train_error}")
+                        import traceback
+                        st.sidebar.code(traceback.format_exc())
+                        return None, None
                 else:
                     st.sidebar.warning(f"⚠️ Not enough training data. Found {y.nunique()} classes with {len(X)} samples.")
                     st.sidebar.info("Need both GOOD and BAD samples for training.")
@@ -158,7 +185,7 @@ if uploaded_file:
                 st.sidebar.info("Make sure your dataset has 'Quality_Label' column with GOOD/BAD values.")
                 st.sidebar.info("Available columns: " + ", ".join(data_df.columns))
             
-            # If no training data, use fallback
+            # ============ FALLBACK: RULE-BASED ONLY ============
             st.sidebar.info("ℹ️ Using fallback (Rule-based only)")
             return None, None
             
