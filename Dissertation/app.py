@@ -6,8 +6,10 @@ import os
 import plotly.express as px
 import plotly.graph_objects as go
 from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.pipeline import Pipeline
 from sklearn.compose import ColumnTransformer
+from sklearn.preprocessing import MinMaxScaler
 from src.preprocessing import DataPreprocessor
 from src.feature_engineering import FeatureEngineer
 from src.rule_engine import JiraRuleEngine
@@ -72,103 +74,98 @@ if uploaded_file:
 
     df = get_data(uploaded_file)
 
-    # ============ 2. MODEL LOADING - COMPLETE FIX ============
+    # ============ 2. SMART MODEL LOADING OR TRAINING ============
     @st.cache_resource
-    def load_model():
+    def get_or_train_model(data_df):
+        """Load existing model or train a new one if labels exist"""
         try:
             current_dir = os.path.dirname(os.path.abspath(__file__))
+            model_path = os.path.join(current_dir, "models", "best_model.pkl")
+            vectorizer_path = os.path.join(current_dir, "models", "vectorizer.pkl")
             
-            # METHOD 1: Try loading components (most robust)
-            preprocessor_path = os.path.join(current_dir, "models", "preprocessor.pkl")
-            classifier_path = os.path.join(current_dir, "models", "classifier.pkl")
+            # Check if we have training labels
+            has_labels = 'Label_Numeric' in data_df.columns
+            has_quality_label = 'Quality_Label' in data_df.columns
             
-            if os.path.exists(preprocessor_path) and os.path.exists(classifier_path):
+            # Try to load existing model first
+            if os.path.exists(model_path):
                 try:
-                    with open(preprocessor_path, "rb") as f:
-                        preprocessor = pickle.load(f)
-                    with open(classifier_path, "rb") as f:
-                        classifier = pickle.load(f)
+                    model = joblib.load(model_path)
+                    st.sidebar.success("✅ ML Model loaded from file")
+                    
+                    # Also load vectorizer if available
+                    vectorizer = None
+                    if os.path.exists(vectorizer_path):
+                        vectorizer = joblib.load(vectorizer_path)
+                    return model, vectorizer
+                except Exception as e:
+                    st.sidebar.warning(f"Model load failed: {e}")
+                    st.sidebar.info("🔄 Attempting to train new model...")
+            
+            # If labels exist, train a new model
+            if has_labels or has_quality_label:
+                st.sidebar.info("📊 Training new ML model from uploaded data...")
+                
+                # Create labels if Quality_Label exists but Label_Numeric doesn't
+                if has_quality_label and not has_labels:
+                    data_df['Label_Numeric'] = data_df['Quality_Label'].map({'GOOD': 1, 'BAD': 0})
+                
+                # Prepare features and labels
+                X = data_df[['Combined', 'vague_term_density']]
+                y = data_df['Label_Numeric']
+                
+                # Remove rows with missing labels
+                valid_mask = y.notna()
+                X = X[valid_mask]
+                y = y[valid_mask]
+                
+                if len(X) > 0 and y.nunique() >= 2:  # Need at least 2 classes
+                    # Create pipeline
+                    text_transformer = TfidfVectorizer(max_features=1000, ngram_range=(1,2), sublinear_tf=True)
+                    preprocessor = ColumnTransformer([
+                        ('text', text_transformer, 'Combined'),
+                        ('num', MinMaxScaler(), ['vague_term_density'])
+                    ])
+                    
                     model = Pipeline([
                         ('prep', preprocessor),
-                        ('clf', classifier)
+                        ('clf', RandomForestClassifier(n_estimators=100, random_state=42))
                     ])
-                    st.sidebar.success("✅ ML Model loaded from components")
-                    return model
-                except Exception as e:
-                    st.sidebar.warning(f"Component loading failed: {e}")
+                    
+                    # Train
+                    model.fit(X, y)
+                    
+                    # Save the model
+                    joblib.dump(model, model_path)
+                    st.sidebar.success(f"✅ Model trained and saved! ({len(X)} samples)")
+                    
+                    # Extract and save vectorizer
+                    vectorizer = model.named_steps['prep'].named_transformers_['text']
+                    joblib.dump(vectorizer, vectorizer_path)
+                    st.sidebar.success("✅ Vectorizer saved")
+                    
+                    return model, vectorizer
+                else:
+                    st.sidebar.warning("⚠️ Not enough training data. Using fallback.")
             
-            # METHOD 2: Try pickle version
-            model_path = os.path.join(current_dir, "models", "best_model_pickle.pkl")
-            if os.path.exists(model_path):
-                try:
-                    with open(model_path, "rb") as f:
-                        model = pickle.load(f)
-                    st.sidebar.success("✅ ML Model loaded (pickle)")
-                    return model
-                except Exception as e:
-                    st.sidebar.warning(f"Pickle loading failed: {e}")
-            
-            # METHOD 3: Try joblib V2
-            model_path = os.path.join(current_dir, "models", "best_model_v2.pkl")
-            if os.path.exists(model_path):
-                try:
-                    model = joblib.load(model_path)
-                    st.sidebar.success("✅ ML Model loaded (joblib v2)")
-                    return model
-                except Exception as e:
-                    st.sidebar.warning(f"Joblib v2 loading failed: {e}")
-            
-            # METHOD 4: Try original joblib
-            model_path = os.path.join(current_dir, "models", "best_model.pkl")
-            if os.path.exists(model_path):
-                try:
-                    model = joblib.load(model_path)
-                    st.sidebar.success("✅ ML Model loaded (joblib)")
-                    return model
-                except Exception as e:
-                    st.sidebar.warning(f"Joblib loading failed: {e}")
-            
-            st.sidebar.warning("⚠️ No model file found")
-            return None
+            # If no training data or training failed, create a fallback model
+            st.sidebar.info("ℹ️ Using fallback model (Rule-based only)")
+            return None, None
             
         except Exception as e:
-            st.sidebar.error(f"Model loading failed: {str(e)}")
-            return None
+            st.sidebar.error(f"Model operation failed: {str(e)}")
+            return None, None
 
-    pipeline = load_model()
+    pipeline, vectorizer = get_or_train_model(df)
     scorer = JiraHybridScorer(rule_engine_weight=weight_rule)
     
-    # ============ 3. VECTORIZER LOADING ============
-    @st.cache_resource
-    def load_vectorizer():
-        try:
-            current_dir = os.path.dirname(os.path.abspath(__file__))
-            vectorizer_path = os.path.join(current_dir, "models", "vectorizer.pkl")
-            
-            if os.path.exists(vectorizer_path):
-                return joblib.load(vectorizer_path)
-        except:
-            pass
-        return None
-
-    vectorizer = load_vectorizer()
-    
-    if vectorizer is None and pipeline is not None:
-        try:
-            vectorizer = pipeline.named_steps['prep'].named_transformers_['text']
-            st.sidebar.success("✅ Vectorizer extracted from pipeline")
-            
-            current_dir = os.path.dirname(os.path.abspath(__file__))
-            vectorizer_path = os.path.join(current_dir, "models", "vectorizer.pkl")
-            joblib.dump(vectorizer, vectorizer_path)
-        except Exception as e:
-            st.sidebar.warning(f"Could not extract vectorizer: {e}")
-    
+    # ============ 3. VECTORIZER FALLBACK ============
     if vectorizer is None:
+        # Create a vectorizer for fallback
         search_corpus = df["Issue key"].fillna("") + " " + df["Summary"].fillna("") + " " + df["Description"].fillna("")
         vectorizer = TfidfVectorizer(max_features=1000, ngram_range=(1,2), sublinear_tf=True)
         vectorizer.fit(search_corpus)
-        st.sidebar.info("ℹ️ New vectorizer created")
+        st.sidebar.info("ℹ️ New vectorizer created for fallback")
     
     # ============ 4. ML PREDICTIONS ============
     if pipeline is not None:
