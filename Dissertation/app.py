@@ -70,9 +70,17 @@ if uploaded_file:
         
         df.columns = [c.strip() for c in df.columns]
         df = DataPreprocessor.clean_data(df)
+        # feature_engineering.py creates Label_Numeric from Quality_Label
         return FeatureEngineer.engineer_features(df)
 
     df = get_data(uploaded_file)
+
+    # Debug: Show columns after feature engineering
+    st.sidebar.write("📊 Columns after feature engineering:", df.columns.tolist())
+    if 'Label_Numeric' in df.columns:
+        st.sidebar.write("📊 Label_Numeric values:", df['Label_Numeric'].value_counts().to_dict())
+    if 'Quality_Label' in df.columns:
+        st.sidebar.write("📊 Quality_Label values:", df['Quality_Label'].value_counts().to_dict())
 
     # ============ 2. SMART MODEL LOADING OR TRAINING ============
     @st.cache_resource
@@ -83,17 +91,14 @@ if uploaded_file:
             model_path = os.path.join(current_dir, "models", "best_model.pkl")
             vectorizer_path = os.path.join(current_dir, "models", "vectorizer.pkl")
             
-            # Check if we have training labels
+            # Check if we have training labels (created by feature_engineering.py)
             has_labels = 'Label_Numeric' in data_df.columns
-            has_quality_label = 'Quality_Label' in data_df.columns
             
             # Try to load existing model first
             if os.path.exists(model_path):
                 try:
                     model = joblib.load(model_path)
                     st.sidebar.success("✅ ML Model loaded from file")
-                    
-                    # Also load vectorizer if available
                     vectorizer = None
                     if os.path.exists(vectorizer_path):
                         vectorizer = joblib.load(vectorizer_path)
@@ -103,12 +108,8 @@ if uploaded_file:
                     st.sidebar.info("🔄 Attempting to train new model...")
             
             # If labels exist, train a new model
-            if has_labels or has_quality_label:
+            if has_labels:
                 st.sidebar.info("📊 Training new ML model from uploaded data...")
-                
-                # Create labels if Quality_Label exists but Label_Numeric doesn't
-                if has_quality_label and not has_labels:
-                    data_df['Label_Numeric'] = data_df['Quality_Label'].map({'GOOD': 1, 'BAD': 0})
                 
                 # Prepare features and labels
                 X = data_df[['Combined', 'vague_term_density']]
@@ -119,7 +120,11 @@ if uploaded_file:
                 X = X[valid_mask]
                 y = y[valid_mask]
                 
-                if len(X) > 0 and y.nunique() >= 2:  # Need at least 2 classes
+                # Check class distribution
+                class_counts = y.value_counts()
+                st.sidebar.info(f"📊 Class distribution: GOOD={class_counts.get(1, 0)}, BAD={class_counts.get(0, 0)}")
+                
+                if len(X) > 0 and y.nunique() >= 2:
                     # Create pipeline
                     text_transformer = TfidfVectorizer(max_features=1000, ngram_range=(1,2), sublinear_tf=True)
                     preprocessor = ColumnTransformer([
@@ -146,14 +151,21 @@ if uploaded_file:
                     
                     return model, vectorizer
                 else:
-                    st.sidebar.warning("⚠️ Not enough training data. Using fallback.")
+                    st.sidebar.warning(f"⚠️ Not enough training data. Found {y.nunique()} classes with {len(X)} samples.")
+                    st.sidebar.info("Need both GOOD and BAD samples for training.")
+            else:
+                st.sidebar.warning("⚠️ No Label_Numeric column found.")
+                st.sidebar.info("Make sure your dataset has 'Quality_Label' column with GOOD/BAD values.")
+                st.sidebar.info("Available columns: " + ", ".join(data_df.columns))
             
-            # If no training data or training failed, create a fallback model
-            st.sidebar.info("ℹ️ Using fallback model (Rule-based only)")
+            # If no training data, use fallback
+            st.sidebar.info("ℹ️ Using fallback (Rule-based only)")
             return None, None
             
         except Exception as e:
             st.sidebar.error(f"Model operation failed: {str(e)}")
+            import traceback
+            st.sidebar.code(traceback.format_exc())
             return None, None
 
     pipeline, vectorizer = get_or_train_model(df)
