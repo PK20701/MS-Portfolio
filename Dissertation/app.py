@@ -100,13 +100,14 @@ if uploaded_file:
                     vectorizer = None
                     if os.path.exists(vectorizer_path):
                         vectorizer = joblib.load(vectorizer_path)
+                    st.sidebar.success("✅ ML Model loaded from file")
                     return model, vectorizer, False
                 except Exception as e:
-                    st.sidebar.warning(f"Model load failed, retraining...")
+                    st.sidebar.warning(f"Model load failed: {e}")
             
             # Train new model if labels exist
             if has_labels:
-                st.sidebar.info("📊 Training ML model...")
+                st.sidebar.info("📊 Training new ML model from uploaded data...")
                 
                 X = data_df[['Combined', 'vague_term_density']]
                 y = data_df['Label_Numeric']
@@ -150,7 +151,7 @@ if uploaded_file:
                     st.sidebar.warning("⚠️ Need both GOOD and BAD samples")
                     return None, None, False
             else:
-                st.sidebar.warning("⚠️ No Quality_Label column found")
+                st.sidebar.warning("⚠️ No Quality_Label column found for training")
                 return None, None, False
                 
         except Exception as e:
@@ -160,38 +161,42 @@ if uploaded_file:
     pipeline, vectorizer, is_newly_trained = get_or_train_model(df)
     scorer = JiraHybridScorer(rule_engine_weight=weight_rule)
     
-    # ============ 2.5 DOWNLOAD MODEL (IF NEWLY TRAINED) ============
-    if is_newly_trained:
+    # ============ 2.5 ALWAYS SHOW DOWNLOAD BUTTON IF MODEL EXISTS ============
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    model_path = os.path.join(current_dir, "models", "best_model.pkl")
+    vectorizer_path = os.path.join(current_dir, "models", "vectorizer.pkl")
+    
+    # Always show download section if model exists
+    if os.path.exists(model_path):
         st.sidebar.markdown("---")
-        st.sidebar.info("📥 Model trained successfully! Download it to persist:")
-        
-        current_dir = os.path.dirname(os.path.abspath(__file__))
-        model_path = os.path.join(current_dir, "models", "best_model.pkl")
+        st.sidebar.subheader("📥 Download Model")
         
         # Read and create download button for model
         with open(model_path, "rb") as f:
             model_bytes = f.read()
             b64_model = base64.b64encode(model_bytes).decode()
-            href_model = f'<a href="data:file/pkl;base64,{b64_model}" download="best_model.pkl" style="text-decoration:none;background-color:#4CAF50;color:white;padding:8px 16px;border-radius:4px;display:inline-block;">📥 Download best_model.pkl</a>'
+            href_model = f'<a href="data:file/pkl;base64,{b64_model}" download="best_model.pkl" style="text-decoration:none;background-color:#4CAF50;color:white;padding:8px 16px;border-radius:4px;display:inline-block;width:100%;text-align:center;">📥 Download best_model.pkl</a>'
             st.sidebar.markdown(href_model, unsafe_allow_html=True)
+            st.sidebar.caption(f"Size: {len(model_bytes) / 1024:.1f} KB")
         
         # Read and create download button for vectorizer
-        vectorizer_path = os.path.join(current_dir, "models", "vectorizer.pkl")
         if os.path.exists(vectorizer_path):
             with open(vectorizer_path, "rb") as f:
                 vectorizer_bytes = f.read()
                 b64_vectorizer = base64.b64encode(vectorizer_bytes).decode()
-                href_vectorizer = f'<a href="data:file/pkl;base64,{b64_vectorizer}" download="vectorizer.pkl" style="text-decoration:none;background-color:#2196F3;color:white;padding:8px 16px;border-radius:4px;display:inline-block;">📥 Download vectorizer.pkl</a>'
+                href_vectorizer = f'<a href="data:file/pkl;base64,{b64_vectorizer}" download="vectorizer.pkl" style="text-decoration:none;background-color:#2196F3;color:white;padding:8px 16px;border-radius:4px;display:inline-block;width:100%;text-align:center;margin-top:5px;">📥 Download vectorizer.pkl</a>'
                 st.sidebar.markdown(href_vectorizer, unsafe_allow_html=True)
+                st.sidebar.caption(f"Size: {len(vectorizer_bytes) / 1024:.1f} KB")
         
         st.sidebar.markdown("---")
-        st.sidebar.info("📌 Upload these files to your GitHub repository to persist the model.")
+        st.sidebar.info("💡 Upload these files to your GitHub repository to persist the model.")
     
     # ============ 3. VECTORIZER FALLBACK ============
     if vectorizer is None:
         search_corpus = df["Issue key"].fillna("") + " " + df["Summary"].fillna("") + " " + df["Description"].fillna("")
         vectorizer = TfidfVectorizer(max_features=1000, ngram_range=(1,2), sublinear_tf=True)
         vectorizer.fit(search_corpus)
+        st.sidebar.info("ℹ️ Using fallback vectorizer")
     
     # ============ 4. ML PREDICTIONS ============
     if pipeline is not None:
@@ -201,11 +206,13 @@ if uploaded_file:
                 'vague_term_density': df.get('vague_term_density', 0)
             })
             df['precalc_ml_prob'] = pipeline.predict_proba(input_df)[:, 1] * 100
+            st.sidebar.success(f"✅ ML predictions completed for {len(df)} tickets")
         except Exception as e:
             st.sidebar.error(f"❌ Prediction failed: {e}")
             df['precalc_ml_prob'] = 50.0
     else:
         df['precalc_ml_prob'] = 50.0
+        st.sidebar.info("ℹ️ Using rule-based scoring only")
 
     # ============ 5. CALCULATE SCORES ============
     rule_scores, ml_scores, hybrid_scores, tiers, explanations = [], [], [], [], []
