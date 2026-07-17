@@ -3,7 +3,6 @@ import pandas as pd
 import joblib
 import pickle
 import os
-import base64
 import plotly.express as px
 import plotly.graph_objects as go
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -75,124 +74,42 @@ if uploaded_file:
 
     df = get_data(uploaded_file)
 
-    # ============ 2. MODEL LOADING OR TRAINING ============
+    # ============ 2. MODEL LOADING (NO TRAINING ON SERVER) ============
     @st.cache_resource
-    def get_or_train_model(data_df):
-        """Load existing model or train a new one if labels exist"""
+    def load_model():
+        """Load pre-trained model only - no training on server"""
         try:
             current_dir = os.path.dirname(os.path.abspath(__file__))
-            
-            # Create models directory if it doesn't exist
             models_dir = os.path.join(current_dir, "models")
-            if not os.path.exists(models_dir):
-                os.makedirs(models_dir)
-            
             model_path = os.path.join(models_dir, "best_model.pkl")
             vectorizer_path = os.path.join(models_dir, "vectorizer.pkl")
             
-            # Check if we have training labels
-            has_labels = 'Label_Numeric' in data_df.columns
-            
-            # Try to load existing model
+            # Check if model exists
             if os.path.exists(model_path):
                 try:
                     model = joblib.load(model_path)
                     vectorizer = None
                     if os.path.exists(vectorizer_path):
                         vectorizer = joblib.load(vectorizer_path)
-                    st.sidebar.success("✅ ML Model loaded from file")
-                    return model, vectorizer, False
+                    st.sidebar.success("✅ ML Model loaded")
+                    return model, vectorizer
                 except Exception as e:
-                    st.sidebar.warning(f"Model load failed: {e}")
-            
-            # Train new model if labels exist
-            if has_labels:
-                st.sidebar.info("📊 Training new ML model from uploaded data...")
-                
-                X = data_df[['Combined', 'vague_term_density']]
-                y = data_df['Label_Numeric']
-                
-                # Remove rows with missing labels
-                valid_mask = y.notna()
-                X = X[valid_mask]
-                y = y[valid_mask]
-                
-                if len(X) > 0 and y.nunique() >= 2:
-                    try:
-                        # Create pipeline
-                        text_transformer = TfidfVectorizer(max_features=1000, ngram_range=(1,2), sublinear_tf=True)
-                        preprocessor = ColumnTransformer([
-                            ('text', text_transformer, 'Combined'),
-                            ('num', MinMaxScaler(), ['vague_term_density'])
-                        ])
-                        
-                        model = Pipeline([
-                            ('prep', preprocessor),
-                            ('clf', RandomForestClassifier(n_estimators=100, random_state=42))
-                        ])
-                        
-                        # Train
-                        model.fit(X, y)
-                        
-                        # Save model
-                        joblib.dump(model, model_path)
-                        
-                        # Save vectorizer
-                        vectorizer = model.named_steps['prep'].named_transformers_['text']
-                        joblib.dump(vectorizer, vectorizer_path)
-                        
-                        st.sidebar.success(f"✅ Model trained ({len(X)} samples)")
-                        return model, vectorizer, True
-                        
-                    except Exception as e:
-                        st.sidebar.error(f"Training failed: {e}")
-                        return None, None, False
-                else:
-                    st.sidebar.warning("⚠️ Need both GOOD and BAD samples")
-                    return None, None, False
+                    st.sidebar.error(f"❌ Model load failed: {str(e)}")
+                    return None, None
             else:
-                st.sidebar.warning("⚠️ No Quality_Label column found for training")
-                return None, None, False
+                st.sidebar.warning("⚠️ Model not found. Please contact administrator.")
+                return None, None
                 
         except Exception as e:
-            st.sidebar.error(f"Model error: {str(e)}")
-            return None, None, False
+            st.sidebar.error(f"❌ Model loading error: {str(e)}")
+            return None, None
 
-    pipeline, vectorizer, is_newly_trained = get_or_train_model(df)
+    pipeline, vectorizer = load_model()
     scorer = JiraHybridScorer(rule_engine_weight=weight_rule)
-    
-    # ============ 2.5 ALWAYS SHOW DOWNLOAD BUTTON IF MODEL EXISTS ============
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    model_path = os.path.join(current_dir, "models", "best_model.pkl")
-    vectorizer_path = os.path.join(current_dir, "models", "vectorizer.pkl")
-    
-    # Always show download section if model exists
-    if os.path.exists(model_path):
-        st.sidebar.markdown("---")
-        st.sidebar.subheader("📥 Download Model")
-        
-        # Read and create download button for model
-        with open(model_path, "rb") as f:
-            model_bytes = f.read()
-            b64_model = base64.b64encode(model_bytes).decode()
-            href_model = f'<a href="data:file/pkl;base64,{b64_model}" download="best_model.pkl" style="text-decoration:none;background-color:#4CAF50;color:white;padding:8px 16px;border-radius:4px;display:inline-block;width:100%;text-align:center;">📥 Download best_model.pkl</a>'
-            st.sidebar.markdown(href_model, unsafe_allow_html=True)
-            st.sidebar.caption(f"Size: {len(model_bytes) / 1024:.1f} KB")
-        
-        # Read and create download button for vectorizer
-        if os.path.exists(vectorizer_path):
-            with open(vectorizer_path, "rb") as f:
-                vectorizer_bytes = f.read()
-                b64_vectorizer = base64.b64encode(vectorizer_bytes).decode()
-                href_vectorizer = f'<a href="data:file/pkl;base64,{b64_vectorizer}" download="vectorizer.pkl" style="text-decoration:none;background-color:#2196F3;color:white;padding:8px 16px;border-radius:4px;display:inline-block;width:100%;text-align:center;margin-top:5px;">📥 Download vectorizer.pkl</a>'
-                st.sidebar.markdown(href_vectorizer, unsafe_allow_html=True)
-                st.sidebar.caption(f"Size: {len(vectorizer_bytes) / 1024:.1f} KB")
-        
-        st.sidebar.markdown("---")
-        st.sidebar.info("💡 Upload these files to your GitHub repository to persist the model.")
     
     # ============ 3. VECTORIZER FALLBACK ============
     if vectorizer is None:
+        # Create a vectorizer for fallback
         search_corpus = df["Issue key"].fillna("") + " " + df["Summary"].fillna("") + " " + df["Description"].fillna("")
         vectorizer = TfidfVectorizer(max_features=1000, ngram_range=(1,2), sublinear_tf=True)
         vectorizer.fit(search_corpus)
@@ -201,14 +118,25 @@ if uploaded_file:
     # ============ 4. ML PREDICTIONS ============
     if pipeline is not None:
         try:
-            input_df = pd.DataFrame({
-                'Combined': df['Combined'],
-                'vague_term_density': df.get('vague_term_density', 0)
+            # Test with a single sample
+            test_input = pd.DataFrame({
+                'Combined': df['Combined'].head(1),
+                'vague_term_density': df['vague_term_density'].head(1)
             })
-            df['precalc_ml_prob'] = pipeline.predict_proba(input_df)[:, 1] * 100
-            st.sidebar.success(f"✅ ML predictions completed for {len(df)} tickets")
+            test_pred = pipeline.predict_proba(test_input)
+            
+            # Run full predictions
+            try:
+                input_df = pd.DataFrame({
+                    'Combined': df['Combined'],
+                    'vague_term_density': df.get('vague_term_density', 0)
+                })
+                df['precalc_ml_prob'] = pipeline.predict_proba(input_df)[:, 1] * 100
+            except Exception as e:
+                st.sidebar.error(f"❌ Prediction failed: {e}")
+                df['precalc_ml_prob'] = 50.0
         except Exception as e:
-            st.sidebar.error(f"❌ Prediction failed: {e}")
+            st.sidebar.error(f"❌ Model test failed: {e}")
             df['precalc_ml_prob'] = 50.0
     else:
         df['precalc_ml_prob'] = 50.0
