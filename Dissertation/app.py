@@ -100,7 +100,7 @@ if uploaded_file:
                     if os.path.exists(vectorizer_path):
                         vectorizer = joblib.load(vectorizer_path)
                     st.sidebar.success("✅ ML Model loaded")
-                    return model, vectorizer
+                    return model, vectorizer, False  # False = not newly trained
                 except Exception as e:
                     st.sidebar.warning(f"Model load failed, retraining...")
             
@@ -141,24 +141,57 @@ if uploaded_file:
                         joblib.dump(vectorizer, vectorizer_path)
                         
                         st.sidebar.success(f"✅ Model trained ({len(X)} samples)")
-                        return model, vectorizer
+                        return model, vectorizer, True  # True = newly trained
                         
                     except Exception as e:
                         st.sidebar.error(f"Training failed: {e}")
-                        return None, None
+                        return None, None, False
                 else:
                     st.sidebar.warning("⚠️ Need both GOOD and BAD samples")
-                    return None, None
+                    return None, None, False
             else:
                 st.sidebar.warning("⚠️ No Quality_Label column found")
-                return None, None
+                return None, None, False
                 
         except Exception as e:
             st.sidebar.error(f"Model error: {str(e)}")
-            return None, None
+            return None, None, False
 
-    pipeline, vectorizer = get_or_train_model(df)
+    pipeline, vectorizer, is_newly_trained = get_or_train_model(df)
     scorer = JiraHybridScorer(rule_engine_weight=weight_rule)
+    
+    # ============ 2.5 DOWNLOAD MODEL (IF NEWLY TRAINED) ============
+    if is_newly_trained:
+        st.sidebar.markdown("---")
+        st.sidebar.info("📥 Model trained successfully!")
+        
+        # Read the model file and provide download button
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        model_path = os.path.join(current_dir, "models", "best_model.pkl")
+        
+        with open(model_path, "rb") as f:
+            model_data = f.read()
+            st.sidebar.download_button(
+                label="📥 Download Model (best_model.pkl)",
+                data=model_data,
+                file_name="best_model.pkl",
+                mime="application/octet-stream"
+            )
+        
+        # Also provide vectorizer download
+        vectorizer_path = os.path.join(current_dir, "models", "vectorizer.pkl")
+        if os.path.exists(vectorizer_path):
+            with open(vectorizer_path, "rb") as f:
+                vectorizer_data = f.read()
+                st.sidebar.download_button(
+                    label="📥 Download Vectorizer (vectorizer.pkl)",
+                    data=vectorizer_data,
+                    file_name="vectorizer.pkl",
+                    mime="application/octet-stream"
+                )
+        
+        st.sidebar.markdown("---")
+        st.sidebar.info("📌 Upload these files to your GitHub repository to persist the model.")
     
     # ============ 3. VECTORIZER FALLBACK ============
     if vectorizer is None:
