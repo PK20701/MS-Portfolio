@@ -70,59 +70,44 @@ if uploaded_file:
         
         df.columns = [c.strip() for c in df.columns]
         df = DataPreprocessor.clean_data(df)
-        # feature_engineering.py creates Label_Numeric from Quality_Label
         return FeatureEngineer.engineer_features(df)
 
     df = get_data(uploaded_file)
 
-    # Debug: Show columns after feature engineering
-    st.sidebar.write("📊 Columns:", df.columns.tolist())
-    if 'Label_Numeric' in df.columns:
-        st.sidebar.write("📊 Label_Numeric:", df['Label_Numeric'].value_counts().to_dict())
-    if 'Quality_Label' in df.columns:
-        st.sidebar.write("📊 Quality_Label:", df['Quality_Label'].value_counts().to_dict())
-
-    # ============ 2. SMART MODEL LOADING OR TRAINING ============
+    # ============ 2. MODEL LOADING OR TRAINING ============
     @st.cache_resource
     def get_or_train_model(data_df):
         """Load existing model or train a new one if labels exist"""
         try:
             current_dir = os.path.dirname(os.path.abspath(__file__))
             
-            # ============ CREATE MODELS DIRECTORY IF IT DOESN'T EXIST ============
+            # Create models directory if it doesn't exist
             models_dir = os.path.join(current_dir, "models")
             if not os.path.exists(models_dir):
                 os.makedirs(models_dir)
-                st.sidebar.info("📁 Created models directory")
             
             model_path = os.path.join(models_dir, "best_model.pkl")
             vectorizer_path = os.path.join(models_dir, "vectorizer.pkl")
             
-            # Check if we have training labels (created by feature_engineering.py)
+            # Check if we have training labels
             has_labels = 'Label_Numeric' in data_df.columns
             
-            st.sidebar.info(f"📁 Model path: {model_path}")
-            st.sidebar.info(f"📊 Has labels: {has_labels}")
-            
-            # ============ TRY TO LOAD EXISTING MODEL ============
+            # Try to load existing model
             if os.path.exists(model_path):
                 try:
                     model = joblib.load(model_path)
-                    st.sidebar.success("✅ ML Model loaded from file")
                     vectorizer = None
                     if os.path.exists(vectorizer_path):
                         vectorizer = joblib.load(vectorizer_path)
-                        st.sidebar.success("✅ Vectorizer loaded from file")
+                    st.sidebar.success("✅ ML Model loaded")
                     return model, vectorizer
                 except Exception as e:
-                    st.sidebar.warning(f"Model load failed: {e}")
-                    # Continue to training
+                    st.sidebar.warning(f"Model load failed, retraining...")
             
-            # ============ TRAIN NEW MODEL IF LABELS EXIST ============
+            # Train new model if labels exist
             if has_labels:
-                st.sidebar.info("📊 Training new ML model from uploaded data...")
+                st.sidebar.info("📊 Training ML model...")
                 
-                # Prepare features and labels
                 X = data_df[['Combined', 'vague_term_density']]
                 y = data_df['Label_Numeric']
                 
@@ -130,10 +115,6 @@ if uploaded_file:
                 valid_mask = y.notna()
                 X = X[valid_mask]
                 y = y[valid_mask]
-                
-                # Check class distribution
-                class_counts = y.value_counts()
-                st.sidebar.info(f"📊 Class distribution: GOOD={class_counts.get(1, 0)}, BAD={class_counts.get(0, 0)}")
                 
                 if len(X) > 0 and y.nunique() >= 2:
                     try:
@@ -151,48 +132,29 @@ if uploaded_file:
                         
                         # Train
                         model.fit(X, y)
-                        st.sidebar.success(f"✅ Model trained successfully! ({len(X)} samples)")
                         
-                        # Save the model
-                        try:
-                            joblib.dump(model, model_path)
-                            st.sidebar.success(f"✅ Model saved to: {model_path}")
-                        except Exception as save_error:
-                            st.sidebar.error(f"Failed to save model: {save_error}")
-                            # Still return the model even if save fails
+                        # Save model
+                        joblib.dump(model, model_path)
                         
-                        # Extract and save vectorizer
-                        try:
-                            vectorizer = model.named_steps['prep'].named_transformers_['text']
-                            joblib.dump(vectorizer, vectorizer_path)
-                            st.sidebar.success("✅ Vectorizer saved")
-                        except Exception as vec_error:
-                            st.sidebar.warning(f"Vectorizer save failed: {vec_error}")
-                            vectorizer = None
+                        # Save vectorizer
+                        vectorizer = model.named_steps['prep'].named_transformers_['text']
+                        joblib.dump(vectorizer, vectorizer_path)
                         
+                        st.sidebar.success(f"✅ Model trained ({len(X)} samples)")
                         return model, vectorizer
                         
-                    except Exception as train_error:
-                        st.sidebar.error(f"Training failed: {train_error}")
-                        import traceback
-                        st.sidebar.code(traceback.format_exc())
+                    except Exception as e:
+                        st.sidebar.error(f"Training failed: {e}")
                         return None, None
                 else:
-                    st.sidebar.warning(f"⚠️ Not enough training data. Found {y.nunique()} classes with {len(X)} samples.")
-                    st.sidebar.info("Need both GOOD and BAD samples for training.")
+                    st.sidebar.warning("⚠️ Need both GOOD and BAD samples")
+                    return None, None
             else:
-                st.sidebar.warning("⚠️ No Label_Numeric column found.")
-                st.sidebar.info("Make sure your dataset has 'Quality_Label' column with GOOD/BAD values.")
-                st.sidebar.info("Available columns: " + ", ".join(data_df.columns))
-            
-            # ============ FALLBACK: RULE-BASED ONLY ============
-            st.sidebar.info("ℹ️ Using fallback (Rule-based only)")
-            return None, None
-            
+                st.sidebar.warning("⚠️ No Quality_Label column found")
+                return None, None
+                
         except Exception as e:
-            st.sidebar.error(f"Model operation failed: {str(e)}")
-            import traceback
-            st.sidebar.code(traceback.format_exc())
+            st.sidebar.error(f"Model error: {str(e)}")
             return None, None
 
     pipeline, vectorizer = get_or_train_model(df)
@@ -200,37 +162,20 @@ if uploaded_file:
     
     # ============ 3. VECTORIZER FALLBACK ============
     if vectorizer is None:
-        # Create a vectorizer for fallback
         search_corpus = df["Issue key"].fillna("") + " " + df["Summary"].fillna("") + " " + df["Description"].fillna("")
         vectorizer = TfidfVectorizer(max_features=1000, ngram_range=(1,2), sublinear_tf=True)
         vectorizer.fit(search_corpus)
-        st.sidebar.info("ℹ️ New vectorizer created for fallback")
     
     # ============ 4. ML PREDICTIONS ============
     if pipeline is not None:
         try:
-            # Test with a single sample
-            test_input = pd.DataFrame({
-                'Combined': df['Combined'].head(1),
-                'vague_term_density': df['vague_term_density'].head(1)
+            input_df = pd.DataFrame({
+                'Combined': df['Combined'],
+                'vague_term_density': df.get('vague_term_density', 0)
             })
-            test_pred = pipeline.predict_proba(test_input)
-            st.sidebar.success(f"✅ Model test passed! Sample: {test_pred[0][1]:.3f}")
-            
-            # Run full predictions
-            try:
-                input_df = pd.DataFrame({
-                    'Combined': df['Combined'],
-                    'vague_term_density': df.get('vague_term_density', 0)
-                })
-                df['precalc_ml_prob'] = pipeline.predict_proba(input_df)[:, 1] * 100
-                st.sidebar.info(f"📊 ML predictions completed for {len(df)} tickets")
-                st.sidebar.info(f"📊 ML Score range: {df['precalc_ml_prob'].min():.1f}% - {df['precalc_ml_prob'].max():.1f}%")
-            except Exception as e:
-                st.sidebar.error(f"❌ Batch prediction failed: {e}")
-                df['precalc_ml_prob'] = 50.0
+            df['precalc_ml_prob'] = pipeline.predict_proba(input_df)[:, 1] * 100
         except Exception as e:
-            st.sidebar.error(f"❌ Model test failed: {e}")
+            st.sidebar.error(f"❌ Prediction failed: {e}")
             df['precalc_ml_prob'] = 50.0
     else:
         df['precalc_ml_prob'] = 50.0
