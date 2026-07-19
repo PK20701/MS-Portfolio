@@ -28,7 +28,7 @@ if "current_file" not in st.session_state:
 if "selected_issue" not in st.session_state:
     st.session_state.selected_issue = None
 
-st.title("A Hybrid Scoring Framework for Jira Requirement Quality")
+st.title("A Hybrid Scoring Framework for Jira Requirement Quality: Integrating Domain Rules with Machine Learning Classification")
 
 # Configuration
 st.sidebar.header("Configuration")
