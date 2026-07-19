@@ -91,17 +91,17 @@ if uploaded_file:
                     vectorizer = None
                     if os.path.exists(vectorizer_path):
                         vectorizer = joblib.load(vectorizer_path)
-                    st.sidebar.success("✅ ML Model loaded")
+    #                st.sidebar.success(" ML Model loaded")
                     return model, vectorizer
                 except Exception as e:
-                    st.sidebar.error(f"❌ Model load failed: {str(e)}")
+                    st.sidebar.error(f" Model load failed: {str(e)}")
                     return None, None
             else:
-                st.sidebar.warning("⚠️ Model not found. Please contact administrator.")
+                st.sidebar.warning(" Model not found. Please contact administrator.")
                 return None, None
                 
         except Exception as e:
-            st.sidebar.error(f"❌ Model loading error: {str(e)}")
+            st.sidebar.error(f" Model loading error: {str(e)}")
             return None, None
 
     pipeline, vectorizer = load_model()
@@ -113,7 +113,7 @@ if uploaded_file:
         search_corpus = df["Issue key"].fillna("") + " " + df["Summary"].fillna("") + " " + df["Description"].fillna("")
         vectorizer = TfidfVectorizer(max_features=1000, ngram_range=(1,2), sublinear_tf=True)
         vectorizer.fit(search_corpus)
-        st.sidebar.info("ℹ️ Using fallback vectorizer")
+        st.sidebar.info(" Using fallback vectorizer")
     
     # ============ 4. ML PREDICTIONS ============
     if pipeline is not None:
@@ -133,14 +133,14 @@ if uploaded_file:
                 })
                 df['precalc_ml_prob'] = pipeline.predict_proba(input_df)[:, 1] * 100
             except Exception as e:
-                st.sidebar.error(f"❌ Prediction failed: {e}")
+                st.sidebar.error(f" Prediction failed: {e}")
                 df['precalc_ml_prob'] = 50.0
         except Exception as e:
-            st.sidebar.error(f"❌ Model test failed: {e}")
+            st.sidebar.error(f" Model test failed: {e}")
             df['precalc_ml_prob'] = 50.0
     else:
         df['precalc_ml_prob'] = 50.0
-        st.sidebar.info("ℹ️ Using rule-based scoring only")
+        st.sidebar.info(" Using rule-based scoring only")
 
     # ============ 5. CALCULATE SCORES ============
     rule_scores, ml_scores, hybrid_scores, tiers, explanations = [], [], [], [], []
@@ -261,7 +261,7 @@ if uploaded_file:
         
         st.divider()
 
-        # Row 3: Count by Status & Issues Needing Attention
+        # Row 3: Count by Status & Funding Availability
         col3, col4 = st.columns(2)
         with col3:
             st.subheader("Count by Status")
@@ -273,9 +273,39 @@ if uploaded_file:
                 st.info("Status column not available in dataset")
         
         with col4:
-            st.subheader("Issues Needing Attention (Score < 50%)")
-            attention_issues = res_df[res_df['Hybrid_Score'] < 50]
-            if not attention_issues.empty:
+            st.subheader("Count by Funding availability")
+            if 'Funding Available?' in res_df.columns:
+                funding_counts = res_df['Funding Available?'].value_counts().reset_index(name='Count')
+                fig_fund = create_count_bar_chart(funding_counts, 'Funding Available?', 'Count', "", 'Plasma')
+                st.plotly_chart(fig_fund, use_container_width=True)
+            else:
+                st.info("Funding Available? column not available in dataset")
+        
+        
+
+        st.divider()
+
+        # Row 4: Advanced Analytics
+        st.subheader("Advanced Analytics")
+        
+        st.markdown("**Hybrid Score vs. Description Length**")
+        fig_scatter = px.scatter(
+                res_df, x='Desc_Length', y='Hybrid_Score', color='Tier',
+                color_discrete_map={'GOOD': '#2ecc71', 'BAD': '#e74c3c'},
+                hover_data=['Issue key'],
+                labels={'Desc_Length': 'Description Length (Characters)', 'Hybrid_Score': 'Hybrid Score (%)'},
+                opacity=0.7
+            )
+        fig_scatter.update_layout(height=400, showlegend=False)
+        st.plotly_chart(fig_scatter, use_container_width=True)
+               
+        st.divider()
+        
+        # Row 5: Issues Needing Attention 
+
+        st.subheader("Issues Needing Attention (Score < 50%)")
+        attention_issues = res_df[res_df['Hybrid_Score'] < 50]
+        if not attention_issues.empty:
                 display_df = attention_issues.sort_values('Hybrid_Score', ascending=True)
                 issue_options = [f"{row['Issue key']} - {row['Summary'][:50]}..." for _, row in attention_issues.head(20).iterrows()]
                 issue_keys = attention_issues['Issue key'].tolist()
@@ -287,45 +317,12 @@ if uploaded_file:
                 )
                 if selected_idx is not None and selected_idx < len(issue_keys):
                     st.session_state.selected_issue = issue_keys[selected_idx]
-            else:
+        else:
                 st.success("🎉 No issues with score below 50%! All tickets meet the attention threshold.")
                 st.session_state.selected_issue = None
-
-        st.divider()
-
-        # Row 4: Advanced Analytics
-        st.subheader("Advanced Analytics")
-        adv1, adv2 = st.columns(2)
         
-        with adv1:
-            st.markdown("**Hybrid Score vs. Description Length**")
-            fig_scatter = px.scatter(
-                res_df, x='Desc_Length', y='Hybrid_Score', color='Tier',
-                color_discrete_map={'GOOD': '#2ecc71', 'BAD': '#e74c3c'},
-                hover_data=['Issue key'],
-                labels={'Desc_Length': 'Description Length (Characters)', 'Hybrid_Score': 'Hybrid Score (%)'},
-                opacity=0.7
-            )
-            fig_scatter.update_layout(height=400, showlegend=False)
-            st.plotly_chart(fig_scatter, use_container_width=True)
-            
-        with adv2:
-            st.markdown("**Score Distribution by Assignee**")
-            if 'Assignee' in res_df.columns and res_df['Assignee'].nunique() > 0:
-                top_assignees = res_df['Assignee'].value_counts().nlargest(10).index
-                box_df = res_df[res_df['Assignee'].isin(top_assignees)]
-                
-                fig_box = px.box(
-                    box_df, x='Assignee', y='Hybrid_Score', color='Assignee',
-                    labels={'Hybrid_Score': 'Hybrid Score (%)', 'Assignee': 'Ticket Assignee'}
-                )
-                fig_box.update_layout(height=400, showlegend=False, xaxis={'categoryorder':'median descending'})
-                st.plotly_chart(fig_box, use_container_width=True)
-            else:
-                st.info("Assignee data unavailable or insufficient for visualization.")
-
         st.divider()
-        
+   
         # ============ DETAILED BREAKDOWN SECTION ============
         if st.session_state.selected_issue:
             st.subheader(f"📋 Detailed Breakdown: {st.session_state.selected_issue}")
@@ -344,11 +341,11 @@ if uploaded_file:
                 failed_rules = issue_data.get('Failed_Rules', [])
                 if failed_rules:
                     for rule in failed_rules:
-                        st.error(f"❌ {rule}")
+                        st.error(f" {rule}")
                 else:
-                    st.success("✅ All rules passed!")
+                    st.success(" All rules passed!")
                 if abs(issue_data['Rule_Score'] - issue_data['ML_Score']) > 20:
-                    st.warning(f"⚠️ **ML Warning:** ML Score differs from Rule Score by more than 20 points")
+                    st.warning(f" **ML Warning:** ML Score differs from Rule Score by more than 20 points")
             
             with b3:
                 st.markdown("**Suggested Improvements**")
@@ -367,7 +364,7 @@ if uploaded_file:
                         if "Missing User Story format" in rule: suggestions.append("• Use User Story format: 'As a... I want... so that...'")
                         if "Missing Priority" in rule: suggestions.append("• Assign a priority level")
                 
-                if not suggestions: suggestions.append("✅ This ticket meets all quality standards!")
+                if not suggestions: suggestions.append(" This ticket meets all quality standards!")
                 for suggestion in suggestions: st.info(suggestion)
             
             with st.expander("View Full Ticket Details", expanded=False):
@@ -400,11 +397,11 @@ if uploaded_file:
         st.subheader("Conversational Auditor")
         col1, col2, col3 = st.columns([1, 4, 1])
         with col1:
-            if st.button("🗑️ Clear", use_container_width=True):
+            if st.button(" Clear", use_container_width=True):
                 st.session_state.messages = []
                 st.rerun()
         
-        with st.expander("📋 What I can help with", expanded=False):
+        with st.expander(" What I can help with", expanded=False):
             st.markdown("""
             **Ticket Lookup:** `what is AML-809`
             **Statistics:** `average rule score for high priority tickets`
@@ -423,7 +420,7 @@ if uploaded_file:
                     else:
                         st.write(msg["content"])
         else:
-            st.info("💡 Ask me about your Jira tickets! Try: `average rule score` or `show me high priority tickets`")
+            st.info("Ask me about your Jira tickets! Try: `average rule score` or `show me high priority tickets`")
         
         query = st.chat_input("Ask about tickets (e.g., AML-809) or analysis:")
         
