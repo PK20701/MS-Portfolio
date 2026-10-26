@@ -2,6 +2,8 @@
 
 Assignments, exercises and class notebooks from the M.Tech programme (BITS Pilani WILP). These are kept for learning; the capstone is in [`../Dissertation`](../Dissertation).
 
+> Looking for the bigger picture? See [LEARNING_JOURNEY.pdf](../LEARNING_JOURNEY.pdf) for what each subject covered and the assignments I delivered.
+
 > **Personal learning record — not for reuse.** These are my own notebooks and practice work from the M.Tech programme (BITS Pilani WILP), kept to show how I learn. Please do **not** copy them into graded submissions; doing so would breach your institute's academic-integrity rules. Group assignments, institute-written problem statements and course handouts are intentionally **not** published here.
 
 | Folder | Topic | Contents |

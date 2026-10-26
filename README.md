@@ -15,6 +15,9 @@ Two folders, two purposes:
 
 Start at [`Dissertation/README.md`](Dissertation/README.md).
 
+## What I learned
+Semester-by-semester summary of the programme, the assignments I delivered and how they add to my experience: **[LEARNING_JOURNEY.pdf](LEARNING_JOURNEY.pdf)**.
+
 ## Companion repository
 The product-management side of the portfolio lives in the **AIPM** repo (linked from the portfolio site).
 
