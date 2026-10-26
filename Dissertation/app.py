@@ -1,15 +1,9 @@
 import streamlit as st
 import pandas as pd
 import joblib
-import pickle
 import os
 import plotly.express as px
-import plotly.graph_objects as go
 from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.pipeline import Pipeline
-from sklearn.compose import ColumnTransformer
-from sklearn.preprocessing import MinMaxScaler
 from src.preprocessing import DataPreprocessor
 from src.feature_engineering import FeatureEngineer
 from src.rule_engine import JiraRuleEngine

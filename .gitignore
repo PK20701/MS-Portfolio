@@ -216,3 +216,11 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Local-only
+.conda/
+DMML/
+.claude/
+*.bak
+Dissertation/reports/model_metrics.csv
+HISTORY_PURGE.md

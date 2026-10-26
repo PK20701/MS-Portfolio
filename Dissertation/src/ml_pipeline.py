@@ -11,8 +11,12 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.svm import SVC
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
 
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
 class RequirementMLPipeline:
-    def __init__(self, use_vague_feature=True):
+    def __init__(self, use_vague_feature=True, models_dir=None):
+        self.models_dir = models_dir or os.path.join(PROJECT_ROOT, "models")
         self.num_cols = ['vague_term_density']
         self.use_vague_feature = use_vague_feature
         
@@ -31,7 +35,7 @@ class RequirementMLPipeline:
             "SVM (Linear)": SVC(probability=True, kernel='linear', C=1.0, random_state=42, class_weight='balanced')
         }
         self.smote = SMOTE(random_state=42)
-        os.makedirs("models", exist_ok=True)
+        os.makedirs(self.models_dir, exist_ok=True)
 
     def execute_validation_matrix(self, df):
         train = df[df['Data_Split'] == 'Train']
@@ -76,6 +80,10 @@ class RequirementMLPipeline:
                 best_f1 = f1
                 best_model_obj = pipe
                 best_model_name = name
-                joblib.dump(pipe, "models/best_model.pkl")
-            
+
+        # Persist the winner once, together with its fitted TF-IDF vectorizer (used by the chatbot)
+        joblib.dump(best_model_obj, os.path.join(self.models_dir, "best_model.pkl"))
+        joblib.dump(best_model_obj.named_steps['prep'].named_transformers_['text'],
+                    os.path.join(self.models_dir, "vectorizer.pkl"))
+
         return pd.DataFrame(results), best_model_obj, best_model_name, best_f1

@@ -1,6 +1,15 @@
-import pandas as pd
+"""Train the three candidate classifiers, pick the best by F1, and write the hybrid scoring report.
+
+Usage (from the Dissertation/ folder):  python scripts/train_and_evaluate.py
+Outputs: models/best_model.pkl, models/vectorizer.pkl, reports/model_metrics.csv, reports/hybrid_scoring_report.csv
+"""
 import os
-import joblib
+import sys
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, ROOT)
+
+import pandas as pd
 from src.preprocessing import DataPreprocessor
 from src.feature_engineering import FeatureEngineer
 from src.ml_pipeline import RequirementMLPipeline
@@ -9,12 +18,14 @@ from src.hybrid_scorer import JiraHybridScorer
 
 # 1. Logging: Execution start
 print("="*60)
-print("--- [LOG] Starting Dissertation Mid-Sem Demo ---")
+print("--- [LOG] Training and evaluating the Jira quality models ---")
 print("="*60)
 
 # Load data
-print("[*] Loading data from ./data/Jira_Requirements_Master_Dataset.xls...")
-df = pd.read_excel("./data/Jira_Requirements_Master_Dataset.xls")
+DATA_PATH = os.path.join(ROOT, "data", "Jira_Requirements_Master_Dataset.xls")
+REPORTS_DIR = os.path.join(ROOT, "reports")
+print(f"[*] Loading data from {DATA_PATH}...")
+df = pd.read_excel(DATA_PATH)
 print(f"[✓] Data loaded successfully. Total records: {len(df)}")
 
 
@@ -37,6 +48,8 @@ metrics_df, best_model, best_name, best_f1 = pipeline.execute_validation_matrix(
 
 print("\n--- ACADEMIC PERFORMANCE METRICS ---")
 print(metrics_df.to_string(index=False))
+os.makedirs(REPORTS_DIR, exist_ok=True)
+metrics_df.to_csv(os.path.join(REPORTS_DIR, "model_metrics.csv"), index=False)
 
 print("\n" + "="*60)
 print(f"BEST MODEL SELECTED: {best_name}")
@@ -99,7 +112,6 @@ for _, row in test_df.iterrows():
     report_data.append(entry)
 
 # Save Report
-os.makedirs("reports", exist_ok=True)
-pd.DataFrame(report_data).to_csv("reports/hybrid_scoring_report.csv", index=False)
+pd.DataFrame(report_data).to_csv(os.path.join(REPORTS_DIR, "hybrid_scoring_report.csv"), index=False)
 print("[✓] Report saved to reports/hybrid_scoring_report.csv")
 print("="*60)

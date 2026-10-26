@@ -1,5 +1,4 @@
 import pandas as pd
-import streamlit as st
 
 class FeatureEngineer:
     VAGUE_TERMS = ['tbd', 'fix this', 'to be determined', 'fix later', 'placeholder', 'whatever', 'needful', 'update you later']
