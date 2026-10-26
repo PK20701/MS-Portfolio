@@ -150,3 +150,7 @@ Songs with high energy and danceability tend to do well on Spotify.
 YouTube popularity is more influenced by engagement metrics like likes and comments.
 Predicting song performance is feasible, but platform-specific strategies are essential for marketing and promotion.
 By leveraging machine learning models, we provided valuable insights that can help artists and labels optimize their music distribution strategies across platforms.
+---
+
+## Assignment 1 — Spotify vs YouTube popularity (Group 48)
+`Group48_IDS_Assignment-1.ipynb` / `.pdf` — business understanding, data sourcing, EDA, feature engineering, modelling and clustering on the Kaggle *Spotify and YouTube* dataset (`salvatorerastelli/spotify-and-youtube`, not included). Teammates' names/IDs are removed.

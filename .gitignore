@@ -224,3 +224,6 @@ DMML/
 *.bak
 Dissertation/reports/model_metrics.csv
 HISTORY_PURGE.md
+
+# Originals of coursework folders not yet curated (kept locally, never committed)
+Coursework/Big Data System/
