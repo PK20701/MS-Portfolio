@@ -36,7 +36,7 @@ Dissertation/
 ├── reports/                  scoring report, feature importance, scenario comparison, app_exports/
 ├── tests/                    pytest suite
 ├── docs/                     dissertation-report.pdf, final-presentation.pptx (public, redacted copies)
-└── demo/                     demo-with-voiceover.mp4, promo-silent.mp4
+└── demo/                     demo-with-voiceover.mp4
 ```
 
 ## Data
